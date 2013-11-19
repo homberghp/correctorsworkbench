@@ -53,4 +53,4 @@ ready for handing in.
 A web version, which is now, gives some ideas on the elements in the windows, is shown below.
 
 
-![]h(ttps://raw.github.com/homberghp/correctorsworkbench/master/doc/cwb-anonymised-775.png)
+![](https://raw.github.com/homberghp/correctorsworkbench/master/doc/cwb-anonymised-775.png)
