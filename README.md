@@ -50,7 +50,7 @@ or otherwise processing the grades into a format that is acceptable to the local
 We us a database (to provide multiple examiners to work in parallel) and export the grades from a view to a spreadsheet, which is
 ready for handing in.
 
-A web version, which is now, gives some ideas on the elements in the windows, is shown below.
+A web version, which is used now, gives some ideas on the elements in the windows, is shown below.
 
 
 ![](https://raw.github.com/homberghp/correctorsworkbench/master/doc/cwb-anonymised-775.png)
