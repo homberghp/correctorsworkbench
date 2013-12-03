@@ -32,26 +32,26 @@ public class SolutionMarkerUtils {
      * @param doc the style document being edited
      * @param caret the position of the cursor and /or selection
      */
-    public static void annotateRegion( DataObject d, final StyledDocument doc,
-            Caret caret ) {
-        LineCookie cookie = d.getLookup().lookup( LineCookie.class );
+    public static void annotateRegion(DataObject d, final StyledDocument doc,
+            Caret caret) {
+        LineCookie cookie = d.getLookup().lookup(LineCookie.class);
         Line.Set lineSet = cookie.getLineSet();
-        int regionStart = Math.min( caret.getDot(), caret.getMark() );
-        int regionEnd = Math.max( caret.getDot(), caret.getMark() );
-        System.out.println( caretToString( caret ) );
-        final Line firstLine = lineSet.getCurrent( NbDocument.findLineNumber( 
+        int regionStart = Math.min(caret.getDot(), caret.getMark());
+        int regionEnd = Math.max(caret.getDot(), caret.getMark());
+        System.out.println(caretToString(caret));
+        final Line firstLine = lineSet.getCurrent(NbDocument.findLineNumber(
                 doc,
-                regionStart ) );
-        final Line lastLine = lineSet.getCurrent( NbDocument.
+                regionStart));
+        final Line lastLine = lineSet.getCurrent(NbDocument.
                 findLineNumber(doc,
-                        regionEnd ) );
+                        regionEnd));
         final Annotation ann1
-                = new SolutionStartAnnotation( "Your solution starts here" );
+                = new SolutionStartAnnotation("Your solution starts here");
         final Annotation ann2
-                = new SolutionEndAnnotation( "Your solution ends here" );
-        ann1.attach( firstLine );
+                = new SolutionEndAnnotation("Your solution ends here");
+        ann1.attach(firstLine);
         ann1.moveToFront();
-        ann2.attach( lastLine );
+        ann2.attach(lastLine);
         ann2.moveToFront();
     }
 
@@ -70,71 +70,90 @@ public class SolutionMarkerUtils {
      * @param postfix text to put at back of selection.
      * @throws BadLocationException
      */
-    public static void wrapSelected( final StyledDocument doc, final Caret caret,
-            final String prefix, final String postfix ) {
+    public static void wrapSelected(final StyledDocument doc, final Caret caret,
+            final String prefix, final String postfix) {
         // This array is needed to be able to pass to the Runnable a final 
         // reference to something.
-        final BadLocationException[] exc = new BadLocationException[]{ null };
-        if ( caret.getDot() == caret.getMark() ) {
+        final BadLocationException[] exc = new BadLocationException[]{null};
+        if (caret.getDot() == caret.getMark()) {
             return;
         }
-        final int insertionPoint1 = roundToLineStart(doc, Math.min( caret.getDot(), caret.getMark() ));
-        final int insertionPoint2 = roundToNextLineStart(doc, Math.max( caret.getDot(), caret.getMark() ));
-        final int oldRegionLength = ( insertionPoint2 - insertionPoint1 );
-        final String indent = findIndent(doc, Math.min( caret.getDot(), caret.getMark() ));
-        NbDocument.runAtomic( doc, new Runnable() {
+        final int insertionPoint1 = roundToLineStart(doc, Math.min(caret.getDot(), caret.getMark()));
+        final int insertionPoint2 = roundToNextLineStart(doc, Math.max(caret.getDot(), caret.getMark()));
+        final int oldRegionLength = (insertionPoint2 - insertionPoint1);
+        NbDocument.runAtomic(doc, new Runnable() {
             @Override
             public void run() {
                 try {
                     // do postfix first, so the starting point of the selection will not change,
                     // so we can still validly insert the prefix in the 2nd step.
-                    doc.insertString( insertionPoint2, indent+postfix+"\n",
-                            SimpleAttributeSet.EMPTY );
-                    doc.insertString( insertionPoint1, indent+prefix+"\n",
-                            SimpleAttributeSet.EMPTY );
+                    String indent = findIndent(doc, Math.min(caret.getDot(), caret.getMark()));
+                    String indentedPrefix = indent + stringsJoin("\n" + indent, prefix.split("\n"));
+                    String indentedPostfix = indent + stringsJoin("\n" + indent, postfix.split("\n"));
+                    doc.insertString(insertionPoint2, indentedPostfix + "\n",
+                            SimpleAttributeSet.EMPTY);
+                    doc.insertString(insertionPoint1, indentedPrefix + "\n",
+                            SimpleAttributeSet.EMPTY);
                     // the following lines put mark at begin of region and dot at end.
-                    caret.setDot( insertionPoint1 );
-                    caret.moveDot( insertionPoint1 + prefix.length()
-                            + oldRegionLength );
-                    System.out.println( caretToString( caret ) );
-                } catch ( BadLocationException e ) {
+                    caret.setDot(insertionPoint1);
+                    caret.moveDot(insertionPoint1 + prefix.length()
+                            + oldRegionLength);
+                    System.out.println(caretToString(caret));
+                } catch (BadLocationException e) {
                     exc[0] = e;
                 }
             }
-        } );
-        if ( exc[0] != null ) {
-            logger.log( Level.INFO, "insert failed with ", exc[0] );
+        });
+        if (exc[0] != null) {
+            logger.log(Level.INFO, "insert failed with ", exc[0]);
         }
     }
     private static final Logger logger = Logger.getLogger(
-            SolutionMarkerUtils.class.getName() );
+            SolutionMarkerUtils.class.getName());
 
-    public static String caretToString( Caret c ) {
+    public static String caretToString(Caret c) {
         return c.getClass().getCanonicalName() + " dot:" + c.getDot()
                 + ", mark:" + c.getMark();
     }
 
-    public static int roundToLineStart(final StyledDocument doc, final int position){
-        return (position -NbDocument.findLineColumn(doc, position));
+    public static int roundToLineStart(final StyledDocument doc, final int position) {
+        return (position - NbDocument.findLineColumn(doc, position));
     }
     private static final String whiteSpace = "                                             ";
+
     /**
      * Tries to matche indent of original selection
+     *
      * @param doc to edit
      * @param position location from mark
      * @return a whitespace string
      */
-    public static String findIndent(final StyledDocument doc, final int position){
-        return whiteSpace.substring(0,NbDocument.findLineColumn(doc, position));
+    public static String findIndent(final StyledDocument doc, final int position) throws BadLocationException {
+        int indent = 0;
+        int l1Offset = NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position));
+        int l2Offset = NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position) + 1);
+        while (doc.getText(l1Offset + indent, 1).matches("\\s") && l1Offset + indent < l2Offset) {
+            indent++;
+        }
+        return whiteSpace.substring(0, indent);
     }
 
     /**
      * Get start of next line
+     *
      * @param doc to edit
      * @param position from where
      * @return position in the doc of next line start
      */
-    public static int roundToNextLineStart(final StyledDocument doc, final int position){
-        return (NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position)+1));
+    public static int roundToNextLineStart(final StyledDocument doc, final int position) {
+        return (NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position) + 1));
+    }
+
+    private static String stringsJoin(String glue, String[] parts) {
+        StringBuilder result = new StringBuilder(parts[0]);
+        for (int i = 1; i < parts.length; i++) {
+            result.append(glue).append(parts[i]);
+        }
+        return result.toString();
     }
 }
