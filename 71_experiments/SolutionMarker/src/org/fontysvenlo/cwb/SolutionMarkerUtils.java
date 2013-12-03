@@ -117,11 +117,23 @@ public class SolutionMarkerUtils {
     public static int roundToLineStart(final StyledDocument doc, final int position){
         return (position -NbDocument.findLineColumn(doc, position));
     }
-    private static String whiteSpace = "                                             ";
+    private static final String whiteSpace = "                                             ";
+    /**
+     * Tries to matche indent of original selection
+     * @param doc to edit
+     * @param position location from mark
+     * @return a whitespace string
+     */
     public static String findIndent(final StyledDocument doc, final int position){
         return whiteSpace.substring(0,NbDocument.findLineColumn(doc, position));
     }
 
+    /**
+     * Get start of next line
+     * @param doc to edit
+     * @param position from where
+     * @return position in the doc of next line start
+     */
     public static int roundToNextLineStart(final StyledDocument doc, final int position){
         return (NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position)+1));
     }
