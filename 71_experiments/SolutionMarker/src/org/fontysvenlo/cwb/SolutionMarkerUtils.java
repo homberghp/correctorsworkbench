@@ -43,7 +43,7 @@ public class SolutionMarkerUtils {
                 doc,
                 regionStart ) );
         final Line lastLine = lineSet.getCurrent( NbDocument.
-                findLineNumber( doc,
+                findLineNumber(doc,
                         regionEnd ) );
         final Annotation ann1
                 = new SolutionStartAnnotation( "Your solution starts here" );
@@ -78,18 +78,19 @@ public class SolutionMarkerUtils {
         if ( caret.getDot() == caret.getMark() ) {
             return;
         }
-        final int insertionPoint1 = Math.min( caret.getDot(), caret.getMark() );
-        final int insertionPoint2 = Math.max( caret.getDot(), caret.getMark() );
+        final int insertionPoint1 = roundToLineStart(doc, Math.min( caret.getDot(), caret.getMark() ));
+        final int insertionPoint2 = roundToNextLineStart(doc, Math.max( caret.getDot(), caret.getMark() ));
         final int oldRegionLength = ( insertionPoint2 - insertionPoint1 );
+        final String indent = findIndent(doc, Math.min( caret.getDot(), caret.getMark() ));
         NbDocument.runAtomic( doc, new Runnable() {
             @Override
             public void run() {
                 try {
                     // do postfix first, so the starting point of the selection will not change,
                     // so we can still validly insert the prefix in the 2nd step.
-                    doc.insertString( insertionPoint2, postfix,
+                    doc.insertString( insertionPoint2, indent+postfix,
                             SimpleAttributeSet.EMPTY );
-                    doc.insertString( insertionPoint1, prefix,
+                    doc.insertString( insertionPoint1, indent+prefix,
                             SimpleAttributeSet.EMPTY );
                     // the following lines put mark at begin of region and dot at end.
                     caret.setDot( insertionPoint1 );
@@ -113,4 +114,15 @@ public class SolutionMarkerUtils {
                 + ", mark:" + c.getMark();
     }
 
+    public static int roundToLineStart(final StyledDocument doc, final int position){
+        return (position -NbDocument.findLineColumn(doc, position));
+    }
+    private static String whiteSpace = "                                             ";
+    public static String findIndent(final StyledDocument doc, final int position){
+        return whiteSpace.substring(0,NbDocument.findLineColumn(doc, position));
+    }
+
+    public static int roundToNextLineStart(final StyledDocument doc, final int position){
+        return (NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position)+1));
+    }
 }

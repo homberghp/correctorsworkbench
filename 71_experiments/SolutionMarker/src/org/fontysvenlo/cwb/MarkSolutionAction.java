@@ -56,6 +56,7 @@ public final class MarkSolutionAction implements ActionListener {
     @Override
     public void actionPerformed( ActionEvent e ) {
         try {
+            StringBuilder actionLog = new StringBuilder();
             String path = context.getPrimaryFile().getPath();
 
             File f = new File( path );
@@ -66,24 +67,16 @@ public final class MarkSolutionAction implements ActionListener {
 
             final StyledDocument doc = ec.openDocument();
 
-            int start = NbDocument.findLineOffset( doc, 2 );
-            int end = NbDocument.findLineOffset( doc, 3 );
-            String contents = doc.getText( start, end - start );
-
-            ec.getLineSet().getCurrent( 2 ).show( ShowOpenType.NONE,
-                    ShowVisibilityType.FOCUS );
-
-            StringBuilder sb = new StringBuilder();
             for ( JEditorPane pane : ec.getOpenedPanes() ) {
-                sb.append( pane.getSelectedText() );
+                actionLog.append( pane.getSelectedText() );
                 Caret caret = pane.getCaret();
-                sb.append( "\n dot at " ).append( caret.getDot() ).
+                actionLog.append( "\n dot at " ).append( caret.getDot() ).
                         append( "\n mark at " ).append( caret.getMark() );
                 wrapSelected( doc, caret, "//PRE\n", "//POST\n" );
                 annotateRegion( d, doc, caret );
             }
-            logger.log(Level.INFO, sb.toString(), (Throwable)null);
-        } catch ( IOException | IndexOutOfBoundsException | BadLocationException ex ) {
+            logger.log(Level.INFO, actionLog.toString(), (Throwable)null);
+        } catch ( IOException | IndexOutOfBoundsException ex ) {
             logger.log( Level.INFO, "action failed with ", ex );
         }
     }
