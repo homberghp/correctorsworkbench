@@ -5,3 +5,4 @@
 *.war
 *.ear
 /71_experiments/SolutionMarker/build/
+nbproject/private/
