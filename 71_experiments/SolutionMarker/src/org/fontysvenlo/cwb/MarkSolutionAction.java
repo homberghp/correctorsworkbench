@@ -3,6 +3,7 @@ package org.fontysvenlo.cwb;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JEditorPane;
@@ -78,11 +79,11 @@ public final class MarkSolutionAction implements ActionListener {
                 Caret caret = pane.getCaret();
                 sb.append( "\n dot at " ).append( caret.getDot() ).
                         append( "\n mark at " ).append( caret.getMark() );
-                wrapSelected( doc, caret, "\n//PRE\n", "\n//POST\n" );
+                wrapSelected( doc, caret, "//PRE\n", "//POST\n" );
                 annotateRegion( d, doc, caret );
             }
-
-        } catch ( Exception ex ) {
+            logger.log(Level.INFO, sb.toString(), (Throwable)null);
+        } catch ( IOException | IndexOutOfBoundsException | BadLocationException ex ) {
             logger.log( Level.INFO, "action failed with ", ex );
         }
     }

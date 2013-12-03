@@ -4,6 +4,7 @@
     <folder name="Editors">
         <folder name="AnnotationTypes">
             <file name="cwbSolution.xml" url="cwbSolution.xml"/>
+            <file name="cwbSolutionEnd.xml" url="cwbSolutionEnd.xml"/>
         </folder>
     </folder>
 </filesystem>

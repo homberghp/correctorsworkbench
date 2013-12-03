@@ -4,3 +4,4 @@
 *.jar
 *.war
 *.ear
+/71_experiments/SolutionMarker/build/

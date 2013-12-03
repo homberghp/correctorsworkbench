@@ -13,17 +13,17 @@ import org.openide.text.Annotation;
  * @author hom
  */
 
-public class SolutionAnnotation extends Annotation{
+public class SolutionStartAnnotation extends Annotation {
 
     private final String text;
     
-    SolutionAnnotation( String here_starts_your_solution ) {
+    SolutionStartAnnotation( String here_starts_your_solution ) {
         this.text=here_starts_your_solution;
     }
 
     @Override
     public String getAnnotationType() {
-        return "org-nb-modules-cwb-solution";
+        return "org-nb-modules-cwb-solution-start";
     }
 
     @Override

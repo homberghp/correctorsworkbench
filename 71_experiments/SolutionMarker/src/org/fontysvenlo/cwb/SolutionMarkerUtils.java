@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.fontysvenlo.cwb;
 
 import java.util.logging.Level;
@@ -23,29 +22,33 @@ import org.openide.text.NbDocument;
  * @author hom
  */
 public class SolutionMarkerUtils {
-        /**
-     * Add editor solution annotations  to the editor window.
-     * Note that these annotations are not java annotations but visible markup to serve 
-     * as clue for the user.
+
+    /**
+     * Add editor solution annotations to the editor window. Note that these
+     * annotations are not java annotations but visible markup to serve as clue
+     * for the user.
+     *
      * @param d data object to lookup cookies for
      * @param doc the style document being edited
      * @param caret the position of the cursor and /or selection
      */
-   public static void annotateRegion( DataObject d, final StyledDocument doc,
+    public static void annotateRegion( DataObject d, final StyledDocument doc,
             Caret caret ) {
         LineCookie cookie = d.getLookup().lookup( LineCookie.class );
         Line.Set lineSet = cookie.getLineSet();
         int regionStart = Math.min( caret.getDot(), caret.getMark() );
         int regionEnd = Math.max( caret.getDot(), caret.getMark() );
-        System.out.println( caretToString( caret ));
-        final Line firstLine = lineSet.getCurrent( NbDocument.findLineNumber( doc,
-                regionStart ));
-        final Line lastLine = lineSet.getCurrent( NbDocument.findLineNumber( doc,
-                regionEnd ));
+        System.out.println( caretToString( caret ) );
+        final Line firstLine = lineSet.getCurrent( NbDocument.findLineNumber( 
+                doc,
+                regionStart ) );
+        final Line lastLine = lineSet.getCurrent( NbDocument.
+                findLineNumber( doc,
+                        regionEnd ) );
         final Annotation ann1
-                = new SolutionAnnotation( "Your solution starts here");
+                = new SolutionStartAnnotation( "Your solution starts here" );
         final Annotation ann2
-                = new SolutionAnnotation( "Your solution ends here" );
+                = new SolutionEndAnnotation( "Your solution ends here" );
         ann1.attach( firstLine );
         ann1.moveToFront();
         ann2.attach( lastLine );
@@ -57,9 +60,9 @@ public class SolutionMarkerUtils {
      * text is prefix+select+postfix. This resulting text replaces the selected
      * text. The method does nothing if there is no selection
      * (i.e.Caret.dot==Caret.mark).
-     * 
-     * If the operation is successful, dot is at the beginning of the annotated block,
-     * mark is at the end of the annotated block.
+     *
+     * If the operation is successful, dot is at the beginning of the annotated
+     * block, mark is at the end of the annotated block.
      *
      * @param doc to insert in
      * @param caret the selection object specifying dot and mark
@@ -77,7 +80,7 @@ public class SolutionMarkerUtils {
         }
         final int insertionPoint1 = Math.min( caret.getDot(), caret.getMark() );
         final int insertionPoint2 = Math.max( caret.getDot(), caret.getMark() );
-        final int newRegionLength= (insertionPoint2-insertionPoint1)+prefix.length()+postfix.length();
+        final int oldRegionLength = ( insertionPoint2 - insertionPoint1 );
         NbDocument.runAtomic( doc, new Runnable() {
             @Override
             public void run() {
@@ -89,8 +92,9 @@ public class SolutionMarkerUtils {
                     doc.insertString( insertionPoint1, prefix,
                             SimpleAttributeSet.EMPTY );
                     // the following lines put mark at begin of region and dot at end.
-                    caret.setDot(insertionPoint1);
-                    caret.moveDot( insertionPoint1+newRegionLength);
+                    caret.setDot( insertionPoint1 );
+                    caret.moveDot( insertionPoint1 + prefix.length()
+                            + oldRegionLength );
                     System.out.println( caretToString( caret ) );
                 } catch ( BadLocationException e ) {
                     exc[0] = e;
@@ -103,10 +107,10 @@ public class SolutionMarkerUtils {
     }
     private static final Logger logger = Logger.getLogger(
             SolutionMarkerUtils.class.getName() );
-    
-    public static String caretToString(Caret c) {
-        return c.getClass().getCanonicalName()+" dot:"+c.getDot()+
-                ", mark:"+c.getMark();
+
+    public static String caretToString( Caret c ) {
+        return c.getClass().getCanonicalName() + " dot:" + c.getDot()
+                + ", mark:" + c.getMark();
     }
 
 }
