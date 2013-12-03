@@ -27,6 +27,7 @@ import org.openide.text.Line;
 import static org.openide.text.Line.*;
 import org.openide.text.NbDocument;
 import static org.fontysvenlo.cwb.SolutionMarkerUtils.*;
+import org.openide.util.NbPreferences;
 /*
  * log findings here.
  * Caret has a dot (current pos) and a mark.
@@ -36,52 +37,59 @@ import static org.fontysvenlo.cwb.SolutionMarkerUtils.*;
  * Useful links:  <a href='http://bits.netbeans.org/dev/javadoc/org-openide-text/org/openide/text/doc-files/api.html'>Open IDE editor Api</a>
 
  */
+
 @ActionID(
-         category = "Tools",
-        id = "org.fontysvenlo.cwb.MarkSolutionAction" )
+        category = "Tools",
+        id = "org.fontysvenlo.cwb.MarkSolutionAction")
 @ActionRegistration(
-         displayName = "#CTL_MarkSolution" )
-@ActionReferences( {
-    @ActionReference( path = "Editors/Popup", position = 10 )
-} )
-@Messages( "CTL_MarkSolution=Mark Region as Solution" )
+        displayName = "#CTL_MarkSolution")
+@ActionReferences({
+    @ActionReference(path = "Editors/Popup", position = 10)
+})
+@Messages("CTL_MarkSolution=Mark Region as Solution")
 public final class MarkSolutionAction implements ActionListener {
 
+    private static String defaultStartTag = "//PRE";
+    private static String defaultEndTag = "//POST";
+    private String startTag = "//PRE";
+    private String endTag = "//POST";
     private final DataObject context;
 
-    public MarkSolutionAction( DataObject context ) {
+    public MarkSolutionAction(DataObject context) {
         this.context = context;
+        startTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("startTag", defaultStartTag);
+        endTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("endTag", defaultEndTag);
     }
 
     @Override
-    public void actionPerformed( ActionEvent e ) {
+    public void actionPerformed(ActionEvent e) {
         try {
             StringBuilder actionLog = new StringBuilder();
             String path = context.getPrimaryFile().getPath();
 
-            File f = new File( path );
-            FileObject fo = FileUtil.toFileObject( f );
-            DataObject d = DataObject.find( fo );
-            EditorCookie ec = d.getLookup().lookup( EditorCookie.class );
+            File f = new File(path);
+            FileObject fo = FileUtil.toFileObject(f);
+            DataObject d = DataObject.find(fo);
+            EditorCookie ec = d.getLookup().lookup(EditorCookie.class);
             ec.open();
 
             final StyledDocument doc = ec.openDocument();
 
-            for ( JEditorPane pane : ec.getOpenedPanes() ) {
-                actionLog.append( pane.getSelectedText() );
+            for (JEditorPane pane : ec.getOpenedPanes()) {
+                actionLog.append(pane.getSelectedText());
                 Caret caret = pane.getCaret();
-                actionLog.append( "\n dot at " ).append( caret.getDot() ).
-                        append( "\n mark at " ).append( caret.getMark() );
-                wrapSelected( doc, caret, "//PRE\n", "//POST\n" );
-                annotateRegion( d, doc, caret );
+                actionLog.append("\n dot at ").append(caret.getDot()).
+                        append("\n mark at ").append(caret.getMark());
+                wrapSelected(doc, caret, startTag , endTag );
+                annotateRegion(d, doc, caret);
             }
-            logger.log(Level.INFO, actionLog.toString(), (Throwable)null);
-        } catch ( IOException | IndexOutOfBoundsException ex ) {
-            logger.log( Level.INFO, "action failed with ", ex );
+            logger.log(Level.INFO, actionLog.toString(), (Throwable) null);
+        } catch (IOException | IndexOutOfBoundsException ex) {
+            logger.log(Level.INFO, "action failed with ", ex);
         }
     }
 
     private static final Logger logger = Logger.getLogger(
-            MarkSolutionAction.class.getName() );
-   
+            MarkSolutionAction.class.getName());
+
 }

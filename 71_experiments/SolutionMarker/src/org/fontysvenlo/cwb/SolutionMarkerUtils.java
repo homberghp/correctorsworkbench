@@ -88,9 +88,9 @@ public class SolutionMarkerUtils {
                 try {
                     // do postfix first, so the starting point of the selection will not change,
                     // so we can still validly insert the prefix in the 2nd step.
-                    doc.insertString( insertionPoint2, indent+postfix,
+                    doc.insertString( insertionPoint2, indent+postfix+"\n",
                             SimpleAttributeSet.EMPTY );
-                    doc.insertString( insertionPoint1, indent+prefix,
+                    doc.insertString( insertionPoint1, indent+prefix+"\n",
                             SimpleAttributeSet.EMPTY );
                     // the following lines put mark at begin of region and dot at end.
                     caret.setDot( insertionPoint1 );
