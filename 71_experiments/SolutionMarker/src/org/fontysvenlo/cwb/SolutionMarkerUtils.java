@@ -5,6 +5,7 @@
  */
 package org.fontysvenlo.cwb;
 
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.BadLocationException;
@@ -16,6 +17,7 @@ import org.openide.loaders.DataObject;
 import org.openide.text.Annotation;
 import org.openide.text.Line;
 import org.openide.text.NbDocument;
+import org.openide.util.Exceptions;
 
 /**
  *
@@ -108,6 +110,22 @@ public class SolutionMarkerUtils {
             logger.log(Level.INFO, "insert failed with ", exc[0]);
         }
     }
+
+    /**
+     * Remove the wrappers around Caret. The prefix is search from the caret
+     * backwards (decreasing line number), the postfix is search from the caret
+     * forward. The removal only takes place is bot prefix and postfix are found
+     * surrounding caret.
+     *
+     * @param doc to search
+     * @param caret the start position for the search
+     * @param prefix the prefix the text is wrapped with
+     * @param postfix the postfix the text is wrapped with
+     */
+    public static void unwrapSelected(final StyledDocument doc, final Caret caret,
+            final String prefix, final String postfix) {
+
+    }
     private static final Logger logger = Logger.getLogger(
             SolutionMarkerUtils.class.getName());
 
@@ -155,5 +173,81 @@ public class SolutionMarkerUtils {
             result.append(glue).append(parts[i]);
         }
         return result.toString();
+    }
+
+    /**
+     * Forward or backward iterable document. The returned Iterator does not
+     * implement remove().
+     */
+    static class IterableDocument implements Iterable<String> {
+
+        private final StyledDocument doc;
+        /**
+         * Maintains position. Value of Integer.MAX_VALUE
+         */
+        private final int position;
+        private final int direction;
+
+        @Override
+        public Iterator<String> iterator() {
+            return new Iterator<String>() {
+                // init from 
+                int lineNumber = NbDocument.findLineNumber(doc, position);
+
+                @Override
+                public boolean hasNext() {
+                    if (lineNumber == Integer.MAX_VALUE || lineNumber == -Integer.MAX_VALUE) {
+                        return false;
+                    }
+                    // try to advance, on exception, flag end
+
+                    return true;
+                }
+
+                @Override
+                public String next() {
+                    String result = null;
+                    lineNumber += direction;
+                    int offset = 0, offset2 = 0, length = 0;
+                    offset = NbDocument.findLineOffset(doc, lineNumber);
+                    offset2 = Math.max(NbDocument.findLineOffset(doc, lineNumber + 1),
+                            doc.getLength());
+                    length = offset2 - offset;
+                    try {
+                        result = doc.getText(offset, length);
+                    } catch (BadLocationException ex) {
+                        lineNumber = direction * Integer.MAX_VALUE;
+                    }
+                    return result;
+                }
+                @Override
+                public void remove() {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+            };
+
+        }
+
+        /**
+         * Creates iterable document from starting position and direction.
+         *
+         * @param doc the doc to search
+         * @param position the starting position
+         * @param direction increase (+1) or decrease (-1)
+         * @throws NullPointerException doc is null
+         * @throws IllegalArgumentException when direction not one of (-1,1).
+         */
+        public IterableDocument(StyledDocument doc, final int position, int direction) {
+            if (1 != Math.abs(direction)) {
+                throw new IllegalArgumentException("illegal dierction arg");
+            }
+            if (null == doc) {
+                throw new NullPointerException("refusing to iterate null ");
+            }
+            this.doc = doc;
+            this.position = position;
+            this.direction = direction;
+        }
+
     }
 }
