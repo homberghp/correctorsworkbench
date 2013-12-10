@@ -8,7 +8,8 @@
       visible="true" 
       glyph="nbresloc:/org/fontysvenlo/cwb/solution/dontstop.png"
       type="line"
-      custom_sidebar_color="#880088"
+      highlight="#440044"
+      foreground="#FFFFFF"
       severity="ok"
       browsable="true"
       />

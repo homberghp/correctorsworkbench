@@ -19,6 +19,7 @@ public class SolutionEndAnnotation extends Annotation {
     
     SolutionEndAnnotation( String here_starts_your_solution ) {
         this.text=here_starts_your_solution;
+        
     }
 
     @Override
