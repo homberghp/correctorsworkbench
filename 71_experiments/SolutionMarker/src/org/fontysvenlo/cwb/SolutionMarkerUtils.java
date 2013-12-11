@@ -17,7 +17,6 @@ import org.openide.loaders.DataObject;
 import org.openide.text.Annotation;
 import org.openide.text.Line;
 import org.openide.text.NbDocument;
-import org.openide.util.Exceptions;
 
 /**
  *
@@ -141,9 +140,13 @@ public class SolutionMarkerUtils {
      * @param position location, zero based from start of doc
      * @return the start of line position in doc on which position is located
      */
+    //<editor-fold defaultstate="expanded" desc="1F; MAX 10; __STUDENT_ID__ ;POINTS 0">
+    //Start Solution::replacewith::
     public static int roundToLineStart(final StyledDocument doc, final int position) {
         return (position - NbDocument.findLineColumn(doc, position));
     }
+    //End Solution::replacewith::
+    //</editor-fold>
     private static final String whiteSpace = "                                             ";
 
     /**
@@ -155,12 +158,17 @@ public class SolutionMarkerUtils {
      */
     public static String findIndent(final StyledDocument doc, final int position) throws BadLocationException {
         StringBuilder indent = new StringBuilder();
-        int l1Offset = NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position));
-        int l2Offset = NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position) + 1);
+        //<editor-fold defaultstate="expanded" desc="1F; MAX 10; __STUDENT_ID__ ;POINTS 0">
+        //Start Solution::replacewith::
+        int currentLineNo= NbDocument.findLineNumber(doc, position);
+        int l1Offset = NbDocument.findLineOffset(doc, currentLineNo);
+        int l2Offset = NbDocument.findLineOffset(doc, currentLineNo + 1);
         int stopPos = Math.min(l2Offset, doc.getLength());
+        //End Solution::replacewith::
+        //</editor-fold>
         String ws = doc.getText(l1Offset, 1);
 
-        while (ws.matches("\\s") && l1Offset < stopPos) {
+        while (ws.matches("^\\s$") && l1Offset < stopPos) {
             indent.append(ws);
             l1Offset++;
             ws = doc.getText(l1Offset, 1);
