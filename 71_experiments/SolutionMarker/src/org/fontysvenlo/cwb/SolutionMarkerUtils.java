@@ -134,26 +134,38 @@ public class SolutionMarkerUtils {
                 + ", mark:" + c.getMark();
     }
 
+    /**
+     * Get start of line position for a position.
+     *
+     * @param doc document for position
+     * @param position location, zero based from start of doc
+     * @return the start of line position in doc on which position is located
+     */
     public static int roundToLineStart(final StyledDocument doc, final int position) {
         return (position - NbDocument.findLineColumn(doc, position));
     }
     private static final String whiteSpace = "                                             ";
 
     /**
-     * Tries to matche indent of original selection
+     * Tries to match indent of original selection.
      *
      * @param doc to edit
      * @param position location from mark
      * @return a whitespace string
      */
     public static String findIndent(final StyledDocument doc, final int position) throws BadLocationException {
-        int indent = 0;
+        StringBuilder indent = new StringBuilder();
         int l1Offset = NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position));
         int l2Offset = NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position) + 1);
-        while (doc.getText(l1Offset + indent, 1).matches("\\s") && l1Offset + indent < l2Offset) {
-            indent++;
+        int stopPos = Math.min(l2Offset, doc.getLength());
+        String ws = doc.getText(l1Offset, 1);
+
+        while (ws.matches("\\s") && l1Offset < stopPos) {
+            indent.append(ws);
+            l1Offset++;
+            ws = doc.getText(l1Offset, 1);
         }
-        return whiteSpace.substring(0, indent);
+        return indent.toString();
     }
 
     /**
@@ -163,9 +175,11 @@ public class SolutionMarkerUtils {
      * @param position from where
      * @return position in the doc of next line start
      */
+    //StartSolution
     public static int roundToNextLineStart(final StyledDocument doc, final int position) {
-        return (NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position) + 1));
+        return NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc, position) + 1);
     }
+    //EndSolution
 
     private static String stringsJoin(String glue, String[] parts) {
         StringBuilder result = new StringBuilder(parts[0]);
@@ -173,6 +187,28 @@ public class SolutionMarkerUtils {
             result.append(glue).append(parts[i]);
         }
         return result.toString();
+    }
+
+    /**
+     * Remove all edit flags (left gutter icons, right column colour marks)
+     * markers from doc.
+     *
+     * @param doc document to work on
+     * @return the number of annotations removed.
+     */
+    public static int removeSolutionMarkers(DataObject d, final StyledDocument doc) {
+        LineCookie cookie = d.getLookup().lookup(LineCookie.class);
+        Line.Set lineSet = cookie.getLineSet();
+        int lastLine = NbDocument.findLineNumber(doc, doc.getLength());
+        SolutionEndAnnotation end = new SolutionEndAnnotation("");
+        SolutionStartAnnotation start = new SolutionStartAnnotation("");
+        for (int l = 0; l < lastLine; l++) {
+            Line line = lineSet.getCurrent(NbDocument.findLineNumber(
+                    doc,
+                    l));
+            
+        }
+        return 0;
     }
 
     /**
@@ -196,12 +232,23 @@ public class SolutionMarkerUtils {
 
                 @Override
                 public boolean hasNext() {
+                    boolean result = false;
                     if (lineNumber == Integer.MAX_VALUE || lineNumber == -Integer.MAX_VALUE) {
-                        return false;
+                        return result;
                     }
                     // try to advance, on exception, flag end
-
-                    return true;
+                    int tmpLineNumber = lineNumber + direction;
+                    try {
+                        // try location
+                        NbDocument.findLineOffset(doc, tmpLineNumber);
+                        // if getting here, loc is ok.
+                        result = true;
+                    } catch (IndexOutOfBoundsException iob) {
+                        // stop trying next time
+                        lineNumber = direction * Integer.MAX_VALUE;
+                    } finally {
+                        return result;
+                    }
                 }
 
                 @Override
@@ -220,9 +267,10 @@ public class SolutionMarkerUtils {
                     }
                     return result;
                 }
+
                 @Override
                 public void remove() {
-                    throw new UnsupportedOperationException("Not supported yet.");
+                    throw new UnsupportedOperationException("Not supported.");
                 }
             };
 

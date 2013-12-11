@@ -32,35 +32,26 @@ import org.openide.util.NbPreferences;
 
 @ActionID(
         category = "Tools",
-        id = "org.fontysvenlo.cwb.MarkSolutionAction")
+        id = "org.fontysvenlo.cwb.MarkSolutionRemoveAction")
 @ActionRegistration(
-        displayName = "#CTL_MarkSolution")
+        displayName = "#CTL_MarkSolutionRemove")
 @ActionReferences({
-    @ActionReference(path = "Editors/Popup", position = 10)
+    @ActionReference(path = "Editors/Popup", position = 11)
 })
-@Messages("CTL_MarkSolution=Mark Region as Solution")
-public final class MarkSolutionAction implements ActionListener {
+@Messages("CTL_MarkSolutionRemove=Removes all marks from a document")
+public final class MarkSolutionRemoveAction implements ActionListener {
 
-    private static String defaultStartTag = "//PRE";
-    private static String defaultEndTag = "//POST";
-    private String startTag = "//PRE";
-    private String endTag = "//POST";
     private final DataObject context;
 
-                                                    //StartSolution
-    public MarkSolutionAction(DataObject context) {
+    public MarkSolutionRemoveAction(DataObject context) {
         this.context = context;
-        startTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("startTag", defaultStartTag);
-        endTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("endTag", defaultEndTag);
     }
-                                                    //EndSolution
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
             StringBuilder actionLog = new StringBuilder();
             String path = context.getPrimaryFile().getPath();
-
             File f = new File(path);
             FileObject fo = FileUtil.toFileObject(f);
             DataObject d = DataObject.find(fo);
@@ -68,15 +59,7 @@ public final class MarkSolutionAction implements ActionListener {
             ec.open();
 
             final StyledDocument doc = ec.openDocument();
-
-            for (JEditorPane pane : ec.getOpenedPanes()) {
-                actionLog.append(pane.getSelectedText());
-                Caret caret = pane.getCaret();
-                actionLog.append("\n dot at ").append(caret.getDot()).
-                        append("\n mark at ").append(caret.getMark());
-                wrapSelected(doc, caret, startTag , endTag );
-                annotateRegion(d, doc, caret);
-            }
+            removeSolutionMarkers(d,doc);
             logger.log(Level.INFO, actionLog.toString(), (Throwable) null);
         } catch (IOException | IndexOutOfBoundsException ex) {
             logger.log(Level.INFO, "action failed with ", ex);
@@ -84,6 +67,6 @@ public final class MarkSolutionAction implements ActionListener {
     }
 
     private static final Logger logger = Logger.getLogger(
-            MarkSolutionAction.class.getName());
+            MarkSolutionRemoveAction.class.getName());
 
 }
