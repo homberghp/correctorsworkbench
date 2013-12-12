@@ -6,7 +6,7 @@ import org.openide.util.ImageUtilities;
 
 public class Paddle extends Sprite implements Commons {
 
-    String paddle = "images/paddle.png";
+    String paddle = "nl/fontys/sevenlo/games/breakout2/logic/images/paddle.png";
 
     int dx;
 
