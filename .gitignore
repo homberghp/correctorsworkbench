@@ -6,3 +6,7 @@
 *.ear
 /71_experiments/SolutionMarker/build/
 nbproject/private/*
+/71_experiments/Anagrams/nbproject/private/
+/71_experiments/Anagrams/build/
+/71_experiments/AnagramGame/nbproject/private/
+/71_experiments/Anagrams/
