@@ -5,6 +5,8 @@
  */
 package nl.fontys.sevenlo.games.breakout2;
 
+import java.awt.BorderLayout;
+import nl.fontys.sevenlo.games.breakout2.logic.Board;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -44,6 +46,12 @@ public final class BreakoutTopComponent extends TopComponent {
         
         this.setDisplayName("Breakout");
         this.setFocusable(true);
+        this.setLayout(new BorderLayout());
+        
+        Board board = new Board();
+        this.add(board, BorderLayout.CENTER);   
+        
+        this.addKeyListener(board.getKeyListeners()[0]);
     }
 
     /**

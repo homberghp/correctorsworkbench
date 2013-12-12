@@ -9,7 +9,7 @@ public class Ball extends Sprite implements Commons {
    private int xdir;
    private int ydir;
 
-   protected String ball = "images/ball.png";
+   protected String ball = "nl/fontys/sevenlo/games/breakout2/logic/images/ball.png";
 
    public Ball() {
 

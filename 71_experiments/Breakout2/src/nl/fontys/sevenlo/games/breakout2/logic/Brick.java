@@ -5,7 +5,7 @@ import org.openide.util.ImageUtilities;
 
 public class Brick extends Sprite {
 
-    String brickie = "images/brickie.png";
+    String brickie = "nl/fontys/sevenlo/games/breakout2/logic/images/brickie.png";
 
     boolean destroyed;
 
