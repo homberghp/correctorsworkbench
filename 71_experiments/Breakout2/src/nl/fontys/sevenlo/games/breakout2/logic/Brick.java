@@ -1,6 +1,6 @@
 package nl.fontys.sevenlo.games.breakout2.logic;
 
-import javax.swing.ImageIcon;
+import org.openide.util.ImageUtilities;
 
 
 public class Brick extends Sprite {
@@ -14,8 +14,7 @@ public class Brick extends Sprite {
       this.x = x;
       this.y = y;
 
-      ImageIcon ii = new ImageIcon(this.getClass().getResource(brickie));
-      image = ii.getImage();
+      image = ImageUtilities.loadImage(brickie);
 
       width = image.getWidth(null);
       heigth = image.getHeight(null);

@@ -1,8 +1,7 @@
 package nl.fontys.sevenlo.games.breakout2.logic;
 
 import java.awt.event.KeyEvent;
-
-import javax.swing.ImageIcon;
+import org.openide.util.ImageUtilities;
 
 
 public class Paddle extends Sprite implements Commons {
@@ -13,8 +12,7 @@ public class Paddle extends Sprite implements Commons {
 
     public Paddle() {
 
-        ImageIcon ii = new ImageIcon(this.getClass().getResource(paddle));
-        image = ii.getImage();
+        image = ImageUtilities.loadImage(paddle);
 
         width = image.getWidth(null);
         heigth = image.getHeight(null);
