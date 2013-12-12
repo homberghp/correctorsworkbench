@@ -9,6 +9,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import pacman.Board;
 
 /**
  * Top component which displays something.
@@ -37,6 +38,9 @@ public final class PacManWindowTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_PacManWindowTopComponent());
         setToolTipText(Bundle.HINT_PacManWindowTopComponent());
+        setDisplayName("Pacman");
+        setFocusable(true);
+        add(new Board());
 
     }
 
