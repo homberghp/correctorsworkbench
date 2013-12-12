@@ -7,9 +7,11 @@ package nl.fontys.sevenlo.games.breakout2;
 
 import java.awt.BorderLayout;
 import nl.fontys.sevenlo.games.breakout2.logic.Board;
+import nl.fontys.sevenlo.games.breakout2.logic.GameBoardListener;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.awt.StatusDisplayer;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 
@@ -43,14 +45,20 @@ public final class BreakoutTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_BreakoutTopComponent());
         setToolTipText(Bundle.HINT_BreakoutTopComponent());
-        
+
         this.setDisplayName("Breakout");
         this.setFocusable(true);
         this.setLayout(new BorderLayout());
-        
+
         Board board = new Board();
-        this.add(board, BorderLayout.CENTER);   
-        
+        this.add(board, BorderLayout.CENTER);
+        board.addGameBoardListener(new GameBoardListener() {
+
+            @Override
+            public void onGameFinished() {
+                StatusDisplayer.getDefault().setStatusText("Game finished");
+            }
+        });
         this.addKeyListener(board.getKeyListeners()[0]);
     }
 

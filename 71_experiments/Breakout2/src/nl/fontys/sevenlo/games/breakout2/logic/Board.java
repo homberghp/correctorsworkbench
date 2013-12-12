@@ -9,12 +9,13 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JPanel;
-
 
 public class Board extends JPanel implements Commons {
 
@@ -28,6 +29,7 @@ public class Board extends JPanel implements Commons {
     boolean ingame = true;
     int timerId;
 
+    private final List<GameBoardListener> gameBoardListeners = new ArrayList<GameBoardListener>();
 
     public Board() {
 
@@ -40,16 +42,26 @@ public class Board extends JPanel implements Commons {
         timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
     }
 
-        public void addNotify() {
-            super.addNotify();
-            gameInit();
+    public void addGameBoardListener(GameBoardListener gbl) {
+        this.gameBoardListeners.add(gbl);
+    }
+
+    private void notifyGameBoardListenersOnGameFinished() {
+        for (GameBoardListener gameBoardListener : gameBoardListeners) {
+            gameBoardListener.onGameFinished();
         }
+    }
+
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        gameInit();
+    }
 
     public void gameInit() {
 
         ball = new Ball();
         paddle = new Paddle();
-
 
         int k = 0;
         for (int i = 0; i < 5; i++) {
@@ -60,21 +72,21 @@ public class Board extends JPanel implements Commons {
         }
     }
 
-
     public void paint(Graphics g) {
         super.paint(g);
 
         if (ingame) {
             g.drawImage(ball.getImage(), ball.getX(), ball.getY(),
-                        ball.getWidth(), ball.getHeight(), this);
+                    ball.getWidth(), ball.getHeight(), this);
             g.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
-                        paddle.getWidth(), paddle.getHeight(), this);
+                    paddle.getWidth(), paddle.getHeight(), this);
 
             for (int i = 0; i < 30; i++) {
-                if (!bricks[i].isDestroyed())
+                if (!bricks[i].isDestroyed()) {
                     g.drawImage(bricks[i].getImage(), bricks[i].getX(),
-                                bricks[i].getY(), bricks[i].getWidth(),
-                                bricks[i].getHeight(), this);
+                            bricks[i].getY(), bricks[i].getWidth(),
+                            bricks[i].getHeight(), this);
+                }
             }
         } else {
 
@@ -84,10 +96,9 @@ public class Board extends JPanel implements Commons {
             g.setColor(Color.BLACK);
             g.setFont(font);
             g.drawString(message,
-                         (Commons.WIDTH - metr.stringWidth(message)) / 2,
-                         Commons.WIDTH / 2);
+                    (Commons.WIDTH - metr.stringWidth(message)) / 2,
+                    Commons.WIDTH / 2);
         }
-
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -99,13 +110,12 @@ public class Board extends JPanel implements Commons {
         public void keyReleased(KeyEvent e) {
             paddle.keyReleased(e);
         }
-        
+
         @Override
         public void keyPressed(KeyEvent e) {
             paddle.keyPressed(e);
         }
     }
-
 
     class ScheduleTask extends TimerTask {
 
@@ -122,8 +132,8 @@ public class Board extends JPanel implements Commons {
     public void stopGame() {
         ingame = false;
         timer.cancel();
+        notifyGameBoardListenersOnGameFinished();
     }
-
 
     public void checkCollision() {
 
@@ -143,8 +153,8 @@ public class Board extends JPanel implements Commons {
 
         if ((ball.getRect()).intersects(paddle.getRect())) {
 
-            int paddleLPos = (int)paddle.getRect().getMinX();
-            int ballLPos = (int)ball.getRect().getMinX();
+            int paddleLPos = (int) paddle.getRect().getMinX();
+            int ballLPos = (int) ball.getRect().getMinX();
 
             int first = paddleLPos + 8;
             int second = paddleLPos + 16;
@@ -176,39 +186,33 @@ public class Board extends JPanel implements Commons {
                 ball.setYDir(-1);
             }
 
-
         }
-
 
         for (int i = 0; i < 30; i++) {
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
 
-                int ballLeft = (int)ball.getRect().getMinX();
-                int ballHeight = (int)ball.getRect().getHeight();
-                int ballWidth = (int)ball.getRect().getWidth();
-                int ballTop = (int)ball.getRect().getMinY();
+                int ballLeft = (int) ball.getRect().getMinX();
+                int ballHeight = (int) ball.getRect().getHeight();
+                int ballWidth = (int) ball.getRect().getWidth();
+                int ballTop = (int) ball.getRect().getMinY();
 
-                Point pointRight =
-                    new Point(ballLeft + ballWidth + 1, ballTop);
+                Point pointRight
+                        = new Point(ballLeft + ballWidth + 1, ballTop);
                 Point pointLeft = new Point(ballLeft - 1, ballTop);
                 Point pointTop = new Point(ballLeft, ballTop - 1);
-                Point pointBottom =
-                    new Point(ballLeft, ballTop + ballHeight + 1);
+                Point pointBottom
+                        = new Point(ballLeft, ballTop + ballHeight + 1);
 
                 if (!bricks[i].isDestroyed()) {
                     if (bricks[i].getRect().contains(pointRight)) {
                         ball.setXDir(-1);
-                    }
-
-                    else if (bricks[i].getRect().contains(pointLeft)) {
+                    } else if (bricks[i].getRect().contains(pointLeft)) {
                         ball.setXDir(1);
                     }
 
                     if (bricks[i].getRect().contains(pointTop)) {
                         ball.setYDir(1);
-                    }
-
-                    else if (bricks[i].getRect().contains(pointBottom)) {
+                    } else if (bricks[i].getRect().contains(pointBottom)) {
                         ball.setYDir(-1);
                     }
 
