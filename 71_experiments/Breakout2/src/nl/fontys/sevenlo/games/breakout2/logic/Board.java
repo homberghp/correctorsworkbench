@@ -20,9 +20,8 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel implements Commons {
 
-    Image ii;
     Timer timer;
-    String message = "Game Over";
+    String message;
     Ball ball;
     Paddle paddle;
     Brick bricks[];
@@ -56,6 +55,7 @@ public class Board extends JPanel implements Commons {
     }
 
     public void restart() {
+        this.message = "Game over";
         this.ingame = true;
         
         if(this.timer != null) {
