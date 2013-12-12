@@ -33,7 +33,6 @@ public class Board extends JPanel implements Commons {
 
         addKeyListener(new TAdapter());
         setFocusable(true);
-
         bricks = new Brick[30];
         setDoubleBuffered(true);
         timer = new Timer();
@@ -62,6 +61,7 @@ public class Board extends JPanel implements Commons {
 
 
     public void paint(Graphics g) {
+        g.setColor(Color.DARK_GRAY);
         super.paint(g);
 
         if (ingame) {
@@ -95,10 +95,12 @@ public class Board extends JPanel implements Commons {
 
     private class TAdapter extends KeyAdapter {
 
+        @Override
         public void keyReleased(KeyEvent e) {
             paddle.keyReleased(e);
         }
 
+        @Override
         public void keyPressed(KeyEvent e) {
             paddle.keyPressed(e);
         }

@@ -6,6 +6,8 @@
 package nl.fontys.sevenlo.games.breakout;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -47,7 +49,7 @@ public final class BreakOutTopComponent extends TopComponent {
         board = new Board();
         this.setLayout(new BorderLayout());
         add(board,BorderLayout.CENTER);
-
+        addKeyListener(board.getKeyListeners()[0]);
         setDisplayName("Breakout");
         //settSize(Commons.WIDTH, Commons.HEIGTH);
 //      setLocationRelativeTo(null);
@@ -82,7 +84,9 @@ public final class BreakOutTopComponent extends TopComponent {
     @Override
     public void componentOpened() {
         // TODO add custom code on component opening
-        board.setBounds(this.getBounds());
+        //board.setBounds(this.getBounds());
+        setFocusable(true);
+        
     }
 
     @Override
