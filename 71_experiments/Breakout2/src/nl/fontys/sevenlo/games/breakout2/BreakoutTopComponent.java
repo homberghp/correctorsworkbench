@@ -41,7 +41,9 @@ public final class BreakoutTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_BreakoutTopComponent());
         setToolTipText(Bundle.HINT_BreakoutTopComponent());
-
+        
+        this.setDisplayName("Breakout");
+        this.setFocusable(true);
     }
 
     /**
