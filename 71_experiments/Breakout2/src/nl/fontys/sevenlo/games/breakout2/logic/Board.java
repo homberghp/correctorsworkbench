@@ -52,6 +52,11 @@ public class Board extends JPanel implements Commons {
 
     public void restart() {
         this.ingame = true;
+        
+        if(this.timer != null) {
+            this.timer.cancel();
+        }           
+        
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
         gameInit();
