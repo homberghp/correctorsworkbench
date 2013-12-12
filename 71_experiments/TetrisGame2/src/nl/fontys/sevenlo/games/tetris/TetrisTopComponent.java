@@ -41,7 +41,8 @@ public final class TetrisTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_TetrisTopComponent());
         setToolTipText(Bundle.HINT_TetrisTopComponent());
-
+        setFocusable(true);
+        setDisplayName("Tetris");
     }
 
     /**
