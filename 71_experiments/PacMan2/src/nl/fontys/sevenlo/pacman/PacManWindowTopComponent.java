@@ -10,6 +10,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.lookup.Lookups;
 import pacman.Board;
 
 /**
@@ -46,7 +47,7 @@ public final class PacManWindowTopComponent extends TopComponent {
         Board board = new Board();
         add(board, BorderLayout.CENTER);
         addKeyListener(board.getKeyListener());
-
+        associateLookup(Lookups.singleton(board));
     }
 
     /**
