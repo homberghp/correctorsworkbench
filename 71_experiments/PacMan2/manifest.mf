@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: nl.fontys.sevenlo.pacman
+OpenIDE-Module-Localizing-Bundle: nl/fontys/sevenlo/pacman/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
