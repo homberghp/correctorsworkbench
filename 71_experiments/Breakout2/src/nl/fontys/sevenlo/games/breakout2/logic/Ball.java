@@ -1,6 +1,7 @@
 package nl.fontys.sevenlo.games.breakout2.logic;
 
 import javax.swing.ImageIcon;
+import org.openide.util.ImageUtilities;
 
 
 public class Ball extends Sprite implements Commons {
@@ -14,9 +15,8 @@ public class Ball extends Sprite implements Commons {
 
      xdir = 1;
      ydir = -1;
-
-     ImageIcon ii = new ImageIcon(this.getClass().getResource(ball));
-     image = ii.getImage();
+     
+     image = ImageUtilities.loadImage(ball);
 
      width = image.getWidth(null);
      heigth = image.getHeight(null);
