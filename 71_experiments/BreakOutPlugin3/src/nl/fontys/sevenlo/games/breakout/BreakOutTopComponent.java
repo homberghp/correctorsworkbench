@@ -13,6 +13,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.lookup.Lookups;
 
 /**
  * Top component which displays something.
@@ -26,7 +27,7 @@ import org.openide.util.NbBundle.Messages;
         iconBase = "nl/fontys/sevenlo/games/breakout/breakout.png",
         persistenceType = TopComponent.PERSISTENCE_ALWAYS
 )
-@TopComponent.Registration(mode = "editor", openAtStartup = true)
+@TopComponent.Registration(mode = "properties", openAtStartup = true)
 @ActionID(category = "Window", id = "nl.fontys.sevenlo.games.breakout.BreakOutTopComponent")
 @ActionReference(path = "Menu/Window" /*, position = 333 */)
 @TopComponent.OpenActionRegistration(
@@ -56,7 +57,7 @@ public final class BreakOutTopComponent extends TopComponent {
         setIgnoreRepaint(true);
 //      setResizable(false);
         setFocusable(true);
-
+        associateLookup(Lookups.singleton(board));
     }
 
     /**
@@ -86,7 +87,7 @@ public final class BreakOutTopComponent extends TopComponent {
         // TODO add custom code on component opening
         //board.setBounds(this.getBounds());
         setFocusable(true);
-        
+        board.gameInit();
     }
 
     @Override
@@ -105,4 +106,9 @@ public final class BreakOutTopComponent extends TopComponent {
         String version = p.getProperty("version");
         // TODO read your settings according to their version
     }
+    
+    static class GameOver { 
+    
+    }
+    
 }

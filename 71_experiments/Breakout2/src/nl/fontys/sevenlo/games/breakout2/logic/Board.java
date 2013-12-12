@@ -20,9 +20,8 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel implements Commons {
 
-    Image ii;
     Timer timer;
-    String message = "Game Over";
+    String message;
     Ball ball;
     Paddle paddle;
     Brick bricks[];
@@ -40,7 +39,7 @@ public class Board extends JPanel implements Commons {
         bricks = new Brick[30];
         setDoubleBuffered(true);
     }
-    
+
     public KeyListener GetKeyListener() {
         return new TAdapter();
     }
@@ -55,15 +54,35 @@ public class Board extends JPanel implements Commons {
         }
     }
 
-    public void restart() {
-        this.ingame = true;
-        
-        if(this.timer != null) {
-            this.timer.cancel();
-        }           
-        
+    private int delay = 1000;
+    private int period = 10;
+    private int increaseIdx = 1;
+
+    public void accelerate() {
+        this.timer.cancel();
         timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
+        timer.scheduleAtFixedRate(new ScheduleTask(), 0, period / (++increaseIdx));
+    }
+
+    public void decelerate() {
+        int i = --increaseIdx;
+        increaseIdx = (i <= 0) ? 1 : i;
+        this.timer.cancel();
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduleTask(), 0, period / (increaseIdx));
+    }
+
+    public void restart() {
+        this.message = "Game over";
+        this.ingame = true;
+
+        if (this.timer != null) {
+            this.timer.cancel();
+        }
+
+        increaseIdx = 1;
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduleTask(), delay, period);
         gameInit();
     }
 

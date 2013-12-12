@@ -2,9 +2,9 @@ package nl.fontys.sevenlo.games.breakout;
 
 import javax.swing.ImageIcon;
 import org.openide.util.ImageUtilities;
+import static nl.fontys.sevenlo.games.breakout.Commons.*;
 
-
-public class Ball extends Sprite implements Commons {
+public class Ball extends Sprite {
 
    private int xdir;
    private int ydir;
