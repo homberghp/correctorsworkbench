@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN"
+                            "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="xml">
+        <folder name="entities">
+            <folder name="nl_fontys_sevenlo_games_breakout">
+                <file name="BreakoutRun" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//nl.fontys.sevenlo.games.breakout//BreakoutRun//EN"/>
+                </file>
+            </folder>
+        </folder>
+        <folder name="memory">
+            <folder name="nl">
+                <folder name="fontys">
+                    <folder name="sevenlo">
+                        <folder name="games">
+                            <folder name="breakout">
+                                <file name="BreakoutRunTopComponent">
+                                    <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
+                                    <attr name="settings.providerPath" stringvalue="xml/lookups//nl_fontys_sevenlo_games_breakout/BreakoutRun.instance"/>
+                                </file>
+                            </folder>
+                        </folder>
+                    </folder>
+                </folder>
+            </folder>
+        </folder>
+        <folder name="lookups">
+            <folder name="nl_fontys_sevenlo_games_breakout">
+                <file name="BreakoutRun.instance">
+                    <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Window">
+            <file name="nl-fontys-sevenlo-games-breakout-BreakoutRunTopComponent.shadow">
+                <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/nl-fontys-sevenlo-games-breakout-BreakoutRunTopComponent.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="BreakoutRunTopComponent.settings">
+                <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
+  <instance class="nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent"/>
+</settings>
+]]></file>
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="BreakoutRunTopComponent.wstcref">
+                    <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
+<tc-ref version="2.0">
+  <tc-id id="BreakoutRunTopComponent"/>
+  <state opened="true"/>
+</tc-ref>
+]]></file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="nl-fontys-sevenlo-games-breakout-BreakoutRunTopComponent.instance">
+                <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent"/>
+                <attr name="preferredID" stringvalue="BreakoutRunTopComponent"/>
+                <attr
+                    bundlevalue="nl.fontys.sevenlo.games.breakout.Bundle#CTL_BreakoutRunAction" name="displayName"/>
+            </file>
+        </folder>
+    </folder>
+</filesystem>
