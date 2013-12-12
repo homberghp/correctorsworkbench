@@ -5,11 +5,16 @@
  */
 package nl.fontys.sevenlo.games.tetris;
 
+import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JLabel;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import tetris.Board;
 
 /**
  * Top component which displays something.
@@ -37,12 +42,24 @@ import org.openide.util.NbBundle.Messages;
 })
 public final class TetrisTopComponent extends TopComponent {
 
+    JLabel statusbar;
+    Board board;
+
     public TetrisTopComponent() {
         initComponents();
         setName(Bundle.CTL_TetrisTopComponent());
         setToolTipText(Bundle.HINT_TetrisTopComponent());
-        setFocusable(true);
         setDisplayName("Tetris");
+
+        System.out.println("HELLO CONST");
+        setLayout(new BorderLayout());
+        statusbar = new JLabel(" 0");
+        add(statusbar, BorderLayout.SOUTH);
+        board = new Board(this);
+        add(board);
+        setFocusable(true);
+        addKeyListener(board.getKeyListener());
+        board.start();
     }
 
     /**
@@ -87,5 +104,9 @@ public final class TetrisTopComponent extends TopComponent {
     void readProperties(java.util.Properties p) {
         String version = p.getProperty("version");
         // TODO read your settings according to their version
+    }
+
+    public JLabel getStatusBar() {
+        return statusbar;
     }
 }
