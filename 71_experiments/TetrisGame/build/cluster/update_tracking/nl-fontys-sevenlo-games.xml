@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="nl.fontys.sevenlo.games">
-    <module_version install_time="1386852426041" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1386857526739" last="true" origin="installer" specification_version="1.0">
         <file crc="380851427" name="config/Modules/nl-fontys-sevenlo-games.xml"/>
-        <file crc="3260440182" name="modules/nl-fontys-sevenlo-games.jar"/>
+        <file crc="720498898" name="modules/nl-fontys-sevenlo-games.jar"/>
     </module_version>
 </module>

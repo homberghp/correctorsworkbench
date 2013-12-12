@@ -1,16 +1,16 @@
-!SESSION 2013-12-12 13:46:56.032 -----------------------------------------------
+!SESSION 2013-12-12 15:03:14.340 -----------------------------------------------
 eclipse.buildId=unknown
 java.version=1.7.0_45
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
 
-!ENTRY org.eclipse.core.net 1 0 2013-12-12 13:46:56.032
+!ENTRY org.eclipse.core.net 1 0 2013-12-12 15:03:14.340
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY com.atlassian.connector.eclipse.jira.core 4 0 2013-12-12 13:46:56.042
+!ENTRY org.apache.axis 4 0 2013-12-12 15:03:14.364
 !MESSAGE FrameworkEvent ERROR
 !STACK 0
-org.osgi.framework.BundleException: The bundle "com.atlassian.connector.eclipse.jira.core_3.0.4.v20120406 [70]" could not be resolved. Reason: Missing Constraint: Require-Bundle: org.apache.axis; bundle-version="1.4.0"
+org.osgi.framework.BundleException: The bundle "org.apache.axis_1.4.0 [102]" could not be resolved. Reason: Missing Constraint: Require-Bundle: javax.wsdl; bundle-version="[1.5.1,2.0.0)"
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
 	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
@@ -36,10 +36,10 @@ org.osgi.framework.BundleException: The bundle "com.atlassian.connector.eclipse.
 	at org.netbeans.core.startup.TopThreadGroup.run(TopThreadGroup.java:123)
 	at java.lang.Thread.run(Thread.java:744)
 
-!ENTRY org.apache.axis 4 0 2013-12-12 13:46:56.047
+!ENTRY com.atlassian.connector.eclipse.jira.core 4 0 2013-12-12 15:03:14.377
 !MESSAGE FrameworkEvent ERROR
 !STACK 0
-org.osgi.framework.BundleException: The bundle "org.apache.axis_1.4.0 [73]" could not be resolved. Reason: Missing Constraint: Require-Bundle: javax.wsdl; bundle-version="[1.5.1,2.0.0)"
+org.osgi.framework.BundleException: The bundle "com.atlassian.connector.eclipse.jira.core_3.0.4.v20120406 [114]" could not be resolved. Reason: Missing Constraint: Require-Bundle: org.apache.axis; bundle-version="1.4.0"
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
 	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
@@ -65,10 +65,10 @@ org.osgi.framework.BundleException: The bundle "org.apache.axis_1.4.0 [73]" coul
 	at org.netbeans.core.startup.TopThreadGroup.run(TopThreadGroup.java:123)
 	at java.lang.Thread.run(Thread.java:744)
 
-!ENTRY org.eclipse.mylyn.commons.soap 4 0 2013-12-12 13:46:56.057
+!ENTRY org.eclipse.mylyn.commons.soap 4 0 2013-12-12 15:03:14.381
 !MESSAGE FrameworkEvent ERROR
 !STACK 0
-org.osgi.framework.BundleException: The bundle "org.eclipse.mylyn.commons.soap_3.9.0.v20130612-0100 [122]" could not be resolved. Reason: Missing Constraint: Require-Bundle: org.apache.axis; bundle-version="1.4.0"
+org.osgi.framework.BundleException: The bundle "org.eclipse.mylyn.commons.soap_3.9.0.v20130612-0100 [117]" could not be resolved. Reason: Missing Constraint: Require-Bundle: org.apache.axis; bundle-version="1.4.0"
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
 	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
 	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
@@ -93,11 +93,35 @@ org.osgi.framework.BundleException: The bundle "org.eclipse.mylyn.commons.soap_3
 	at org.netbeans.core.startup.Main.start(Main.java:307)
 	at org.netbeans.core.startup.TopThreadGroup.run(TopThreadGroup.java:123)
 	at java.lang.Thread.run(Thread.java:744)
-!SESSION 2013-12-12 13:47:17.441 -----------------------------------------------
+!SESSION 2013-12-12 15:04:22.570 -----------------------------------------------
 eclipse.buildId=unknown
 java.version=1.7.0_45
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
 
-!ENTRY org.eclipse.core.net 1 0 2013-12-12 13:47:17.441
+!ENTRY org.eclipse.core.net 1 0 2013-12-12 15:04:22.571
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2013-12-12 15:10:03.456 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+
+!ENTRY org.eclipse.core.net 1 0 2013-12-12 15:10:03.456
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2013-12-12 15:10:49.989 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+
+!ENTRY org.eclipse.core.net 1 0 2013-12-12 15:10:49.989
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2013-12-12 15:12:17.745 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+
+!ENTRY org.eclipse.core.net 1 0 2013-12-12 15:12:17.746
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
