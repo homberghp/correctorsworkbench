@@ -3,10 +3,10 @@
 <windowmanager version="2.1">
     <main-window>
   <joined-properties
-   x="72"
-   y="86"
-   width="1296"
-   height="727"
+   x="488"
+   y="53"
+   width="591"
+   height="730"
    relative-x="0.0"
    relative-y="0.0"
    relative-width="0.0"
@@ -19,7 +19,7 @@
 />
   <separated-properties
    x="144"
-   y="80"
+   y="81"
    width="1152"
    height="64"
    relative-x="0.0"
@@ -38,13 +38,13 @@
   <path orientation="horizontal" number="40" weight="0.7" />
   <path orientation="vertical" number="40" weight="0.5" />
   </constraints>
-  <bounds x="475" y="193" width="604" height="355" />
+  <bounds x="475" y="194" width="604" height="357" />
     </editor-area>
     <screen width="1440" height="900"/>
     <active-mode name="editor"/>
     <toolbar configuration="Standard" preferred-icon-size="24"/>
     <tc-list>
-  <tc-id id="Welcome"/>
   <tc-id id="TetrisTopComponent"/>
+  <tc-id id="Welcome"/>
     </tc-list>
 </windowmanager>

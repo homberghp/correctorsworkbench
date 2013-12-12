@@ -5,6 +5,9 @@
  */
 package nl.fontys.sevenlo.games;
 
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -37,12 +40,36 @@ import org.openide.util.NbBundle.Messages;
 })
 public final class TetrisTopComponent extends TopComponent {
 
+    JLabel statusbar;
     public TetrisTopComponent() {
         initComponents();
         setName(Bundle.CTL_TetrisTopComponent());
         setToolTipText(Bundle.HINT_TetrisTopComponent());
+        setFocusable(true);
+        
+        setDisplayName("tetris");
+        setLayout(new BorderLayout());
+        statusbar = new JLabel(" 0");
+        
+        JButton startButton = new JButton("Start over");
+        startButton.setVisible(true);
+        add(startButton, BorderLayout.EAST);
+        
+        JButton endButton = new JButton("End game");
+        endButton.setVisible(true);
+        add(endButton, BorderLayout.WEST);
+        
+        add(statusbar, BorderLayout.SOUTH);
+        Board board = new Board(this);
+        add(board);
+        addKeyListener(board.getKeyListener());
+        board.start();
+        
 
     }
+       public JLabel getStatusBar() {
+       return statusbar;
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
