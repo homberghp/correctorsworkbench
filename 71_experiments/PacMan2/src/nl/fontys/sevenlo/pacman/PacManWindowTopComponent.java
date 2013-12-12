@@ -4,6 +4,7 @@
  */
 package nl.fontys.sevenlo.pacman;
 
+import java.awt.BorderLayout;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -36,11 +37,15 @@ public final class PacManWindowTopComponent extends TopComponent {
 
     public PacManWindowTopComponent() {
         initComponents();
+        BorderLayout layout = new BorderLayout();
+        setLayout(layout);
         setName(Bundle.CTL_PacManWindowTopComponent());
         setToolTipText(Bundle.HINT_PacManWindowTopComponent());
         setDisplayName("Pacman");
         setFocusable(true);
-        add(new Board());
+        Board board = new Board();
+        add(board, BorderLayout.CENTER);
+        addKeyListener(board.getKeyListener());
 
     }
 

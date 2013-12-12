@@ -71,12 +71,13 @@ public class Board extends JPanel implements ActionListener {
     int currentspeed = 3;
     short[] screendata;
     Timer timer;
+    TAdapter keyListener;
 
     public Board() {
 
         GetImages();
-
-        addKeyListener(new TAdapter());
+        keyListener = new TAdapter();
+        addKeyListener(keyListener);
 
         screendata = new short[nrofblocks * nrofblocks];
         mazecolor = new Color(5, 100, 5);
@@ -96,6 +97,10 @@ public class Board extends JPanel implements ActionListener {
         dy = new int[4];
         timer = new Timer(40, this);
         timer.start();
+    }
+    
+    public TAdapter getKeyListener() {
+        return keyListener;
     }
 
     public void addNotify() {
