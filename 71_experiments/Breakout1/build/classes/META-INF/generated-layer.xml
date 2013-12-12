@@ -42,7 +42,56 @@
             </folder>
         </folder>
     </folder>
+    <folder name="Actions">
+        <folder name="Build">
+            <file name="nl-fontys-sevenlo-games-breakout-IncreaseSpeed.instance">
+                <!--nl.fontys.sevenlo.games.breakout.IncreaseSpeed-->
+                <attr
+                    bundlevalue="nl.fontys.sevenlo.games.breakout.Bundle#CTL_IncreaseSpeed" name="displayName"/>
+                <attr methodvalue="org.openide.awt.Actions.context" name="instanceCreate"/>
+                <attr name="type" stringvalue="nl.fontys.sevenlo.games.breakout.Board"/>
+                <attr methodvalue="org.openide.awt.Actions.inject" name="delegate"/>
+                <attr name="injectable" stringvalue="nl.fontys.sevenlo.games.breakout.IncreaseSpeed"/>
+                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
+            </file>
+            <file name="nl-fontys-sevenlo-games-breakout-StartBreakoutAction.instance">
+                <!--nl.fontys.sevenlo.games.breakout.StartBreakoutAction-->
+                <attr
+                    bundlevalue="nl.fontys.sevenlo.games.breakout.Bundle#CTL_StartBreakoutAction" name="displayName"/>
+                <attr methodvalue="org.openide.awt.Actions.context" name="instanceCreate"/>
+                <attr name="type" stringvalue="nl.fontys.sevenlo.games.breakout.Board"/>
+                <attr methodvalue="org.openide.awt.Actions.inject" name="delegate"/>
+                <attr name="injectable" stringvalue="nl.fontys.sevenlo.games.breakout.StartBreakoutAction"/>
+                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="nl-fontys-sevenlo-games-breakout-BreakoutRunTopComponent.instance">
+                <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent"/>
+                <attr name="preferredID" stringvalue="BreakoutRunTopComponent"/>
+                <attr
+                    bundlevalue="nl.fontys.sevenlo.games.breakout.Bundle#CTL_BreakoutRunAction" name="displayName"/>
+            </file>
+        </folder>
+    </folder>
     <folder name="Menu">
+        <folder name="File">
+            <file name="nl-fontys-sevenlo-games-breakout-IncreaseSpeed.shadow">
+                <!--nl.fontys.sevenlo.games.breakout.IncreaseSpeed-->
+                <attr name="originalFile" stringvalue="Actions/Build/nl-fontys-sevenlo-games-breakout-IncreaseSpeed.instance"/>
+                <attr intvalue="-100" name="position"/>
+            </file>
+            <file name="nl-fontys-sevenlo-games-breakout-StartBreakoutAction.shadow">
+                <!--nl.fontys.sevenlo.games.breakout.StartBreakoutAction-->
+                <attr name="originalFile" stringvalue="Actions/Build/nl-fontys-sevenlo-games-breakout-StartBreakoutAction.instance"/>
+                <attr intvalue="0" name="position"/>
+            </file>
+        </folder>
         <folder name="Window">
             <file name="nl-fontys-sevenlo-games-breakout-BreakoutRunTopComponent.shadow">
                 <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
@@ -71,19 +120,6 @@
 </tc-ref>
 ]]></file>
             </folder>
-        </folder>
-    </folder>
-    <folder name="Actions">
-        <folder name="Window">
-            <file name="nl-fontys-sevenlo-games-breakout-BreakoutRunTopComponent.instance">
-                <!--nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent-->
-                <attr
-                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
-                <attr name="component" newvalue="nl.fontys.sevenlo.games.breakout.BreakoutRunTopComponent"/>
-                <attr name="preferredID" stringvalue="BreakoutRunTopComponent"/>
-                <attr
-                    bundlevalue="nl.fontys.sevenlo.games.breakout.Bundle#CTL_BreakoutRunAction" name="displayName"/>
-            </file>
         </folder>
     </folder>
 </filesystem>

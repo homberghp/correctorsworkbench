@@ -1,6 +1,6 @@
 <record>
-  <date>2013-12-12T14:47:44</date>
-  <millis>1386856064783</millis>
+  <date>2013-12-12T16:24:37</date>
+  <millis>1386861877861</millis>
   <sequence>91</sequence>
   <level>FINEST</level>
   <thread>10</thread>
@@ -8,8 +8,8 @@
   <param>2</param>
 </record>
 <record>
-  <date>2013-12-12T14:47:44</date>
-  <millis>1386856064863</millis>
+  <date>2013-12-12T16:24:37</date>
+  <millis>1386861877866</millis>
   <sequence>92</sequence>
   <level>FINEST</level>
   <thread>10</thread>
@@ -19,254 +19,263 @@
   <param>1</param>
 </record>
 <record>
-  <date>2013-12-12T14:47:44</date>
-  <millis>1386856064863</millis>
+  <date>2013-12-12T16:24:37</date>
+  <millis>1386861877866</millis>
   <sequence>93</sequence>
   <level>CONFIG</level>
   <thread>10</thread>
   <message>IDE_STARTUP</message>
 </record>
 <record>
-  <date>2013-12-12T14:47:54</date>
-  <millis>1386856074711</millis>
-  <sequence>102</sequence>
-  <level>INFO</level>
-  <thread>11</thread>
-  <message>MEMORY</message>
-  <key>MEMORY</key>
-  <catalog>&lt;null&gt;</catalog>
-  <param>2072985600</param>
-</record>
-<record>
-  <date>2013-12-12T14:49:38</date>
-  <millis>1386856178837</millis>
-  <sequence>104</sequence>
-  <logger>org.netbeans.ui.focus</logger>
-  <level>FINE</level>
-  <thread>13</thread>
-  <message>LOG_WINDOW_DEACTIVATED</message>
-  <key>LOG_WINDOW_DEACTIVATED</key>
-  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
-</record>
-<record>
-  <date>2013-12-12T14:57:25</date>
-  <millis>1386856645879</millis>
-  <sequence>105</sequence>
-  <logger>org.netbeans.ui.focus</logger>
-  <level>FINE</level>
-  <thread>15</thread>
-  <message>LOG_WINDOW_ACTIVATED</message>
-  <key>LOG_WINDOW_ACTIVATED</key>
-  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
-  <param>30</param>
-</record>
-<record>
-  <date>2013-12-12T14:57:30</date>
-  <millis>1386856650343</millis>
-  <sequence>106</sequence>
-  <logger>org.netbeans.ui.indexing</logger>
-  <level>INFO</level>
-  <thread>15</thread>
-  <message>INDEXING_STARTED</message>
-  <key>INDEXING_STARTED</key>
-  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
-  <param>0</param>
-</record>
-<record>
-  <date>2013-12-12T14:57:30</date>
-  <millis>1386856650653</millis>
-  <sequence>108</sequence>
-  <logger>org.netbeans.ui.indexing</logger>
-  <level>INFO</level>
-  <thread>15</thread>
-  <message>INDEXING_FINISHED</message>
-  <key>INDEXING_FINISHED</key>
-  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
-  <param>20</param>
-</record>
-<record>
-  <date>2013-12-12T14:57:30</date>
-  <millis>1386856650693</millis>
-  <sequence>112</sequence>
-  <logger>org.netbeans.ui.focus</logger>
-  <level>FINE</level>
-  <thread>13</thread>
-  <message>LOG_WINDOW_DEACTIVATED</message>
-  <key>LOG_WINDOW_DEACTIVATED</key>
-  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
-</record>
-<record>
-  <date>2013-12-12T15:36:29</date>
-  <millis>1386858989658</millis>
-  <sequence>91</sequence>
-  <level>FINEST</level>
-  <thread>10</thread>
-  <message>CPU INFO</message>
-  <param>2</param>
-</record>
-<record>
-  <date>2013-12-12T15:36:29</date>
-  <millis>1386858989721</millis>
-  <sequence>92</sequence>
-  <level>FINEST</level>
-  <thread>10</thread>
-  <message>SCREEN SIZE</message>
-  <param>1280</param>
-  <param>800</param>
-  <param>1</param>
-</record>
-<record>
-  <date>2013-12-12T15:36:29</date>
-  <millis>1386858989721</millis>
-  <sequence>93</sequence>
-  <level>CONFIG</level>
-  <thread>10</thread>
-  <message>IDE_STARTUP</message>
-</record>
-<record>
-  <date>2013-12-12T15:36:34</date>
-  <millis>1386858994947</millis>
-  <sequence>97</sequence>
-  <logger>global</logger>
-  <level>SEVERE</level>
-  <thread>13</thread>
-  <exception>
-    <message>java.lang.NullPointerException</message>
-    <frame>
-      <class>nl.fontys.sevenlo.games.breakout.Board$ScheduleTask</class>
-      <method>run</method>
-      <line>114</line>
-      <file>${netBeansDir}modules/nl-fontys-sevenlo-games-breakout.jar</file>
-    </frame>
-    <frame>
-      <class>java.util.TimerThread</class>
-      <method>mainLoop</method>
-      <line>512</line>
-      <file>${java.home}lib/rt.jar</file>
-    </frame>
-    <frame>
-      <class>java.util.TimerThread</class>
-      <method>run</method>
-      <line>462</line>
-      <file>${java.home}lib/rt.jar</file>
-    </frame>
-  </exception>
-</record>
-<record>
-  <date>2013-12-12T15:36:42</date>
-  <millis>1386859002107</millis>
-  <sequence>102</sequence>
-  <level>INFO</level>
-  <thread>11</thread>
-  <message>MEMORY</message>
-  <key>MEMORY</key>
-  <catalog>&lt;null&gt;</catalog>
-  <param>2072985600</param>
-</record>
-<record>
-  <date>2013-12-12T15:36:52</date>
-  <millis>1386859012643</millis>
-  <sequence>105</sequence>
-  <logger>org.netbeans.ui.focus</logger>
-  <level>FINE</level>
-  <thread>14</thread>
-  <message>LOG_WINDOW_DEACTIVATED</message>
-  <key>LOG_WINDOW_DEACTIVATED</key>
-  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
-</record>
-<record>
-  <date>2013-12-12T15:37:34</date>
-  <millis>1386859054103</millis>
-  <sequence>106</sequence>
-  <logger>org.netbeans.ui.focus</logger>
-  <level>FINE</level>
-  <thread>11</thread>
-  <message>LOG_WINDOW_ACTIVATED</message>
-  <key>LOG_WINDOW_ACTIVATED</key>
-  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
-  <param>15</param>
-</record>
-<record>
-  <date>2013-12-12T15:37:41</date>
-  <millis>1386859061591</millis>
-  <sequence>107</sequence>
-  <logger>org.netbeans.ui.indexing</logger>
-  <level>INFO</level>
-  <thread>15</thread>
-  <message>INDEXING_STARTED</message>
-  <key>INDEXING_STARTED</key>
-  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
-  <param>0</param>
-</record>
-<record>
-  <date>2013-12-12T15:37:41</date>
-  <millis>1386859061607</millis>
-  <sequence>109</sequence>
-  <logger>org.netbeans.ui.indexing</logger>
-  <level>INFO</level>
-  <thread>15</thread>
-  <message>INDEXING_FINISHED</message>
-  <key>INDEXING_FINISHED</key>
-  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
-  <param>16</param>
-</record>
-<record>
-  <date>2013-12-12T15:37:41</date>
-  <millis>1386859061622</millis>
-  <sequence>113</sequence>
-  <logger>org.netbeans.ui.focus</logger>
-  <level>FINE</level>
-  <thread>14</thread>
-  <message>LOG_WINDOW_DEACTIVATED</message>
-  <key>LOG_WINDOW_DEACTIVATED</key>
-  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
-</record>
-<record>
-  <date>2013-12-12T15:38:01</date>
-  <millis>1386859081528</millis>
-  <sequence>91</sequence>
-  <level>FINEST</level>
-  <thread>10</thread>
-  <message>CPU INFO</message>
-  <param>2</param>
-</record>
-<record>
-  <date>2013-12-12T15:38:01</date>
-  <millis>1386859081528</millis>
-  <sequence>92</sequence>
-  <level>FINEST</level>
-  <thread>10</thread>
-  <message>SCREEN SIZE</message>
-  <param>1280</param>
-  <param>800</param>
-  <param>1</param>
-</record>
-<record>
-  <date>2013-12-12T15:38:01</date>
-  <millis>1386859081528</millis>
-  <sequence>93</sequence>
-  <level>CONFIG</level>
-  <thread>10</thread>
-  <message>IDE_STARTUP</message>
-</record>
-<record>
-  <date>2013-12-12T15:38:07</date>
-  <millis>1386859087690</millis>
+  <date>2013-12-12T16:24:47</date>
+  <millis>1386861887015</millis>
   <sequence>101</sequence>
   <level>INFO</level>
-  <thread>13</thread>
+  <thread>12</thread>
   <message>MEMORY</message>
   <key>MEMORY</key>
   <catalog>&lt;null&gt;</catalog>
   <param>2072985600</param>
 </record>
 <record>
-  <date>2013-12-12T15:39:20</date>
-  <millis>1386859160953</millis>
+  <date>2013-12-12T16:24:57</date>
+  <millis>1386861897866</millis>
   <sequence>103</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:00</date>
+  <millis>1386861900730</millis>
+  <sequence>104</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:01</date>
+  <millis>1386861901901</millis>
+  <sequence>105</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:02</date>
+  <millis>1386861902728</millis>
+  <sequence>106</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:04</date>
+  <millis>1386861904635</millis>
+  <sequence>107</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:05</date>
+  <millis>1386861905360</millis>
+  <sequence>108</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:06</date>
+  <millis>1386861906186</millis>
+  <sequence>109</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:21</date>
+  <millis>1386861921969</millis>
+  <sequence>110</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:27</date>
+  <millis>1386861927115</millis>
+  <sequence>111</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Toolbar$DefaultIconButton[]</param>
+  <param>org.openide.awt.Toolbar$DefaultIconButton</param>
+  <param>org.openide.awt.AlwaysEnabledAction[Ne&amp;w Project...]</param>
+  <param>org.openide.awt.AlwaysEnabledAction</param>
+  <param>Ne&amp;w Project...</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:32</date>
+  <millis>1386861932583</millis>
+  <sequence>112</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:33</date>
+  <millis>1386861933596</millis>
+  <sequence>113</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:35</date>
+  <millis>1386861935855</millis>
+  <sequence>114</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Increase Speed Of Ball]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Increase Speed Of Ball[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Increase Speed Of Ball</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:37</date>
+  <millis>1386861937247</millis>
+  <sequence>115</sequence>
+  <logger>org.netbeans.ui.actions</logger>
+  <level>FINER</level>
+  <thread>14</thread>
+  <message>UI_ACTION_BUTTON_PRESS</message>
+  <key>UI_ACTION_BUTTON_PRESS</key>
+  <catalog>org.openide.awt.Bundle</catalog>
+  <param>org.openide.awt.Actions$MenuItem[Start Breakout]</param>
+  <param>org.openide.awt.Actions$MenuItem</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction,Start Breakout[key=null]</param>
+  <param>org.openide.awt.GeneralAction$DelegateAction</param>
+  <param>Start Breakout</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:57</date>
+  <millis>1386861957118</millis>
+  <sequence>116</sequence>
+  <logger>org.netbeans.ui.indexing</logger>
+  <level>INFO</level>
+  <thread>15</thread>
+  <message>INDEXING_STARTED</message>
+  <key>INDEXING_STARTED</key>
+  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
+  <param>0</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:57</date>
+  <millis>1386861957134</millis>
+  <sequence>118</sequence>
+  <logger>org.netbeans.ui.indexing</logger>
+  <level>INFO</level>
+  <thread>15</thread>
+  <message>INDEXING_FINISHED</message>
+  <key>INDEXING_FINISHED</key>
+  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
+  <param>3</param>
+</record>
+<record>
+  <date>2013-12-12T16:25:57</date>
+  <millis>1386861957149</millis>
+  <sequence>122</sequence>
   <logger>org.netbeans.ui.focus</logger>
   <level>FINE</level>
-  <thread>15</thread>
+  <thread>14</thread>
   <message>LOG_WINDOW_DEACTIVATED</message>
   <key>LOG_WINDOW_DEACTIVATED</key>
   <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>

@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
->Log Session: Thursday, December 12, 2013 3:37:51 PM CET
+>Log Session: Thursday, December 12, 2013 4:24:18 PM CET
 >System Info: 
   Product Version         = NetBeans IDE 7.3 (Build 201306052037) (#93e87decaddf)
   Operating System        = Windows 7 version 6.1 running on x86
@@ -329,7 +329,6 @@ Input arguments:
 	-ea
 	-Djdk.home=C:\Program
 	Files\Java\jdk1.6.0_21
-	-splash:C:\Users\web\Documents\NetBeansProjects\Breakout1\build\testuserdir\var\cache\splash.png
 	-Dnetbeans.home=C:\Program
 	Files\NetBeans
 	7.3\platform
@@ -384,8 +383,12 @@ Input arguments:
 Compiler: HotSpot Client Compiler
 Heap memory usage: initial 32,0MB maximum 382,8MB
 Non heap memory usage: initial 32,2MB maximum 288,0MB
-Garbage collector: Copy (Collections=70 Total time spent=0s)
+Garbage collector: Copy (Collections=69 Total time spent=0s)
 Garbage collector: MarkSweepCompact (Collections=2 Total time spent=0s)
-Classes: loaded=5902 total loaded=5902 unloaded 0
+Classes: loaded=5604 total loaded=5604 unloaded 0
 INFO [org.netbeans.core.ui.warmup.DiagnosticTask]: Total memory 2.072.985.600
 WARNING [org.openide.filesystems.Ordering]: Not all children in Menu/Window/ marked with the position attribute: [nl-fontys-sevenlo-games-breakout-BreakoutRunTopComponent.shadow], but some are: [org-netbeans-modules-project-ui-logical-tab-action.shadow, org-netbeans-modules-project-ui-physical-tab-action.shadow, org-netbeans-modules-favorites-View.shadow, org-netbeans-core-ide-ServicesTabAction.shadow, org-netbeans-core-windows-actions-GlobalPropertiesAction.shadow, Output, Versioning, Web, SwitchToRecentDocumentAction.shadow, ProgressListAction.shadow, Separator3.instance, ConfigureWindow, org-netbeans-core-windows-actions-ResetWindowsAction.shadow, Separator4.instance, CloseWindowAction.shadow, CloseAllDocumentsAction.shadow, CloseAllButThisAction.shadow, DocumentsAction.shadow]
+WARNING [org.netbeans.TopSecurityManager]: use of system property netbeans.user has been obsoleted in favor of InstalledFileLocator/Places at org.netbeans.modules.uihandler.Installer.logsDirectory(Installer.java:840)
+INFO [org.netbeans.core.netigso.Netigso]: bundle org.eclipse.osgi@3.8.0.v20120529-1548 256
+INFO [org.netbeans.core.netigso.Netigso]: bundle org.eclipse.osgi@3.8.0.v20120529-1548 stopped
+INFO [org.netbeans.core.netigso.Netigso]: bundle org.eclipse.osgi@3.8.0.v20120529-1548 stopped

@@ -17,6 +17,20 @@ class Bundle {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_BreakoutRunTopComponent");
     }
     /**
+     * @return <i>Increase Speed Of Ball</i>
+     * @see IncreaseSpeed
+     */
+    static String CTL_IncreaseSpeed() {
+        return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_IncreaseSpeed");
+    }
+    /**
+     * @return <i>Start Breakout</i>
+     * @see StartBreakoutAction
+     */
+    static String CTL_StartBreakoutAction() {
+        return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_StartBreakoutAction");
+    }
+    /**
      * @return <i>This is a BreakoutRun window</i>
      * @see BreakoutRunTopComponent
      */

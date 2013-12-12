@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
 <attributes version="1.0">
-    <fileobject name="bottomSlidingSide">
-        <attr name="WinSys-TCRef-Order" stringvalue=""/>
-    </fileobject>
     <fileobject name="commonpalette">
         <attr name="WinSys-TCRef-Order" stringvalue="CommonPalette"/>
     </fileobject>
@@ -13,9 +10,6 @@
     <fileobject name="explorer">
         <attr name="WinSys-TCRef-Order" stringvalue="projectTabLogical_tc/projectTab_tc/favorites/services"/>
     </fileobject>
-    <fileobject name="leftSlidingSide">
-        <attr name="WinSys-TCRef-Order" stringvalue=""/>
-    </fileobject>
     <fileobject name="navigator">
         <attr name="WinSys-TCRef-Order" stringvalue="navigatorTC"/>
     </fileobject>
@@ -24,14 +18,5 @@
     </fileobject>
     <fileobject name="properties">
         <attr name="WinSys-TCRef-Order" stringvalue="CssStylesTC/properties"/>
-    </fileobject>
-    <fileobject name="rightSlidingSide">
-        <attr name="WinSys-TCRef-Order" stringvalue=""/>
-    </fileobject>
-    <fileobject name="topSlidingSide">
-        <attr name="WinSys-TCRef-Order" stringvalue=""/>
-    </fileobject>
-    <fileobject name="webpreview">
-        <attr name="WinSys-TCRef-Order" stringvalue=""/>
     </fileobject>
 </attributes>

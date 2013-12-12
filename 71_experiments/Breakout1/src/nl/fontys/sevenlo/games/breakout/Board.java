@@ -7,14 +7,14 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JPanel;
-
+import javax.swing.Timer;
 
 public class Board extends JPanel implements Commons {
 
@@ -24,26 +24,25 @@ public class Board extends JPanel implements Commons {
     Ball ball;
     Paddle paddle;
     Brick bricks[];
-
     boolean ingame = true;
     int timerId;
-
+    int speed;
 
     public Board() {
+        speed = 10;
 
         addKeyListener(new TAdapter());
         setFocusable(true);
 
         bricks = new Brick[30];
         setDoubleBuffered(true);
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
+        timer = new Timer(speed, new ScheduleTask());
     }
 
-        public void addNotify() {
-            super.addNotify();
-            gameInit();
-        }
+    public void addNotify() {
+        super.addNotify();
+        gameInit();
+    }
 
     public void gameInit() {
 
@@ -58,23 +57,24 @@ public class Board extends JPanel implements Commons {
                 k++;
             }
         }
+        timer.start();
     }
-
 
     public void paint(Graphics g) {
         super.paint(g);
 
         if (ingame) {
             g.drawImage(ball.getImage(), ball.getX(), ball.getY(),
-                        ball.getWidth(), ball.getHeight(), this);
+                    ball.getWidth(), ball.getHeight(), this);
             g.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
-                        paddle.getWidth(), paddle.getHeight(), this);
+                    paddle.getWidth(), paddle.getHeight(), this);
 
             for (int i = 0; i < 30; i++) {
-                if (!bricks[i].isDestroyed())
+                if (!bricks[i].isDestroyed()) {
                     g.drawImage(bricks[i].getImage(), bricks[i].getX(),
-                                bricks[i].getY(), bricks[i].getWidth(),
-                                bricks[i].getHeight(), this);
+                            bricks[i].getY(), bricks[i].getWidth(),
+                            bricks[i].getHeight(), this);
+                }
             }
         } else {
 
@@ -84,14 +84,14 @@ public class Board extends JPanel implements Commons {
             g.setColor(Color.BLACK);
             g.setFont(font);
             g.drawString(message,
-                         (Commons.WIDTH - metr.stringWidth(message)) / 2,
-                         Commons.WIDTH / 2);
+                    (Commons.WIDTH - metr.stringWidth(message)) / 2,
+                    Commons.WIDTH / 2);
         }
 
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
-    }
+    }    
 
     public class TAdapter extends KeyAdapter {
 
@@ -105,29 +105,38 @@ public class Board extends JPanel implements Commons {
             paddle.keyPressed(e);
         }
     }
+    
+    void increaseSpeed() {
+        speed -= 1;
+        if(timer.isRunning()) {
+            timer.stop();
+        }
+        timer = new Timer(speed, new ScheduleTask());
+        timer.start();
+    }
 
+    class ScheduleTask implements ActionListener {
 
-    class ScheduleTask extends TimerTask {
-
-        public void run() {
-
+        @Override
+        public void actionPerformed(ActionEvent ae) {
             ball.move();
             paddle.move();
             checkCollision();
             repaint();
-
         }
     }
 
     public void stopGame() {
         ingame = false;
-        timer.cancel();
+        timer.stop();
     }
 
     public void restartGame() {
         gameInit();
         ingame = true;
-        timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
+        if (!timer.isRunning()) {
+            timer.start();
+        }
     }
 
     public void checkCollision() {
@@ -148,8 +157,8 @@ public class Board extends JPanel implements Commons {
 
         if ((ball.getRect()).intersects(paddle.getRect())) {
 
-            int paddleLPos = (int)paddle.getRect().getMinX();
-            int ballLPos = (int)ball.getRect().getMinX();
+            int paddleLPos = (int) paddle.getRect().getMinX();
+            int ballLPos = (int) ball.getRect().getMinX();
 
             int first = paddleLPos + 8;
             int second = paddleLPos + 16;
@@ -188,32 +197,28 @@ public class Board extends JPanel implements Commons {
         for (int i = 0; i < 30; i++) {
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
 
-                int ballLeft = (int)ball.getRect().getMinX();
-                int ballHeight = (int)ball.getRect().getHeight();
-                int ballWidth = (int)ball.getRect().getWidth();
-                int ballTop = (int)ball.getRect().getMinY();
+                int ballLeft = (int) ball.getRect().getMinX();
+                int ballHeight = (int) ball.getRect().getHeight();
+                int ballWidth = (int) ball.getRect().getWidth();
+                int ballTop = (int) ball.getRect().getMinY();
 
                 Point pointRight =
-                    new Point(ballLeft + ballWidth + 1, ballTop);
+                        new Point(ballLeft + ballWidth + 1, ballTop);
                 Point pointLeft = new Point(ballLeft - 1, ballTop);
                 Point pointTop = new Point(ballLeft, ballTop - 1);
                 Point pointBottom =
-                    new Point(ballLeft, ballTop + ballHeight + 1);
+                        new Point(ballLeft, ballTop + ballHeight + 1);
 
                 if (!bricks[i].isDestroyed()) {
                     if (bricks[i].getRect().contains(pointRight)) {
                         ball.setXDir(-1);
-                    }
-
-                    else if (bricks[i].getRect().contains(pointLeft)) {
+                    } else if (bricks[i].getRect().contains(pointLeft)) {
                         ball.setXDir(1);
                     }
 
                     if (bricks[i].getRect().contains(pointTop)) {
                         ball.setYDir(1);
-                    }
-
-                    else if (bricks[i].getRect().contains(pointBottom)) {
+                    } else if (bricks[i].getRect().contains(pointBottom)) {
                         ball.setYDir(-1);
                     }
 
