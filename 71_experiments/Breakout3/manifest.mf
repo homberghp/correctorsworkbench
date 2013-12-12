@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: nl.fontys.sevenlo.games.breakout3
+OpenIDE-Module-Localizing-Bundle: nl/fontys/sevenlo/games/breakout3/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
