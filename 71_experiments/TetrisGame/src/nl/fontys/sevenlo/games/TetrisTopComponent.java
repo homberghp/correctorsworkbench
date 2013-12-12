@@ -6,6 +6,9 @@
 package nl.fontys.sevenlo.games;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import org.netbeans.api.settings.ConvertAsProperties;
@@ -13,6 +16,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.lookup.Lookups;
 
 /**
  * Top component which displays something.
@@ -41,6 +45,7 @@ import org.openide.util.NbBundle.Messages;
 public final class TetrisTopComponent extends TopComponent {
 
     JLabel statusbar;
+    Board board;
     public TetrisTopComponent() {
         initComponents();
         setName(Bundle.CTL_TetrisTopComponent());
@@ -53,6 +58,13 @@ public final class TetrisTopComponent extends TopComponent {
         
         JButton startButton = new JButton("Start over");
         startButton.setVisible(true);
+        startButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 board.start();//To change body of generated methods, choose Tools | Templates.
+            }
+        });
         add(startButton, BorderLayout.EAST);
         
         JButton endButton = new JButton("End game");
@@ -60,12 +72,12 @@ public final class TetrisTopComponent extends TopComponent {
         add(endButton, BorderLayout.WEST);
         
         add(statusbar, BorderLayout.SOUTH);
-        Board board = new Board(this);
+        board = new Board(this);
         add(board);
         addKeyListener(board.getKeyListener());
         board.start();
         
-
+        associateLookup(Lookups.singleton(board));
     }
        public JLabel getStatusBar() {
        return statusbar;
