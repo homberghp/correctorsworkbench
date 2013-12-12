@@ -7242,3 +7242,111 @@
   <key>LOG_WINDOW_DEACTIVATED</key>
   <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
 </record>
+<record>
+  <date>2013-12-12T15:39:51</date>
+  <millis>1386859191373</millis>
+  <sequence>105</sequence>
+  <level>FINEST</level>
+  <thread>15</thread>
+  <message>CPU INFO</message>
+  <param>4</param>
+</record>
+<record>
+  <date>2013-12-12T15:39:51</date>
+  <millis>1386859191379</millis>
+  <sequence>106</sequence>
+  <level>FINEST</level>
+  <thread>15</thread>
+  <message>SCREEN SIZE</message>
+  <param>1440</param>
+  <param>900</param>
+  <param>1</param>
+</record>
+<record>
+  <date>2013-12-12T15:39:51</date>
+  <millis>1386859191380</millis>
+  <sequence>107</sequence>
+  <level>CONFIG</level>
+  <thread>15</thread>
+  <message>IDE_STARTUP</message>
+</record>
+<record>
+  <date>2013-12-12T15:39:52</date>
+  <millis>1386859192170</millis>
+  <sequence>119</sequence>
+  <logger>org.netbeans.ui.metrics.laf</logger>
+  <level>INFO</level>
+  <thread>15</thread>
+  <message>USG_LOOK_AND_FEEL</message>
+  <param>Aqua</param>
+  <param>Mac OS X</param>
+</record>
+<record>
+  <date>2013-12-12T15:39:54</date>
+  <millis>1386859194951</millis>
+  <sequence>122</sequence>
+  <level>INFO</level>
+  <thread>26</thread>
+  <message>MEMORY</message>
+  <key>MEMORY</key>
+  <catalog>&lt;null&gt;</catalog>
+  <param>8589934592</param>
+</record>
+<record>
+  <date>2013-12-12T15:40:17</date>
+  <millis>1386859217251</millis>
+  <sequence>126</sequence>
+  <logger>org.netbeans.ui.focus</logger>
+  <level>FINE</level>
+  <thread>19</thread>
+  <message>LOG_WINDOW_DEACTIVATED</message>
+  <key>LOG_WINDOW_DEACTIVATED</key>
+  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
+</record>
+<record>
+  <date>2013-12-12T15:40:20</date>
+  <millis>1386859220360</millis>
+  <sequence>127</sequence>
+  <logger>org.netbeans.ui.focus</logger>
+  <level>FINE</level>
+  <thread>26</thread>
+  <message>LOG_WINDOW_ACTIVATED</message>
+  <key>LOG_WINDOW_ACTIVATED</key>
+  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
+  <param>3</param>
+</record>
+<record>
+  <date>2013-12-12T15:47:37</date>
+  <millis>1386859657726</millis>
+  <sequence>129</sequence>
+  <logger>org.netbeans.ui.indexing</logger>
+  <level>INFO</level>
+  <thread>49</thread>
+  <message>INDEXING_STARTED</message>
+  <key>INDEXING_STARTED</key>
+  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
+  <param>0</param>
+</record>
+<record>
+  <date>2013-12-12T15:47:37</date>
+  <millis>1386859657729</millis>
+  <sequence>130</sequence>
+  <logger>org.netbeans.ui.indexing</logger>
+  <level>INFO</level>
+  <thread>49</thread>
+  <message>INDEXING_FINISHED</message>
+  <key>INDEXING_FINISHED</key>
+  <catalog>org.netbeans.modules.parsing.impl.indexing.Bundle</catalog>
+  <param>1</param>
+</record>
+<record>
+  <date>2013-12-12T15:47:37</date>
+  <millis>1386859657734</millis>
+  <sequence>134</sequence>
+  <logger>org.netbeans.ui.focus</logger>
+  <level>FINE</level>
+  <thread>19</thread>
+  <message>LOG_WINDOW_DEACTIVATED</message>
+  <key>LOG_WINDOW_DEACTIVATED</key>
+  <catalog>org.netbeans.core.ui.warmup.Bundle</catalog>
+</record>

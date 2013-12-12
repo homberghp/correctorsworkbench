@@ -38,8 +38,6 @@ public class Board extends JPanel implements Commons {
 
         bricks = new Brick[30];
         setDoubleBuffered(true);
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
     }
 
     public void addGameBoardListener(GameBoardListener gbl) {
@@ -52,10 +50,22 @@ public class Board extends JPanel implements Commons {
         }
     }
 
+    public void restart() {
+        this.ingame = true;
+        
+        if(this.timer != null) {
+            this.timer.cancel();
+        }           
+        
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
+        gameInit();
+    }
+
     @Override
     public void addNotify() {
         super.addNotify();
-        gameInit();
+        restart();
     }
 
     public void gameInit() {

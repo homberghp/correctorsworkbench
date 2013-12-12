@@ -32,6 +32,6 @@ public final class RestartGame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        board.gameInit();
+        board.restart();
     }
 }
