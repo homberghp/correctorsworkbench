@@ -4,9 +4,10 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import org.openide.util.ImageUtilities;
+import static nl.fontys.sevenlo.games.breakout.Commons.*;
 
 
-public class Paddle extends Sprite implements Commons {
+public class Paddle extends Sprite {
 
     String paddle = "nl/fontys/sevenlo/games/breakout/images/paddle.png";
 
