@@ -93,12 +93,14 @@ public class Board extends JPanel implements Commons {
         g.dispose();
     }
 
-    private class TAdapter extends KeyAdapter {
+    public class TAdapter extends KeyAdapter {
 
+        @Override
         public void keyReleased(KeyEvent e) {
             paddle.keyReleased(e);
         }
-
+        
+        @Override
         public void keyPressed(KeyEvent e) {
             paddle.keyPressed(e);
         }

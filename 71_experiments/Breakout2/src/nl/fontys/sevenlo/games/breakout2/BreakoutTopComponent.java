@@ -47,7 +47,11 @@ public final class BreakoutTopComponent extends TopComponent {
         this.setDisplayName("Breakout");
         this.setFocusable(true);
         this.setLayout(new BorderLayout());
-        this.add(new Board(), BorderLayout.CENTER);
+        
+        Board board = new Board();
+        this.add(board, BorderLayout.CENTER);   
+        
+        this.addKeyListener(board.getKeyListeners()[0]);
     }
 
     /**
