@@ -14,6 +14,7 @@ import org.openide.awt.ActionReference;
 import org.openide.awt.StatusDisplayer;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.lookup.Lookups;
 
 /**
  * Top component which displays something.
@@ -60,6 +61,7 @@ public final class BreakoutTopComponent extends TopComponent {
             }
         });
         this.addKeyListener(board.getKeyListeners()[0]);
+        this.associateLookup(Lookups.singleton(board));
     }
 
     /**
