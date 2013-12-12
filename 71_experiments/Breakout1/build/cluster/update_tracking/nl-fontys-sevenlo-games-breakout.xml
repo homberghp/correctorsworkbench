@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="nl.fontys.sevenlo.games.breakout">
+    <module_version install_time="1386859070889" last="true" origin="installer" specification_version="1.0">
+        <file crc="2934524289" name="config/Modules/nl-fontys-sevenlo-games-breakout.xml"/>
+        <file crc="2230462552" name="modules/nl-fontys-sevenlo-games-breakout.jar"/>
+    </module_version>
+</module>

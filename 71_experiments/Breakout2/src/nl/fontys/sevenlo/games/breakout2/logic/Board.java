@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,8 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel implements Commons {
 
-    Image ii;
     Timer timer;
-    String message = "Game Over";
+    String message;
     Ball ball;
     Paddle paddle;
     Brick bricks[];
@@ -38,6 +38,10 @@ public class Board extends JPanel implements Commons {
 
         bricks = new Brick[30];
         setDoubleBuffered(true);
+    }
+    
+    public KeyListener GetKeyListener() {
+        return new TAdapter();
     }
 
     public void addGameBoardListener(GameBoardListener gbl) {
@@ -61,6 +65,7 @@ public class Board extends JPanel implements Commons {
     }
 
     public void restart() {
+        this.message = "Game over";
         this.ingame = true;
         
         if(this.timer != null) {
@@ -124,7 +129,7 @@ public class Board extends JPanel implements Commons {
         g.dispose();
     }
 
-    public class TAdapter extends KeyAdapter {
+    private class TAdapter extends KeyAdapter {
 
         @Override
         public void keyReleased(KeyEvent e) {
