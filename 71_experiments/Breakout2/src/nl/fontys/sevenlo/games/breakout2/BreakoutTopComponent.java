@@ -60,7 +60,7 @@ public final class BreakoutTopComponent extends TopComponent {
                 StatusDisplayer.getDefault().setStatusText("Game finished");
             }
         });
-        this.addKeyListener(board.getKeyListeners()[0]);
+        this.addKeyListener(board.GetKeyListener());
         this.associateLookup(Lookups.singleton(board));
     }
 
