@@ -49,6 +49,16 @@ public class Board extends JPanel implements Commons {
             gameBoardListener.onGameFinished();
         }
     }
+    
+    private int delay = 1000;
+    private int period = 10;
+    private int increaseIdx = 1;
+    
+    public void accelerate(){
+        this.timer.cancel();
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduleTask(), 0, period / (++increaseIdx));
+    }
 
     public void restart() {
         this.ingame = true;
@@ -58,7 +68,7 @@ public class Board extends JPanel implements Commons {
         }           
         
         timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 1000, 10);
+        timer.scheduleAtFixedRate(new ScheduleTask(), delay, period);
         gameInit();
     }
 
