@@ -7,10 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import nl.fontys.sevenlo.games.tetris.TetrisTopComponent;
 
 import tetris.Shape.Tetrominoes;
 
@@ -31,19 +33,18 @@ public class Board extends JPanel implements ActionListener {
     JLabel statusbar;
     Shape curPiece;
     Tetrominoes[] board;
+    private final TAdapter tAdapter;
+    
 
 
-
-    public Board(Tetris parent) {
-
-       setFocusable(true);
+    public Board(TetrisTopComponent parent) {
        curPiece = new Shape();
        timer = new Timer(400, this);
        timer.start(); 
 
+       tAdapter = new TAdapter();
        statusbar =  parent.getStatusBar();
        board = new Tetrominoes[BoardWidth * BoardHeight];
-       addKeyListener(new TAdapter());
        clearBoard();  
     }
 
@@ -291,4 +292,8 @@ public class Board extends JPanel implements ActionListener {
 
          }
      }
+    
+    public KeyListener getKeyListener() {
+        return tAdapter;
+    }
 }

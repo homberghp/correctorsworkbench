@@ -8,7 +8,7 @@
     <path orientation="horizontal" number="20" weight="0.3"/>
     <path orientation="vertical" number="60" weight="0.5"/>
   </constraints>
-  <bounds x="144" y="347" width="504" height="363" />
+  <bounds x="144" y="349" width="504" height="365" />
   <frame state="0"/>
     <empty-behavior permanent="true"/>
 </mode>
