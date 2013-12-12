@@ -1,0 +1,103 @@
+!SESSION 2013-12-12 13:46:56.032 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+
+!ENTRY org.eclipse.core.net 1 0 2013-12-12 13:46:56.032
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.atlassian.connector.eclipse.jira.core 4 0 2013-12-12 13:46:56.042
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: The bundle "com.atlassian.connector.eclipse.jira.core_3.0.4.v20120406 [70]" could not be resolved. Reason: Missing Constraint: Require-Bundle: org.apache.axis; bundle-version="1.4.0"
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:390)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1177)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.EquinoxLauncher.internalStart(EquinoxLauncher.java:271)
+	at org.eclipse.osgi.framework.internal.core.EquinoxLauncher.start(EquinoxLauncher.java:241)
+	at org.eclipse.osgi.launch.Equinox.start(Equinox.java:258)
+	at org.netbeans.core.netigso.Netigso.start(Netigso.java:190)
+	at org.netbeans.NetigsoHandle.startFramework(NetigsoHandle.java:198)
+	at org.netbeans.ModuleManager.enable(ModuleManager.java:1195)
+	at org.netbeans.ModuleManager.enable(ModuleManager.java:1017)
+	at org.netbeans.core.startup.ModuleList.installNew(ModuleList.java:340)
+	at org.netbeans.core.startup.ModuleList.trigger(ModuleList.java:276)
+	at org.netbeans.core.startup.ModuleSystem.restore(ModuleSystem.java:301)
+	at org.netbeans.core.startup.Main.getModuleSystem(Main.java:181)
+	at org.netbeans.core.startup.Main.getModuleSystem(Main.java:150)
+	at org.netbeans.core.startup.Main.start(Main.java:307)
+	at org.netbeans.core.startup.TopThreadGroup.run(TopThreadGroup.java:123)
+	at java.lang.Thread.run(Thread.java:744)
+
+!ENTRY org.apache.axis 4 0 2013-12-12 13:46:56.047
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: The bundle "org.apache.axis_1.4.0 [73]" could not be resolved. Reason: Missing Constraint: Require-Bundle: javax.wsdl; bundle-version="[1.5.1,2.0.0)"
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:390)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1177)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.EquinoxLauncher.internalStart(EquinoxLauncher.java:271)
+	at org.eclipse.osgi.framework.internal.core.EquinoxLauncher.start(EquinoxLauncher.java:241)
+	at org.eclipse.osgi.launch.Equinox.start(Equinox.java:258)
+	at org.netbeans.core.netigso.Netigso.start(Netigso.java:190)
+	at org.netbeans.NetigsoHandle.startFramework(NetigsoHandle.java:198)
+	at org.netbeans.ModuleManager.enable(ModuleManager.java:1195)
+	at org.netbeans.ModuleManager.enable(ModuleManager.java:1017)
+	at org.netbeans.core.startup.ModuleList.installNew(ModuleList.java:340)
+	at org.netbeans.core.startup.ModuleList.trigger(ModuleList.java:276)
+	at org.netbeans.core.startup.ModuleSystem.restore(ModuleSystem.java:301)
+	at org.netbeans.core.startup.Main.getModuleSystem(Main.java:181)
+	at org.netbeans.core.startup.Main.getModuleSystem(Main.java:150)
+	at org.netbeans.core.startup.Main.start(Main.java:307)
+	at org.netbeans.core.startup.TopThreadGroup.run(TopThreadGroup.java:123)
+	at java.lang.Thread.run(Thread.java:744)
+
+!ENTRY org.eclipse.mylyn.commons.soap 4 0 2013-12-12 13:46:56.057
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: The bundle "org.eclipse.mylyn.commons.soap_3.9.0.v20130612-0100 [122]" could not be resolved. Reason: Missing Constraint: Require-Bundle: org.apache.axis; bundle-version="1.4.0"
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:390)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1177)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.EquinoxLauncher.internalStart(EquinoxLauncher.java:271)
+	at org.eclipse.osgi.framework.internal.core.EquinoxLauncher.start(EquinoxLauncher.java:241)
+	at org.eclipse.osgi.launch.Equinox.start(Equinox.java:258)
+	at org.netbeans.core.netigso.Netigso.start(Netigso.java:190)
+	at org.netbeans.NetigsoHandle.startFramework(NetigsoHandle.java:198)
+	at org.netbeans.ModuleManager.enable(ModuleManager.java:1195)
+	at org.netbeans.ModuleManager.enable(ModuleManager.java:1017)
+	at org.netbeans.core.startup.ModuleList.installNew(ModuleList.java:340)
+	at org.netbeans.core.startup.ModuleList.trigger(ModuleList.java:276)
+	at org.netbeans.core.startup.ModuleSystem.restore(ModuleSystem.java:301)
+	at org.netbeans.core.startup.Main.getModuleSystem(Main.java:181)
+	at org.netbeans.core.startup.Main.getModuleSystem(Main.java:150)
+	at org.netbeans.core.startup.Main.start(Main.java:307)
+	at org.netbeans.core.startup.TopThreadGroup.run(TopThreadGroup.java:123)
+	at java.lang.Thread.run(Thread.java:744)
+!SESSION 2013-12-12 13:47:17.441 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+
+!ENTRY org.eclipse.core.net 1 0 2013-12-12 13:47:17.441
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
