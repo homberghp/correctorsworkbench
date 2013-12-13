@@ -1,26 +1,17 @@
 package org.fontysvenlo.cwb;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JEditorPane;
-import javax.swing.text.Caret;
 import javax.swing.text.StyledDocument;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
-import org.openide.filesystems.FileObject;
-import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.util.NbBundle.Messages;
-import org.openide.cookies.EditorCookie;
 import static org.fontysvenlo.cwb.SolutionMarkerUtils.*;
-import org.openide.loaders.DataObjectNotFoundException;
-import org.openide.util.NbPreferences;
 /*
  * log findings here.
  * Caret has a dot (current pos) and a mark.
@@ -33,16 +24,16 @@ import org.openide.util.NbPreferences;
 
 @ActionID(
         category = "Tools",
-        id = "org.fontysvenlo.cwb.MarkSolutionRemoveAction")
+        id = "org.fontysvenlo.cwb.MarkTaskRemoveAction")
 @ActionRegistration(
-        displayName = "#CTL_MarkSolutionRemove")
+        displayName = "#CTL_MarkTaskRemove")
 @ActionReferences({
     @ActionReference(path = "Editors/Popup", position = 11)
 })
-@Messages("CTL_MarkSolutionRemove=Removes all marks from a document")
-public final class MarkSolutionRemoveAction extends MarkerAction {
+@Messages("CTL_MarkTaskRemove=Removes all task marks from a document")
+public final class MarkTaskRemoveAction extends MarkerAction {
 
-    public MarkSolutionRemoveAction(DataObject context) {
+    public MarkTaskRemoveAction(DataObject context) {
         super(context);
     }
 
@@ -58,5 +49,5 @@ public final class MarkSolutionRemoveAction extends MarkerAction {
     }
 
     private static final Logger logger = Logger.getLogger(
-            MarkSolutionRemoveAction.class.getName());
+            MarkTaskRemoveAction.class.getName());
 }

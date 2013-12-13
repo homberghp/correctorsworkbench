@@ -13,7 +13,7 @@ import org.openide.text.Annotation;
  * @author hom
  */
 
-public class SolutionEndAnnotation extends Annotation {
+public class SolutionEndAnnotation extends ExamAnnotation {
 
     private final String text;
     

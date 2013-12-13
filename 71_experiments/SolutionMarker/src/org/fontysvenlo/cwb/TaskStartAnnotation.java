@@ -13,15 +13,15 @@ import org.openide.text.Annotation;
  * @author hom
  */
 
-public class SolutionStartAnnotation extends ExamAnnotation {
+public class TaskStartAnnotation extends ExamAnnotation {
     protected String text;
-    SolutionStartAnnotation( String here_starts_your_solution ) {
+    TaskStartAnnotation( String here_starts_your_solution ) {
         this.text=here_starts_your_solution;
     }
 
     @Override
     public String getAnnotationType() {
-        return "org-nb-modules-cwb-solution-start";
+        return "org-nb-modules-cwb-task-start";
     }
 
     @Override

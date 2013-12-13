@@ -6,6 +6,7 @@
 package org.fontysvenlo.cwb;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.BadLocationException;
@@ -13,6 +14,7 @@ import javax.swing.text.Caret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledDocument;
 import org.openide.cookies.LineCookie;
+import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.text.Annotation;
 import org.openide.text.Line;
@@ -27,7 +29,8 @@ public class SolutionMarkerUtils {
     /**
      * Add editor solution annotations to the editor window. Note that these
      * annotations are not java annotations but visible markup to serve as clue
-     * for the user.
+     * for the user. The annotations are registered in the
+     * {@link AnnotationRegistry}
      *
      * @param d data object to lookup cookies for
      * @param doc the style document being edited
@@ -40,6 +43,7 @@ public class SolutionMarkerUtils {
         int regionStart = Math.min(caret.getDot(), caret.getMark());
         int regionEnd = Math.max(caret.getDot(), caret.getMark());
         System.out.println(caretToString(caret));
+        String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
         final Line firstLine = lineSet.getCurrent(NbDocument.findLineNumber(
                 doc,
                 regionStart));
@@ -52,8 +56,11 @@ public class SolutionMarkerUtils {
                 = new SolutionEndAnnotation("Your solution ends here");
         ann1.attach(firstLine);
         ann1.moveToFront();
+        AnnotationRegistry<Annotation> registy = (AnnotationRegistry<Annotation>) AnnotationRegistry.getInstance();
+        registy.addAnnotation(ann1, fileName, regionStart);
         ann2.attach(lastLine);
         ann2.moveToFront();
+        registy.addAnnotation(ann2, fileName, regionEnd);
     }
 
     /**
@@ -160,7 +167,7 @@ public class SolutionMarkerUtils {
         StringBuilder indent = new StringBuilder();
         //<editor-fold defaultstate="expanded" desc="1F; MAX 10; __STUDENT_ID__ ;POINTS 0">
         //Start Solution::replacewith::
-        int currentLineNo= NbDocument.findLineNumber(doc, position);
+        int currentLineNo = NbDocument.findLineNumber(doc, position);
         int l1Offset = NbDocument.findLineOffset(doc, currentLineNo);
         int l2Offset = NbDocument.findLineOffset(doc, currentLineNo + 1);
         int stopPos = Math.min(l2Offset, doc.getLength());
@@ -204,19 +211,24 @@ public class SolutionMarkerUtils {
      * @param doc document to work on
      * @return the number of annotations removed.
      */
+    @SuppressWarnings("unchecked")
     public static int removeSolutionMarkers(DataObject d, final StyledDocument doc) {
-        LineCookie cookie = d.getLookup().lookup(LineCookie.class);
-        Line.Set lineSet = cookie.getLineSet();
-        int lastLine = NbDocument.findLineNumber(doc, doc.getLength());
-        SolutionEndAnnotation end = new SolutionEndAnnotation("");
-        SolutionStartAnnotation start = new SolutionStartAnnotation("");
-        for (int l = 0; l < lastLine; l++) {
-            Line line = lineSet.getCurrent(NbDocument.findLineNumber(
-                    doc,
-                    l));
-            
+        String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
+        Class<?> anC1 = SolutionStartAnnotation.class;
+        Class<?> anC2 = SolutionEndAnnotation.class;
+        AnnotationRegistry registry =  AnnotationRegistry.getInstance();
+        int result = 0;
+        List<Annotation> an1List = registry.getAnnotations(anC1, fileName);
+        result += an1List.size();
+        for (Annotation a : an1List) {
+            a.detach();
         }
-        return 0;
+        List<Annotation> an2List = registry.getAnnotations(anC2, fileName);
+        result += an2List.size();
+        for (Annotation a : an2List) {
+            a.detach();
+        }
+        return result;
     }
 
     /**
@@ -254,9 +266,8 @@ public class SolutionMarkerUtils {
                     } catch (IndexOutOfBoundsException iob) {
                         // stop trying next time
                         lineNumber = direction * Integer.MAX_VALUE;
-                    } finally {
-                        return result;
                     }
+                    return result;
                 }
 
                 @Override

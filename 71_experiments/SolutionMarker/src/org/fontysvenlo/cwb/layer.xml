@@ -5,6 +5,8 @@
         <folder name="AnnotationTypes">
             <file name="cwbSolution.xml" url="cwbSolution.xml"/>
             <file name="cwbSolutionEnd.xml" url="cwbSolutionEnd.xml"/>
+            <file name="cwbTask.xml" url="cwbTask.xml"/>
+            <file name="cwbTaskEnd.xml" url="cwbTaskEnd.xml"/>
         </folder>
     </folder>
 </filesystem>

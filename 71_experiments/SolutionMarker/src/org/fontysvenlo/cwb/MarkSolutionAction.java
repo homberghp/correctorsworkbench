@@ -1,11 +1,8 @@
 package org.fontysvenlo.cwb;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JEditorPane;
 import javax.swing.text.Caret;
 import javax.swing.text.StyledDocument;
@@ -13,8 +10,6 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
-import org.openide.filesystems.FileObject;
-import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.util.NbBundle.Messages;
 import org.openide.cookies.EditorCookie;
@@ -39,51 +34,37 @@ import org.openide.util.NbPreferences;
     @ActionReference(path = "Editors/Popup", position = 10)
 })
 @Messages("CTL_MarkSolution=Mark Region as Solution")
-public final class MarkSolutionAction implements ActionListener {
+public final class MarkSolutionAction extends MarkerAction {
 
-    private static String defaultStartTag = "//PRE";
-    private static String defaultEndTag = "//POST";
-    private String startTag = "//PRE";
-    private String endTag = "//POST";
+    private static String defaultStartTag = "//Start Solution::replacewith:://TODO ";
+    private static String defaultEndTag = "//End Solution::replacewith::fail(\"test not implemented\");";
+    private String startTag;
+    private String endTag;
     private final DataObject context;
 
-                                                    //StartSolution
+    //StartSolution
     public MarkSolutionAction(DataObject context) {
+        super(context);
         this.context = context;
         startTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("startTag", defaultStartTag);
         endTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("endTag", defaultEndTag);
     }
-                                                    //EndSolution
+    //EndSolution
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            StringBuilder actionLog = new StringBuilder();
-            String path = context.getPrimaryFile().getPath();
-
-            File f = new File(path);
-            FileObject fo = FileUtil.toFileObject(f);
-            DataObject d = DataObject.find(fo);
-            EditorCookie ec = d.getLookup().lookup(EditorCookie.class);
+            DataObject d = getDataObjectForFile(getFile());
+            EditorCookie ec = getEditorCookie(d);
+            StyledDocument doc = getStyledDoc(d);
             ec.open();
-
-            final StyledDocument doc = ec.openDocument();
-
             for (JEditorPane pane : ec.getOpenedPanes()) {
-                actionLog.append(pane.getSelectedText());
                 Caret caret = pane.getCaret();
-                actionLog.append("\n dot at ").append(caret.getDot()).
-                        append("\n mark at ").append(caret.getMark());
-                wrapSelected(doc, caret, startTag , endTag );
+                wrapSelected(doc, caret, startTag, endTag);
                 annotateRegion(d, doc, caret);
             }
-            logger.log(Level.INFO, actionLog.toString(), (Throwable) null);
         } catch (IOException | IndexOutOfBoundsException ex) {
-            logger.log(Level.INFO, "action failed with ", ex);
+            getLogger().log(Level.INFO, "action failed with ", ex);
         }
     }
-
-    private static final Logger logger = Logger.getLogger(
-            MarkSolutionAction.class.getName());
-
 }
