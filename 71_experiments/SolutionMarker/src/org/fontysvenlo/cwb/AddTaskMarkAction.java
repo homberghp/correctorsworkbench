@@ -21,7 +21,8 @@ import org.openide.util.NbBundle;
         category = "Tools",
         id = "org.fontysvenlo.cwb.AddTaskMarkAction")
 @ActionRegistration(
-        displayName = "#CTL_AddTaskMark")
+        displayName = "#CTL_AddTaskMark",
+        iconBase = "org/fontysvenlo/cwb/solution/workinprogress.png")
 @ActionReferences({
     @ActionReference(path = "Editors/Popup", position = 10)
 })

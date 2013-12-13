@@ -21,7 +21,8 @@ import org.openide.util.NbBundle;
         category = "Tools",
         id = "org.fontysvenlo.cwb.AddSolutionMarkAction")
 @ActionRegistration(
-        displayName = "#CTL_AddSolutionMarkAction")
+        displayName = "#CTL_AddSolutionMarkAction",
+        iconBase = "org/fontysvenlo/cwb/solution/solution.png")
 @ActionReferences({
     @ActionReference(path = "Editors/Popup", position = 10)
 })

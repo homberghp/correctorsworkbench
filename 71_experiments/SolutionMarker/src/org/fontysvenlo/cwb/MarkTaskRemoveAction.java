@@ -1,17 +1,12 @@
 package org.fontysvenlo.cwb;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.text.StyledDocument;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
 import org.openide.loaders.DataObject;
 import org.openide.util.NbBundle.Messages;
-import static org.fontysvenlo.cwb.SolutionMarkerUtils.*;
 /*
  * log findings here.
  * Caret has a dot (current pos) and a mark.
