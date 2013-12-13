@@ -37,7 +37,7 @@ public class SolutionMarkerUtils {
      * @param caret the position of the cursor and /or selection
      */
     public static void annotateRegion(DataObject d, final StyledDocument doc,
-            Caret caret) {
+            Caret caret, final ExamAnnotation startAnnotation, final ExamAnnotation endAnnotation) {
         LineCookie cookie = d.getLookup().lookup(LineCookie.class);
         Line.Set lineSet = cookie.getLineSet();
         int regionStart = Math.min(caret.getDot(), caret.getMark());
@@ -50,17 +50,13 @@ public class SolutionMarkerUtils {
         final Line lastLine = lineSet.getCurrent(NbDocument.
                 findLineNumber(doc,
                         regionEnd));
-        final Annotation ann1
-                = new SolutionStartAnnotation("Your solution starts here");
-        final Annotation ann2
-                = new SolutionEndAnnotation("Your solution ends here");
-        ann1.attach(firstLine);
-        ann1.moveToFront();
+        startAnnotation.attach(firstLine);
+        startAnnotation.moveToFront();
         AnnotationRegistry<Annotation> registy = (AnnotationRegistry<Annotation>) AnnotationRegistry.getInstance();
-        registy.addAnnotation(ann1, fileName, regionStart);
-        ann2.attach(lastLine);
-        ann2.moveToFront();
-        registy.addAnnotation(ann2, fileName, regionEnd);
+        registy.addAnnotation(startAnnotation, fileName, regionStart);
+        endAnnotation.attach(lastLine);
+        endAnnotation.moveToFront();
+        registy.addAnnotation(endAnnotation, fileName, regionEnd);
     }
 
     /**

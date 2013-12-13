@@ -31,23 +31,14 @@ import static org.fontysvenlo.cwb.SolutionMarkerUtils.*;
     @ActionReference(path = "Editors/Popup", position = 11)
 })
 @Messages("CTL_MarkTaskRemove=Removes all task marks from a document")
-public final class MarkTaskRemoveAction extends MarkerAction {
+public final class MarkTaskRemoveAction extends TaskAction {
 
     public MarkTaskRemoveAction(DataObject context) {
         super(context);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        try {
-            DataObject d = getDataObjectForFile(getFile());
-            StyledDocument doc = getStyledDoc(d);
-            removeSolutionMarkers(d,doc);
-        } catch (IOException | IndexOutOfBoundsException ex) {
-            logger.log(Level.INFO, "action failed with ", ex);
-        }
+    protected void doWork() throws IOException, IndexOutOfBoundsException {
+        removeMarkers();
     }
-
-    private static final Logger logger = Logger.getLogger(
-            MarkTaskRemoveAction.class.getName());
 }

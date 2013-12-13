@@ -6,8 +6,6 @@
 
 package org.fontysvenlo.cwb;
 
-import org.openide.text.Annotation;
-
 /**
  *
  * @author hom
@@ -15,16 +13,9 @@ import org.openide.text.Annotation;
 
 public class SolutionEndAnnotation extends ExamAnnotation {
 
-    private final String text;
-    
-    SolutionEndAnnotation( String here_starts_your_solution ) {
-        this.text=here_starts_your_solution;
-        
-    }
-
     @Override
     public String getAnnotationType() {
-        return "org-nb-modules-cwb-solution-end";
+        return "org-fontysvenlo-cwb-solution-end";
     }
 
     @Override

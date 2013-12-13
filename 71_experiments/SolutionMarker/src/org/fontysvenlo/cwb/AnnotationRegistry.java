@@ -19,7 +19,7 @@ public class AnnotationRegistry<A extends Annotation> {
 
     private static class Holder<T> {
 
-        private static AnnotationRegistry REGISTRY = new AnnotationRegistry();
+        private static final AnnotationRegistry REGISTRY = new AnnotationRegistry();
     }
 
     /**

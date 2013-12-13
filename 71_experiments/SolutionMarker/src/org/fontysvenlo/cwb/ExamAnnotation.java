@@ -13,10 +13,14 @@ import org.openide.text.Annotation;
  * @author hom
  */
 public abstract class ExamAnnotation extends Annotation {
-
+    protected String text;
     @Override
     public String toString(){
         return getAnnotationType()+" msg "+getShortDescription();
     }
     
+    public ExamAnnotation setText(String text){
+        this.text = text;
+        return this;
+    }
 }

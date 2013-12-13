@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.fontysvenlo.cwb;
 
 import org.openide.util.NbPreferences;
@@ -25,8 +20,6 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         documentationTA = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -36,82 +29,105 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        startTaskTagTA = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        endTaskTagTA = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
 
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel1.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel2, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel2.text")); // NOI18N
-
+        documentationTA.setBackground(java.awt.Color.lightGray);
         documentationTA.setColumns(20);
-        documentationTA.setRows(5);
+        documentationTA.setRows(4);
         documentationTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.documentationTA.text")); // NOI18N
         jScrollPane1.setViewportView(documentationTA);
 
-        startTagTA.setColumns(20);
-        startTagTA.setRows(5);
+        startTagTA.setColumns(40);
+        startTagTA.setRows(2);
         jScrollPane2.setViewportView(startTagTA);
 
-        endTagTA.setColumns(20);
-        endTagTA.setRows(5);
+        endTagTA.setColumns(40);
+        endTagTA.setRows(2);
         endTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endTagTA.text")); // NOI18N
+        endTagTA.setPreferredSize(new java.awt.Dimension(300, 42));
+        endTagTA.setRequestFocusEnabled(false);
         jScrollPane3.setViewportView(endTagTA);
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel3.text")); // NOI18N
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/solution.png"))); // NOI18N
+        jLabel4.setLabelFor(startTagTA);
         org.openide.awt.Mnemonics.setLocalizedText(jLabel4, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel4.text")); // NOI18N
+        jLabel4.setToolTipText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel4.toolTipText")); // NOI18N
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/dontstop.png"))); // NOI18N
+        jLabel5.setLabelFor(endTagTA);
         org.openide.awt.Mnemonics.setLocalizedText(jLabel5, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel5.text")); // NOI18N
+
+        startTaskTagTA.setColumns(40);
+        startTaskTagTA.setRows(2);
+        startTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.startTaskTagTA.text")); // NOI18N
+        jScrollPane4.setViewportView(startTaskTagTA);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/workinprogress.png"))); // NOI18N
+        jLabel6.setLabelFor(startTaskTagTA);
+        org.openide.awt.Mnemonics.setLocalizedText(jLabel6, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel6.text")); // NOI18N
+
+        endTaskTagTA.setColumns(40);
+        endTaskTagTA.setRows(2);
+        endTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endTaskTagTA.text")); // NOI18N
+        jScrollPane5.setViewportView(endTaskTagTA);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/oneway.png"))); // NOI18N
+        jLabel7.setLabelFor(endTaskTagTA);
+        org.openide.awt.Mnemonics.setLocalizedText(jLabel7, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel7.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(311, 311, 311)
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(269, 269, 269)
                         .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane5))
+                .addGap(555, 555, 555))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
                 .addComponent(jLabel3)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -147,14 +163,18 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea documentationTA;
     private javax.swing.JTextArea endTagTA;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextArea endTaskTagTA;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea startTagTA;
+    private javax.swing.JTextArea startTaskTagTA;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,11 +24,13 @@ public final class SolutionMarkerOptionsPanelController extends OptionsPanelCont
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private boolean changed;
 
+    @Override
     public void update() {
         getPanel().load();
         changed = false;
     }
 
+    @Override
     public void applyChanges() {
         getPanel().store();
         changed = false;

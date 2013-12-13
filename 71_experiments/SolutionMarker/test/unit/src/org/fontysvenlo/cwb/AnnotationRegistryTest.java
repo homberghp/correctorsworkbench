@@ -23,9 +23,9 @@ public class AnnotationRegistryTest {
      * Test of addAnnotation method, of class AnnotationRegistry.
      */
     @Test
-    public void testAddAnnotation() {
+    public void testAddAnnotation() throws InstantiationException, IllegalAccessException {
         System.out.println("addAnnotation");
-        Annotation an = new SolutionStartAnnotation("test");
+        ExamAnnotation an = SolutionStartAnnotation.class.newInstance().setText("test");
         String relFilePath = "somefilename.java";
         int lineNumber = 0;
         int count = registry.registerCount();
@@ -37,17 +37,17 @@ public class AnnotationRegistryTest {
      * Test of getAnnotations method, of class AnnotationRegistry.
      */
     @Test
-    public void testGetAnnotations() {
+    public void testGetAnnotations() throws InstantiationException, IllegalAccessException {
         System.out.println("getAnnotations");
         Class anClass = SolutionStartAnnotation.class;
-        SolutionStartAnnotation san = new SolutionStartAnnotation("Start here");
+        ExamAnnotation san = new SolutionStartAnnotation().setText("Start here");
         String relFilePath1 = "somefilepath.java";
         registry.addAnnotation(san, relFilePath1, 1);
         List<Annotation> expResult = new ArrayList<>();
         expResult.add(san);
         List<Annotation> result = registry.getAnnotations(anClass, relFilePath1);
         assertEquals(expResult, result);
-        san = new SolutionStartAnnotation("Start here");
+        san = new SolutionStartAnnotation().setText("Start here");
         expResult.add(san);
         registry.addAnnotation(san, relFilePath1, 2);
         result = registry.getAnnotations(anClass, relFilePath1);
@@ -55,7 +55,7 @@ public class AnnotationRegistryTest {
 
         String relFilePath2 = "somefilepath2.java";
         expResult = new ArrayList<>();
-        san = new SolutionStartAnnotation("Start here");
+        san = new SolutionStartAnnotation().setText("Start here");
         expResult.add(san);
         registry.addAnnotation(san, relFilePath2, 2);
         result = registry.getAnnotations(anClass, relFilePath2);
