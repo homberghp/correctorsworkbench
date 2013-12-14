@@ -131,7 +131,7 @@ public abstract class MarkerAction implements ActionListener {
      * @throws InstantiationException
      * @throws IllegalAccessException 
      */
-    protected abstract void doWork() throws IOException, IndexOutOfBoundsException, InstantiationException, IllegalAccessException;
+    protected abstract void doWork() throws Exception;//IOException, IndexOutOfBoundsException, InstantiationException, IllegalAccessException;
 
     /**
      * Reaction to GUI event.
@@ -141,7 +141,7 @@ public abstract class MarkerAction implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             doWork();
-        } catch (IOException | IndexOutOfBoundsException |InstantiationException | IllegalAccessException ex) {
+        } catch (Exception ex) {
             getLogger().log(Level.INFO, "action failed with ", ex);
         }
     }
