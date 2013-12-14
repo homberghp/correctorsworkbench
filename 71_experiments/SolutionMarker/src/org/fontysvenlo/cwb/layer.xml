@@ -3,10 +3,10 @@
 <filesystem>
     <folder name="Editors">
         <folder name="AnnotationTypes">
-            <file name="cwbSolution.xml" url="cwbSolution.xml"/>
-            <file name="cwbSolutionEnd.xml" url="cwbSolutionEnd.xml"/>
-            <file name="cwbTask.xml" url="cwbTask.xml"/>
-            <file name="cwbTaskEnd.xml" url="cwbTaskEnd.xml"/>
+            <file name="cwbSolution.xml" url="annotations/cwbSolution.xml"/>
+            <file name="cwbSolutionEnd.xml" url="annotations/cwbSolutionEnd.xml"/>
+            <file name="cwbTask.xml" url="annotations/cwbTask.xml"/>
+            <file name="cwbTaskEnd.xml" url="annotations/cwbTaskEnd.xml"/>
         </folder>
     </folder>
 </filesystem>

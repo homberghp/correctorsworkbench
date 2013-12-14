@@ -149,7 +149,7 @@ public abstract class MarkerAction implements ActionListener {
     @SuppressWarnings("unchecked")
     public int removeSolutionMarkers(DataObject d, final StyledDocument doc) {
         String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
-        AnnotationRegistry registry = AnnotationRegistry.getInstance();
+        AnnotationRegistry<Annotation> registry = AnnotationRegistry.getInstance();
         int result = 0;
         List<Annotation> an1List = registry.getAnnotations(startAnnotationClass, fileName);
         result += an1List.size();

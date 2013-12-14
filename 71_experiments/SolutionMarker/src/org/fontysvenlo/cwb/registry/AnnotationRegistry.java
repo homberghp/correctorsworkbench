@@ -19,7 +19,9 @@ public class AnnotationRegistry<A extends Annotation> {
 
     private static class Holder<T> {
 
-        private static final AnnotationRegistry REGISTRY = new AnnotationRegistry();
+        @SuppressWarnings("rawtypes")
+        private static final AnnotationRegistry<?> REGISTRY
+                = new AnnotationRegistry();
     }
 
     /**
@@ -27,10 +29,12 @@ public class AnnotationRegistry<A extends Annotation> {
      *
      * @return
      */
+    @SuppressWarnings("rawtypes")
     public static AnnotationRegistry getInstance() {
         return Holder.REGISTRY;
     }
-    private final ConcurrentMap<Class<?>, ConcurrentMap<String, List<A>>> register = new ConcurrentHashMap<>();
+    private final ConcurrentMap<Class<?>, ConcurrentMap<String, List<A>>> register
+            = new ConcurrentHashMap<>();
 
     /**
      * Add an annotation to register. The file path is used in the register, the
@@ -42,10 +46,14 @@ public class AnnotationRegistry<A extends Annotation> {
      * @param relFilePath the file in which the annotation is placed
      * @param lineNumber the line number for information in logging only
      */
-    public <A extends Annotation> void addAnnotation(A an, String relFilePath, int lineNumber) {
+    @SuppressWarnings({"rawtypes","unchecked"})
+    public <A extends Annotation> void addAnnotation(A an, String relFilePath,
+            int lineNumber) {
         List anList = ensureFileMapping(an.getClass(), relFilePath);
         anList.add(an);
-        logger.log(Level.INFO, String.format("Added to file relFilePath %s, annotation %s at line %d", relFilePath, an, lineNumber));
+        logger.log(Level.INFO, String.format(
+                "Added to file relFilePath %s, annotation %s at line %d",
+                relFilePath, an, lineNumber));
     }
 
     /**
@@ -115,7 +123,8 @@ public class AnnotationRegistry<A extends Annotation> {
     private ConcurrentMap<String, List<A>> ensureClassMapping(Class<?> aClass) {
         if (!register.containsKey(aClass)) {
             synchronized (register) {
-                ConcurrentMap<String, List<A>> fileMap = new ConcurrentHashMap<>();
+                ConcurrentMap<String, List<A>> fileMap
+                        = new ConcurrentHashMap<>();
                 register.putIfAbsent(aClass, fileMap);
             }
         }
@@ -123,7 +132,7 @@ public class AnnotationRegistry<A extends Annotation> {
 
     }
 
-    private List<A> ensureFileMapping(Class aClass, String relFilePath) {
+    private List<A> ensureFileMapping(Class<?> aClass, String relFilePath) {
         ConcurrentMap<String, List<A>> fileMap = ensureClassMapping(aClass);
         if (!fileMap.containsKey(relFilePath)) {
             synchronized (fileMap) {

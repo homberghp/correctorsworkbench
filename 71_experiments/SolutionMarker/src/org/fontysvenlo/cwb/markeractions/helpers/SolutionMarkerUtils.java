@@ -56,6 +56,7 @@ public class SolutionMarkerUtils {
                         regionEnd));
         startAnnotation.attach(firstLine);
         startAnnotation.moveToFront();
+        @SuppressWarnings("unchecked")
         AnnotationRegistry<Annotation> registy = (AnnotationRegistry<Annotation>) AnnotationRegistry.getInstance();
         registy.addAnnotation(startAnnotation, fileName, regionStart);
         endAnnotation.attach(lastLine);
@@ -216,7 +217,7 @@ public class SolutionMarkerUtils {
         String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
         Class<?> anC1 = SolutionStartAnnotation.class;
         Class<?> anC2 = SolutionEndAnnotation.class;
-        AnnotationRegistry registry =  AnnotationRegistry.getInstance();
+        AnnotationRegistry<Annotation> registry =  AnnotationRegistry.getInstance();
         int result = 0;
         List<Annotation> an1List = registry.getAnnotations(anC1, fileName);
         result += an1List.size();
