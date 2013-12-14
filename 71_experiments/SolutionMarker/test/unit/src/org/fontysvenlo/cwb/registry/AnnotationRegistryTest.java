@@ -7,6 +7,7 @@ package org.fontysvenlo.cwb.registry;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.naming.OperationNotSupportedException;
 import org.fontysvenlo.cwb.annotations.ExamAnnotation;
 import org.fontysvenlo.cwb.annotations.SolutionStartAnnotation;
 import org.junit.Test;
@@ -25,21 +26,25 @@ public class AnnotationRegistryTest {
      * Test of addAnnotation method, of class AnnotationRegistry.
      */
     @Test
-    public void testAddAnnotation() throws InstantiationException, IllegalAccessException {
+    public void testAddAnnotation() throws InstantiationException,
+            IllegalAccessException {
         System.out.println("addAnnotation");
-        ExamAnnotation an = SolutionStartAnnotation.class.newInstance().setText("test");
+        ExamAnnotation an = SolutionStartAnnotation.class.newInstance().setText(
+                "test");
         String relFilePath = "somefilename.java";
         int lineNumber = 0;
         int count = registry.registerCount();
         registry.addAnnotation(an, relFilePath, lineNumber);
-        assertEquals("count should increase", 1 + count, registry.registerCount());
+        assertEquals("count should increase", 1 + count, registry.
+                registerCount());
     }
 
     /**
      * Test of getAnnotations method, of class AnnotationRegistry.
      */
     @Test
-    public void testGetAnnotations() throws InstantiationException, IllegalAccessException {
+    public void testGetAnnotations() throws InstantiationException,
+            IllegalAccessException {
         System.out.println("getAnnotations");
         Class anClass = SolutionStartAnnotation.class;
         ExamAnnotation san = new SolutionStartAnnotation().setText("Start here");
@@ -47,21 +52,28 @@ public class AnnotationRegistryTest {
         registry.addAnnotation(san, relFilePath1, 1);
         List<Annotation> expResult = new ArrayList<>();
         expResult.add(san);
-        List<Annotation> result = registry.getAnnotations(anClass, relFilePath1);
-        assertEquals(expResult, result);
+        List<Annotation> list = registry.getAnnotations(anClass, relFilePath1);
+        assertEquals(expResult, list);
         san = new SolutionStartAnnotation().setText("Start here");
         expResult.add(san);
         registry.addAnnotation(san, relFilePath1, 2);
-        result = registry.getAnnotations(anClass, relFilePath1);
-        assertEquals(expResult, result);
+        list = registry.getAnnotations(anClass, relFilePath1);
+        assertEquals(expResult, list);
 
         String relFilePath2 = "somefilepath2.java";
         expResult = new ArrayList<>();
         san = new SolutionStartAnnotation().setText("Start here");
         expResult.add(san);
         registry.addAnnotation(san, relFilePath2, 2);
-        result = registry.getAnnotations(anClass, relFilePath2);
-        assertEquals(expResult, result);
+        list = registry.getAnnotations(anClass, relFilePath2);
+        assertEquals(expResult, list);
+        // try to muck with the list 
+        try {
+            list.add(san);
+            fail("should refuse");
+        } catch (UnsupportedOperationException usoe) {
+            assertNotNull("all is well");
+        }
     }
 
 }
