@@ -4,18 +4,18 @@
  * and open the template in the editor.
  */
 
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.annotations;
 
 /**
  *
  * @author hom
  */
 
-public class TaskEndAnnotation extends ExamAnnotation {
+public class SolutionStartAnnotation extends ExamAnnotation {
 
     @Override
     public String getAnnotationType() {
-        return "org-fontysvenlo-cwb-task-end";
+        return "org-fontysvenlo-cwb-annotations-solution-start";
     }
 
     @Override

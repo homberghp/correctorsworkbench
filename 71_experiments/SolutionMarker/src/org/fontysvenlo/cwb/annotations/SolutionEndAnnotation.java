@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.annotations;
 
 /**
  *
@@ -15,7 +15,7 @@ public class SolutionEndAnnotation extends ExamAnnotation {
 
     @Override
     public String getAnnotationType() {
-        return "org-fontysvenlo-cwb-solution-end";
+        return "org-fontysvenlo-cwb-annotations-solution-end";
     }
 
     @Override

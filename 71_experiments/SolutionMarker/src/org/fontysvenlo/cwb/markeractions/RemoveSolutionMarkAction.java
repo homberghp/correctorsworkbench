@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.markeractions;
 
 import java.io.IOException;
+import  org.fontysvenlo.cwb.markeractions.helpers.SolutionAction;
+
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
@@ -20,7 +22,7 @@ import org.openide.util.NbBundle;
  */
 @ActionID(
         category = "Tools",
-        id = "org.fontysvenlo.cwb.RemoveSolutionMarkAction")
+        id = "org.fontysvenlo.cwb.markeractions.RemoveSolutionMarkAction")
 @ActionRegistration(
         displayName = "#CTL_RemoveSolutionMarkAction")
 @ActionReferences({

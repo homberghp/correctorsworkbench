@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.markeractions.helpers;
 
+import org.fontysvenlo.cwb.annotations.ExamAnnotation;
+import org.fontysvenlo.cwb.annotations.SolutionEndAnnotation;
+import org.fontysvenlo.cwb.annotations.SolutionStartAnnotation;
+import org.fontysvenlo.cwb.registry.AnnotationRegistry;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;

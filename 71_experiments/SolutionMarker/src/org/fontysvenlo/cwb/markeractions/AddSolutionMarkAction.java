@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.markeractions;
 
 import java.io.IOException;
+import org.fontysvenlo.cwb.markeractions.helpers.SolutionAction;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
@@ -19,10 +20,10 @@ import org.openide.util.NbBundle;
  */
 @ActionID(
         category = "Tools",
-        id = "org.fontysvenlo.cwb.AddSolutionMarkAction")
+        id = "org.fontysvenlo.cwb.markeractions.AddSolutionMarkAction")
 @ActionRegistration(
         displayName = "#CTL_AddSolutionMarkAction",
-        iconBase = "org/fontysvenlo/cwb/solution/solution.png")
+        iconBase = "org/fontysvenlo/cwb/icons/solution.png")
 @ActionReferences({
     @ActionReference(path = "Editors/Popup", position = 10)
 })

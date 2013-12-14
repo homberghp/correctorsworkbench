@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.markeractions;
 
 import java.io.IOException;
+import org.fontysvenlo.cwb.markeractions.helpers.TaskAction;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
@@ -19,10 +20,10 @@ import org.openide.util.NbBundle;
  */
 @ActionID(
         category = "Tools",
-        id = "org.fontysvenlo.cwb.AddTaskMarkAction")
+        id = "org.fontysvenlo.cwb.markeractions.AddTaskMarkAction")
 @ActionRegistration(
         displayName = "#CTL_AddTaskMark",
-        iconBase = "org/fontysvenlo/cwb/solution/workinprogress.png")
+        iconBase = "org/fontysvenlo/cwb/icons/workinprogress.png")
 @ActionReferences({
     @ActionReference(path = "Editors/Popup", position = 10)
 })

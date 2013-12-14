@@ -2,11 +2,11 @@
 <!DOCTYPE type PUBLIC
           "-//NetBeans//DTD annotation type 1.0//EN"
           "http://www.netbeans.org/dtds/annotation-type-1_0.dtd">
-<type name="org-fontysvenlo-cwb-solution-end"
-      description_key="LBL_cwb-solution-end"
+<type name="org-fontysvenlo-cwb-annotations-solution-end"
+      description_key="LBL_cwb-annotations-solution-end"
       localizing_bundle="org.fontysvenlo.cwb.Bundle"
       visible="true" 
-      glyph="nbresloc:/org/fontysvenlo/cwb/solution/dontstop.png"
+      glyph="nbresloc:/org/fontysvenlo/cwb/icons/dontstop.png"
       type="line"
       highlight="#00cccc"
       severity="ok"

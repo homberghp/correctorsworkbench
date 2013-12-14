@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.annotations;
 
 /**
  *
@@ -14,7 +14,7 @@ package org.fontysvenlo.cwb;
 public class TaskStartAnnotation extends ExamAnnotation {
     @Override
     public String getAnnotationType() {
-        return "org-fontysvenlo-cwb-task-start";
+        return "org-fontysvenlo-cwb-annotations-task-start";
     }
 
     @Override

@@ -1,5 +1,8 @@
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.markeractions.helpers;
 
+import org.fontysvenlo.cwb.SolutionMarkerPanel;
+import org.fontysvenlo.cwb.annotations.TaskStartAnnotation;
+import org.fontysvenlo.cwb.annotations.TaskEndAnnotation;
 import org.openide.loaders.DataObject;
 import org.openide.util.NbPreferences;
 /*

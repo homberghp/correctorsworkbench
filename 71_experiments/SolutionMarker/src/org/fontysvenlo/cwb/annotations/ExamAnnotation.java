@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.annotations;
 
 import org.openide.text.Annotation;
 

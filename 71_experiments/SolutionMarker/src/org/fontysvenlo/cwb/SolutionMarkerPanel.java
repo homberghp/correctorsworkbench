@@ -2,7 +2,7 @@ package org.fontysvenlo.cwb;
 
 import org.openide.util.NbPreferences;
 
-final class SolutionMarkerPanel extends javax.swing.JPanel {
+public final class SolutionMarkerPanel extends javax.swing.JPanel {
 
     private final SolutionMarkerOptionsPanelController controller;
 
@@ -23,9 +23,9 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         documentationTA = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        startTagTA = new javax.swing.JTextArea();
+        startSolutionTagTA = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        endTagTA = new javax.swing.JTextArea();
+        endSolutionTagTA = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -42,26 +42,26 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
         documentationTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.documentationTA.text")); // NOI18N
         jScrollPane1.setViewportView(documentationTA);
 
-        startTagTA.setColumns(40);
-        startTagTA.setRows(2);
-        jScrollPane2.setViewportView(startTagTA);
+        startSolutionTagTA.setColumns(40);
+        startSolutionTagTA.setRows(2);
+        jScrollPane2.setViewportView(startSolutionTagTA);
 
-        endTagTA.setColumns(40);
-        endTagTA.setRows(2);
-        endTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endTagTA.text")); // NOI18N
-        endTagTA.setPreferredSize(new java.awt.Dimension(300, 42));
-        endTagTA.setRequestFocusEnabled(false);
-        jScrollPane3.setViewportView(endTagTA);
+        endSolutionTagTA.setColumns(40);
+        endSolutionTagTA.setRows(2);
+        endSolutionTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endSolutionTagTA.text")); // NOI18N
+        endSolutionTagTA.setPreferredSize(new java.awt.Dimension(300, 42));
+        endSolutionTagTA.setRequestFocusEnabled(false);
+        jScrollPane3.setViewportView(endSolutionTagTA);
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel3.text")); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/solution.png"))); // NOI18N
-        jLabel4.setLabelFor(startTagTA);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/solution.png"))); // NOI18N
+        jLabel4.setLabelFor(startSolutionTagTA);
         org.openide.awt.Mnemonics.setLocalizedText(jLabel4, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel4.text")); // NOI18N
         jLabel4.setToolTipText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel4.toolTipText")); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/dontstop.png"))); // NOI18N
-        jLabel5.setLabelFor(endTagTA);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/dontstop.png"))); // NOI18N
+        jLabel5.setLabelFor(endSolutionTagTA);
         org.openide.awt.Mnemonics.setLocalizedText(jLabel5, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel5.text")); // NOI18N
 
         startTaskTagTA.setColumns(40);
@@ -69,7 +69,7 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
         startTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.startTaskTagTA.text")); // NOI18N
         jScrollPane4.setViewportView(startTaskTagTA);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/workinprogress.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/workinprogress.png"))); // NOI18N
         jLabel6.setLabelFor(startTaskTagTA);
         org.openide.awt.Mnemonics.setLocalizedText(jLabel6, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel6.text")); // NOI18N
 
@@ -78,7 +78,7 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
         endTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endTaskTagTA.text")); // NOI18N
         jScrollPane5.setViewportView(endTaskTagTA);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/solution/oneway.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/oneway.png"))); // NOI18N
         jLabel7.setLabelFor(endTaskTagTA);
         org.openide.awt.Mnemonics.setLocalizedText(jLabel7, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel7.text")); // NOI18N
 
@@ -139,8 +139,10 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
         // someCheckBox.setSelected(NbPreferences.forModule(SolutionMarkerPanel.class).getBoolean("someFlag", false));
         // or:
         // someTextField.setText(SomeSystemOption.getDefault().getSomeStringProperty());
-        startTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("startTag", "//StartSolution"));
-        endTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("endTag", "//EndSolution"));
+        startSolutionTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("solutionStartTag", "//StartSolution"));
+        endSolutionTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("solutionEndTag", "//EndSolution"));
+        startTaskTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("taskStartTag","//<editor-fold>"));
+        endTaskTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("taskEndTag","//</editor-fold>"));
     }
 
     void store() {
@@ -151,8 +153,10 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
         // NbPreferences.forModule(SolutionMarkerPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
         // or:
         // SomeSystemOption.getDefault().setSomeStringProperty(someTextField.getText());
-        NbPreferences.forModule(SolutionMarkerPanel.class).put("startTag", startTagTA.getText());
-        NbPreferences.forModule(SolutionMarkerPanel.class).put("endTag", endTagTA.getText());
+        NbPreferences.forModule(SolutionMarkerPanel.class).put("solutionStartTag", startSolutionTagTA.getText());
+        NbPreferences.forModule(SolutionMarkerPanel.class).put("solutionEndTag", endSolutionTagTA.getText());
+        NbPreferences.forModule(SolutionMarkerPanel.class).put("taskStartTag", startTaskTagTA.getText());
+        NbPreferences.forModule(SolutionMarkerPanel.class).put("taskEndTag", endTaskTagTA.getText());
     }
 
     boolean valid() {
@@ -162,7 +166,7 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea documentationTA;
-    private javax.swing.JTextArea endTagTA;
+    private javax.swing.JTextArea endSolutionTagTA;
     private javax.swing.JTextArea endTaskTagTA;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -174,7 +178,7 @@ final class SolutionMarkerPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea startTagTA;
+    private javax.swing.JTextArea startSolutionTagTA;
     private javax.swing.JTextArea startTaskTagTA;
     // End of variables declaration//GEN-END:variables
 }

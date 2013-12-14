@@ -2,12 +2,14 @@
 <!DOCTYPE type PUBLIC
           "-//NetBeans//DTD annotation type 1.0//EN"
           "http://www.netbeans.org/dtds/annotation-type-1_0.dtd">
-<type name="org-fontysvenlo-cwb-task-end"
-      description_key="LBL_cwb-task-end"
+<type name="org-fontysvenlo-cwb-annotations-solution-start"
+      description_key="LBL_cwb-annotations-solution-start"
       localizing_bundle="org.fontysvenlo.cwb.Bundle"
       visible="true" 
-      glyph="nbresloc:/org/fontysvenlo/cwb/solution/oneway.png"
+      glyph="nbresloc:/org/fontysvenlo/cwb/icons/solution.png"
       type="line"
+      highlight="#00cccc"
+      custom_sidebar_color="#008888"
       severity="ok"
       browsable="true"
-      />
+/>

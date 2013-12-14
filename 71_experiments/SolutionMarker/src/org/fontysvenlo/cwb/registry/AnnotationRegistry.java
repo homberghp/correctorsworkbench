@@ -1,4 +1,4 @@
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.registry;
 
 import java.util.ArrayList;
 import java.util.List;

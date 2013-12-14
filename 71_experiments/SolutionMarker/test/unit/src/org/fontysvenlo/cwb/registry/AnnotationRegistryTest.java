@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.registry;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.fontysvenlo.cwb.annotations.ExamAnnotation;
+import org.fontysvenlo.cwb.annotations.SolutionStartAnnotation;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openide.text.Annotation;

@@ -2,11 +2,11 @@
 <!DOCTYPE type PUBLIC
           "-//NetBeans//DTD annotation type 1.0//EN"
           "http://www.netbeans.org/dtds/annotation-type-1_0.dtd">
-<type name="org-fontysvenlo-cwb-task-start"
-      description_key="LBL_cwb-task"
+<type name="org-fontysvenlo-cwb-annotations-task-start"
+      description_key="LBL_cwb-annotations-task-start"
       localizing_bundle="org.fontysvenlo.cwb.Bundle"
       visible="true" 
-      glyph="nbresloc:/org/fontysvenlo/cwb/solution/workinprogress.png"
+      glyph="nbresloc:/org/fontysvenlo/cwb/icons/workinprogress.png"
       type="line"
       custom_sidebar_color="#00AAAA"
       severity="ok"

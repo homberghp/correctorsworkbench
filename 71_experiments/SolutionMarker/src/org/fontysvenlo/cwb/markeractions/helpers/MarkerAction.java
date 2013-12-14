@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.fontysvenlo.cwb;
+package org.fontysvenlo.cwb.markeractions.helpers;
 
+import org.fontysvenlo.cwb.annotations.ExamAnnotation;
+import org.fontysvenlo.cwb.registry.AnnotationRegistry;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -20,7 +22,7 @@ import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.loaders.DataObjectNotFoundException;
-import static org.fontysvenlo.cwb.SolutionMarkerUtils.*;
+import static org.fontysvenlo.cwb.markeractions.helpers.SolutionMarkerUtils.*;
 import org.openide.text.Annotation;
 
 /**
