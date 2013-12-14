@@ -7,7 +7,6 @@ package org.fontysvenlo.cwb.registry;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.naming.OperationNotSupportedException;
 import org.fontysvenlo.cwb.annotations.ExamAnnotation;
 import org.fontysvenlo.cwb.annotations.SolutionStartAnnotation;
 import org.junit.Test;
@@ -24,6 +23,8 @@ public class AnnotationRegistryTest {
 
     /**
      * Test of addAnnotation method, of class AnnotationRegistry.
+     * @throws java.lang.InstantiationException
+     * @throws java.lang.IllegalAccessException
      */
     @Test
     public void testAddAnnotation() throws InstantiationException,
@@ -41,6 +42,8 @@ public class AnnotationRegistryTest {
 
     /**
      * Test of getAnnotations method, of class AnnotationRegistry.
+     * @throws java.lang.InstantiationException
+     * @throws java.lang.IllegalAccessException
      */
     @Test
     public void testGetAnnotations() throws InstantiationException,
