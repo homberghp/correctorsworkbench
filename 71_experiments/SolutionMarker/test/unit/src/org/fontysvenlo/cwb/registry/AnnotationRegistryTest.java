@@ -19,7 +19,7 @@ import org.openide.text.Annotation;
  */
 public class AnnotationRegistryTest {
 
-    final AnnotationRegistry<Annotation> registry = AnnotationRegistry.getInstance();
+    final AnnotationRegistry registry = AnnotationRegistry.getInstance();
 
     /**
      * Test of addAnnotation method, of class AnnotationRegistry.

@@ -6,6 +6,7 @@
 
 package org.fontysvenlo.cwb.annotations;
 
+import org.fontysvenlo.cwb.registry.AnnotationRegistry;
 import org.openide.text.Annotation;
 
 /**
