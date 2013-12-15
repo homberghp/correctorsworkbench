@@ -27,14 +27,14 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         endSolutionTagTA = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        solstartlabel = new javax.swing.JLabel();
+        solendtaglabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         startTaskTagTA = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
+        taskstartlabel = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         endTaskTagTA = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
+        taskendlabel = new javax.swing.JLabel();
 
         documentationTA.setBackground(java.awt.Color.lightGray);
         documentationTA.setColumns(20);
@@ -44,6 +44,7 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
 
         startSolutionTagTA.setColumns(40);
         startSolutionTagTA.setRows(2);
+        startSolutionTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.startSolutionTagTA.text")); // NOI18N
         jScrollPane2.setViewportView(startSolutionTagTA);
 
         endSolutionTagTA.setColumns(40);
@@ -55,32 +56,32 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel3.text")); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/solution.png"))); // NOI18N
-        jLabel4.setLabelFor(startSolutionTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel4, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel4.text")); // NOI18N
-        jLabel4.setToolTipText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel4.toolTipText")); // NOI18N
+        solstartlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/solution.png"))); // NOI18N
+        solstartlabel.setLabelFor(startSolutionTagTA);
+        org.openide.awt.Mnemonics.setLocalizedText(solstartlabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.solstartlabel.text")); // NOI18N
+        solstartlabel.setToolTipText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.solstartlabel.toolTipText")); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/dontstop.png"))); // NOI18N
-        jLabel5.setLabelFor(endSolutionTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel5, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel5.text")); // NOI18N
+        solendtaglabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/dontstop.png"))); // NOI18N
+        solendtaglabel.setLabelFor(endSolutionTagTA);
+        org.openide.awt.Mnemonics.setLocalizedText(solendtaglabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.solendtaglabel.text")); // NOI18N
 
         startTaskTagTA.setColumns(40);
         startTaskTagTA.setRows(2);
         startTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.startTaskTagTA.text")); // NOI18N
         jScrollPane4.setViewportView(startTaskTagTA);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/workinprogress.png"))); // NOI18N
-        jLabel6.setLabelFor(startTaskTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel6, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel6.text")); // NOI18N
+        taskstartlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/workinprogress.png"))); // NOI18N
+        taskstartlabel.setLabelFor(startTaskTagTA);
+        org.openide.awt.Mnemonics.setLocalizedText(taskstartlabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.taskstartlabel.text")); // NOI18N
 
         endTaskTagTA.setColumns(40);
         endTaskTagTA.setRows(2);
         endTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endTaskTagTA.text")); // NOI18N
         jScrollPane5.setViewportView(endTaskTagTA);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/oneway.png"))); // NOI18N
-        jLabel7.setLabelFor(endTaskTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel7, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel7.text")); // NOI18N
+        taskendlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/oneway.png"))); // NOI18N
+        taskendlabel.setLabelFor(endTaskTagTA);
+        org.openide.awt.Mnemonics.setLocalizedText(taskendlabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.taskendlabel.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,40 +90,43 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7)
+                    .addComponent(solendtaglabel)
+                    .addComponent(solstartlabel)
+                    .addComponent(taskendlabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6)
+                    .addComponent(taskstartlabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(269, 269, 269)
                         .addComponent(jLabel3))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2)
                     .addComponent(jScrollPane5))
                 .addGap(555, 555, 555))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel4)
+                .addComponent(solstartlabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(solendtaglabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(taskstartlabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(taskendlabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -169,16 +173,16 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea endSolutionTagTA;
     private javax.swing.JTextArea endTaskTagTA;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel solendtaglabel;
+    private javax.swing.JLabel solstartlabel;
     private javax.swing.JTextArea startSolutionTagTA;
     private javax.swing.JTextArea startTaskTagTA;
+    private javax.swing.JLabel taskendlabel;
+    private javax.swing.JLabel taskstartlabel;
     // End of variables declaration//GEN-END:variables
 }
