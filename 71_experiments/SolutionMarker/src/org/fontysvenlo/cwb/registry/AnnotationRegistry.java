@@ -141,7 +141,7 @@ public class AnnotationRegistry {
     }
 
     /**
-     * Ensure taht a mapping from type to map of string to list exists.
+     * Ensure that a mapping from type to map of string to list exists.
      *
      * @param aClass
      * @return
@@ -160,6 +160,13 @@ public class AnnotationRegistry {
         return res;
     }
 
+    /**
+     * Ensure a mapping for type and path exists.
+     * @param <A> the generic type parameter
+     * @param aClass the type
+     * @param relFilePath the path
+     * @return a List that can be used to insert objects in.
+     */
     private <A extends Annotation> List<?> ensureFileMapping(Class<A> aClass,
             String relFilePath) {
         ConcurrentMap<String, ListPair<?>> fileMap = ensureClassMapping(aClass);
@@ -173,6 +180,13 @@ public class AnnotationRegistry {
         return fileMap.get(relFilePath).privateList;
     }
 
+    /**
+     * Ensure type safeness for published list by only publishing an
+     * unmodifiable list. The published list throws
+     * UnsupportedOperationException on modifying method class.
+     *
+     * @param <A> type of pair.
+     */
     private static class ListPair<A> {
 
         final List<?> privateList;
@@ -183,7 +197,6 @@ public class AnnotationRegistry {
                     checkedList(new ArrayList<A>(), clazz);
             this.publicList = Collections.unmodifiableList(privateList);
         }
-
     }
     private static final Logger logger = Logger.getLogger(
             AnnotationRegistry.class.getName());
