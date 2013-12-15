@@ -7,7 +7,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.openide.text.Annotation;
 
 /**
  * Registry for active SolutionMarker Annotations. Annotation are registered
@@ -19,7 +18,6 @@ import org.openide.text.Annotation;
 public class AnnotationRegistry {
 
     private static class Holder<T> {
-
         @SuppressWarnings("rawtypes")
         private static final AnnotationRegistry REGISTRY
                 = new AnnotationRegistry();
@@ -42,18 +40,18 @@ public class AnnotationRegistry {
      * is rather fragile (it changes easily) and cannot reliably be used in
      * lookup.
      *
-     * @param an the annotation
+     * @param an the annotationannotation %s
      * @param relFilePath the file in which the annotation is placed
      * @param lineNumber the line number for information in logging only
      */
-    public <A extends Annotation> void addAnnotation(A an, String relFilePath,
+    public <A> void addAnnotation(A an, String relFilePath,
             int lineNumber) {
         List<?> anList = ensureFileMapping(an.getClass(), relFilePath);
         @SuppressWarnings("unchecked")
         List<A> uList = (List<A>) anList;
         uList.add(an);
         logger.log(Level.INFO, String.format(
-                "Added to file relFilePath %s, annotation %s at line %d",
+                "Added annotation %s to file relFilePath %s, line %d",
                 relFilePath, an, lineNumber));
     }
 
@@ -65,7 +63,7 @@ public class AnnotationRegistry {
      * @param an annotation
      * @param relFilePath for file
      */
-    public <A extends Annotation> void removeAnnotation(A an, String relFilePath) {
+    public <A> void removeAnnotation(A an, String relFilePath) {
         List<?> list = register.get(an.getClass()).get(relFilePath).privateList;
         list.remove(an);
         if (list.isEmpty()) {
@@ -80,7 +78,7 @@ public class AnnotationRegistry {
      * @param relFilePath
      * @return
      */
-    public <A extends Annotation> List<A> getAnnotations(Class<?> aClass,
+    public <A> List<A> getAnnotations(Class<?> aClass,
             String relFilePath) {
         ListPair<?> result = null;
         ConcurrentMap<?, ListPair<?>> fileMap = register.get(aClass);
@@ -100,7 +98,7 @@ public class AnnotationRegistry {
      *
      * @return
      */
-    <A extends Annotation> int registerCount() {
+    <A> int registerCount() {
         int result = 0;
         for (ConcurrentMap<?, ListPair<?>> m : register.values()) {
             for (ListPair<?> l : m.values()) {
@@ -110,7 +108,7 @@ public class AnnotationRegistry {
         return result;
     }
 
-    <A extends Annotation> int count(Class<A> aClass, String relFitePath) {
+    <A> int count(Class<A> aClass, String relFitePath) {
         int result = 0;
         if (!register.containsKey(aClass)) {
             return result;
@@ -129,7 +127,7 @@ public class AnnotationRegistry {
      * @param aClass annotation for which the instances must be erased for
      * @param relFitePath the file to erase annotations for
      */
-    public <A extends Annotation> void clear(Class<A> aClass, String relFitePath) {
+    public <A> void clear(Class<A> aClass, String relFitePath) {
         if (!register.containsKey(aClass)) {
             return;
         }
@@ -167,7 +165,7 @@ public class AnnotationRegistry {
      * @param relFilePath the path
      * @return a List that can be used to insert objects in.
      */
-    private <A extends Annotation> List<?> ensureFileMapping(Class<A> aClass,
+    private <A> List<?> ensureFileMapping(Class<A> aClass,
             String relFilePath) {
         ConcurrentMap<String, ListPair<?>> fileMap = ensureClassMapping(aClass);
         if (!fileMap.containsKey(relFilePath)) {
