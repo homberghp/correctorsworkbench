@@ -36,8 +36,9 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
         endTaskTagTA = new javax.swing.JTextArea();
         taskendlabel = new javax.swing.JLabel();
 
-        documentationTA.setBackground(java.awt.Color.lightGray);
+        documentationTA.setEditable(false);
         documentationTA.setColumns(20);
+        documentationTA.setLineWrap(true);
         documentationTA.setRows(4);
         documentationTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.documentationTA.text")); // NOI18N
         jScrollPane1.setViewportView(documentationTA);
