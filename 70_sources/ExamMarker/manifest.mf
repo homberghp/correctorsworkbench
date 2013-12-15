@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.fontysvenlo.cwb
+OpenIDE-Module-Layer: org/fontysvenlo/cwb/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/fontysvenlo/cwb/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
