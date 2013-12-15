@@ -17,10 +17,5 @@ public class SolutionEndAnnotation extends ExamAnnotation {
     public String getAnnotationType() {
         return "org-fontysvenlo-cwb-annotations-solution-end";
     }
-
-    @Override
-    public String getShortDescription() {
-        return text;
-    }
     
 }

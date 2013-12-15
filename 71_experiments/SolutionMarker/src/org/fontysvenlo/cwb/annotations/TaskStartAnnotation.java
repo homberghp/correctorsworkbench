@@ -16,10 +16,4 @@ public class TaskStartAnnotation extends ExamAnnotation {
     public String getAnnotationType() {
         return "org-fontysvenlo-cwb-annotations-task-start";
     }
-
-    @Override
-    public String getShortDescription() {
-        return text;
-    }
-    
 }

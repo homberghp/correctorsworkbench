@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 public class AnnotationRegistry {
 
     private static class Holder<T> {
+
         @SuppressWarnings("rawtypes")
         private static final AnnotationRegistry REGISTRY
                 = new AnnotationRegistry();
@@ -40,7 +41,7 @@ public class AnnotationRegistry {
      * is rather fragile (it changes easily) and cannot reliably be used in
      * lookup.
      *
-     * @param an the annotationannotation %s
+     * @param an the annotation %s
      * @param relFilePath the file in which the annotation is placed
      * @param lineNumber the line number for information in logging only
      */
@@ -160,6 +161,7 @@ public class AnnotationRegistry {
 
     /**
      * Ensure a mapping for type and path exists.
+     *
      * @param <A> the generic type parameter
      * @param aClass the type
      * @param relFilePath the path
@@ -195,6 +197,46 @@ public class AnnotationRegistry {
                     checkedList(new ArrayList<A>(), clazz);
             this.publicList = Collections.unmodifiableList(privateList);
         }
+    }
+
+    /**
+     * Return the number of registered types in this registry.
+     *
+     * @return size of top level map
+     */
+    int typeCount() {
+        return register.size();
+    }
+
+    /**
+     * Start with a new slate.
+     */
+    void clear() {
+        register.clear();
+    }
+
+    /**
+     * String representation of registry 'tree'.
+     * @return a string
+     */
+    @Override
+    public String toString() {
+        StringBuilder result
+                = new StringBuilder(this.getClass().getSimpleName()).append(
+                        ":\n");
+
+        for (Class<?> c : register.keySet()) {
+            result.append("\t").append(c.getSimpleName()).append("->\n");
+            for (String s : register.get(c).keySet()) {
+                result.append("\t\t").append(s).append("->\n");
+                for (Object o : register.get(c).get(s).publicList) {
+                    result.append("\t\t\t").
+                            append("->").append(o.toString()).append("\n");
+                }
+            }
+        }
+
+        return result.toString();
     }
     private static final Logger logger = Logger.getLogger(
             AnnotationRegistry.class.getName());
