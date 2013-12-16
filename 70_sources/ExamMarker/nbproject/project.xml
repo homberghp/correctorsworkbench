@@ -219,7 +219,6 @@
             <public-packages/>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
-            <word>unsupportedopexception</word>
         </spellchecker-wordlist>
     </configuration>
 </project>
