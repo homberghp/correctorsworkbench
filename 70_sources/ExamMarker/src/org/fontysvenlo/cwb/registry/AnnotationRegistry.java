@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.openide.text.Annotation;
 
 /**
  * Registry for active SolutionMarker Annotations. Annotation are registered
@@ -16,6 +18,26 @@ import java.util.logging.Logger;
  * @author Pieter van den Hombergh
  */
 public class AnnotationRegistry {
+
+    /**
+     * Deregister for file and annolations listed.
+     * @param <T> type of object
+     * @param fileName the file name 
+     * @param remoList the list of objects to be discarded
+     */
+    public <T> void removeAnnotations(String fileName, List<T> remoList) {
+        if (remoList.isEmpty()) return;
+        if (fileName == null ) return ;
+        
+        Class<?> aClass = remoList.get(0).getClass();
+        if (! register.containsKey(aClass) || ! register.get(aClass).containsKey(
+                fileName)) return;
+        List<?> l = register.get(aClass).get(fileName).privateList;
+        l.removeAll(remoList);
+        if (l.isEmpty()) {
+            register.get(aClass).remove(fileName);
+        }
+    }
 
     private static class Holder<T> {
 
@@ -59,6 +81,8 @@ public class AnnotationRegistry {
     /**
      * Remove an annotation for file. If the list of annotation is empty, the
      * file is removed from the mapping too.
+     * Do not call this method while iterating a annotation list for the same file.
+     * That would cause a ConcurrentmodificationException;
      *
      * @param <A> annotation type
      * @param an annotation
@@ -194,7 +218,7 @@ public class AnnotationRegistry {
 
         private ListPair(Class<A> clazz) {
             this.privateList = Collections.
-                    checkedList(new ArrayList<A>(), clazz);
+                    checkedList(new CopyOnWriteArrayList<A>(), clazz);
             this.publicList = Collections.unmodifiableList(privateList);
         }
     }

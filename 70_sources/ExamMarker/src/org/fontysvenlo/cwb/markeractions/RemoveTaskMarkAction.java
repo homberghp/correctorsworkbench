@@ -27,7 +27,7 @@ import org.openide.util.NbBundle;
 @ActionReferences({
     @ActionReference(path = "Editors/Popup", position = 11)
 })
-@NbBundle.Messages("CTL_RemoveTaskMarkAction=Removes all task marks from a document")
+@NbBundle.Messages("CTL_RemoveTaskMarkAction=Removes all task annotations from a document")
 public class RemoveTaskMarkAction extends TaskAction {
 
     public RemoveTaskMarkAction(DataObject context) {

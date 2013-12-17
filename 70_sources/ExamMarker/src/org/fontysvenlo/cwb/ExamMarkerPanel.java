@@ -3,11 +3,11 @@ package org.fontysvenlo.cwb;
 import org.openide.util.NbPreferences;
 import static org.fontysvenlo.cwb.CWBSettings.*;
 
-public final class SolutionMarkerPanel extends javax.swing.JPanel {
+public final class ExamMarkerPanel extends javax.swing.JPanel {
 
-    private final SolutionMarkerOptionsPanelController controller;
+    private final ExamMarkerOptionsPanelController controller;
 
-    SolutionMarkerPanel(SolutionMarkerOptionsPanelController controller) {
+    ExamMarkerPanel(ExamMarkerOptionsPanelController controller) {
         this.controller = controller;
         initComponents();
         // TODO listen to changes in form fields and call controller.changed()
@@ -41,49 +41,49 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
         documentationTA.setColumns(20);
         documentationTA.setLineWrap(true);
         documentationTA.setRows(4);
-        documentationTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.documentationTA.text")); // NOI18N
+        documentationTA.setText(org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.documentationTA.text")); // NOI18N
         jScrollPane1.setViewportView(documentationTA);
 
         startSolutionTagTA.setColumns(40);
         startSolutionTagTA.setRows(2);
-        startSolutionTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.startSolutionTagTA.text")); // NOI18N
+        startSolutionTagTA.setText(org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.startSolutionTagTA.text")); // NOI18N
         jScrollPane2.setViewportView(startSolutionTagTA);
 
         endSolutionTagTA.setColumns(40);
         endSolutionTagTA.setRows(2);
-        endSolutionTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endSolutionTagTA.text")); // NOI18N
+        endSolutionTagTA.setText(org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.endSolutionTagTA.text")); // NOI18N
         endSolutionTagTA.setPreferredSize(new java.awt.Dimension(300, 42));
         endSolutionTagTA.setRequestFocusEnabled(false);
         jScrollPane3.setViewportView(endSolutionTagTA);
 
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.jLabel3.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.jLabel3.text")); // NOI18N
 
         solstartlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/solution.png"))); // NOI18N
         solstartlabel.setLabelFor(startSolutionTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(solstartlabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.solstartlabel.text")); // NOI18N
-        solstartlabel.setToolTipText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.solstartlabel.toolTipText")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(solstartlabel, org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.solstartlabel.text")); // NOI18N
+        solstartlabel.setToolTipText(org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.solstartlabel.toolTipText")); // NOI18N
 
         solendtaglabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/dontstop.png"))); // NOI18N
         solendtaglabel.setLabelFor(endSolutionTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(solendtaglabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.solendtaglabel.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(solendtaglabel, org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.solendtaglabel.text")); // NOI18N
 
         startTaskTagTA.setColumns(40);
         startTaskTagTA.setRows(2);
-        startTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.startTaskTagTA.text")); // NOI18N
+        startTaskTagTA.setText(org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.startTaskTagTA.text")); // NOI18N
         jScrollPane4.setViewportView(startTaskTagTA);
 
         taskstartlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/workinprogress.png"))); // NOI18N
         taskstartlabel.setLabelFor(startTaskTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(taskstartlabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.taskstartlabel.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(taskstartlabel, org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.taskstartlabel.text")); // NOI18N
 
         endTaskTagTA.setColumns(40);
         endTaskTagTA.setRows(2);
-        endTaskTagTA.setText(org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.endTaskTagTA.text")); // NOI18N
+        endTaskTagTA.setText(org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.endTaskTagTA.text")); // NOI18N
         jScrollPane5.setViewportView(endTaskTagTA);
 
         taskendlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/fontysvenlo/cwb/icons/oneway.png"))); // NOI18N
         taskendlabel.setLabelFor(endTaskTagTA);
-        org.openide.awt.Mnemonics.setLocalizedText(taskendlabel, org.openide.util.NbBundle.getMessage(SolutionMarkerPanel.class, "SolutionMarkerPanel.taskendlabel.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(taskendlabel, org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.taskendlabel.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -140,29 +140,29 @@ public final class SolutionMarkerPanel extends javax.swing.JPanel {
     void load() {
         // TODO read settings and initialize GUI
         // Example:        
-        // someCheckBox.setSelected(Preferences.userNodeForPackage(SolutionMarkerPanel.class).getBoolean("someFlag", false));
+        // someCheckBox.setSelected(Preferences.userNodeForPackage(ExamMarkerPanel.class).getBoolean("someFlag", false));
         // or for org.openide.util with API spec. version >= 7.4:
-        // someCheckBox.setSelected(NbPreferences.forModule(SolutionMarkerPanel.class).getBoolean("someFlag", false));
+        // someCheckBox.setSelected(NbPreferences.forModule(ExamMarkerPanel.class).getBoolean("someFlag", false));
         // or:
         // someTextField.setText(SomeSystemOption.getDefault().getSomeStringProperty());
-        startSolutionTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("solutionStartTag", defaultSolutionStartTag));
-        endSolutionTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("solutionEndTag", defaultSolutionEndTag));
-        startTaskTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("taskStartTag", defaultTaskStartTag));
-        endTaskTagTA.setText(NbPreferences.forModule(SolutionMarkerPanel.class).get("taskEndTag", defaultTaskEndTag));
+        startSolutionTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("solutionStartTag", defaultSolutionStartTag));
+        endSolutionTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("solutionEndTag", defaultSolutionEndTag));
+        startTaskTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("taskStartTag", defaultTaskStartTag));
+        endTaskTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("taskEndTag", defaultTaskEndTag));
     }
 
     void store() {
         // TODO store modified settings
         // Example:
-        // Preferences.userNodeForPackage(SolutionMarkerPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
+        // Preferences.userNodeForPackage(ExamMarkerPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
         // or for org.openide.util with API spec. version >= 7.4:
-        // NbPreferences.forModule(SolutionMarkerPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
+        // NbPreferences.forModule(ExamMarkerPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
         // or:
         // SomeSystemOption.getDefault().setSomeStringProperty(someTextField.getText());
-        NbPreferences.forModule(SolutionMarkerPanel.class).put("solutionStartTag", startSolutionTagTA.getText());
-        NbPreferences.forModule(SolutionMarkerPanel.class).put("solutionEndTag", endSolutionTagTA.getText());
-        NbPreferences.forModule(SolutionMarkerPanel.class).put("taskStartTag", startTaskTagTA.getText());
-        NbPreferences.forModule(SolutionMarkerPanel.class).put("taskEndTag", endTaskTagTA.getText());
+        NbPreferences.forModule(ExamMarkerPanel.class).put("solutionStartTag", startSolutionTagTA.getText());
+        NbPreferences.forModule(ExamMarkerPanel.class).put("solutionEndTag", endSolutionTagTA.getText());
+        NbPreferences.forModule(ExamMarkerPanel.class).put("taskStartTag", startTaskTagTA.getText());
+        NbPreferences.forModule(ExamMarkerPanel.class).put("taskEndTag", endTaskTagTA.getText());
     }
 
     boolean valid() {

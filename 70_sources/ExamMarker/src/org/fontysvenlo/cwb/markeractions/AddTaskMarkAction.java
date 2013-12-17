@@ -15,7 +15,7 @@ import org.openide.loaders.DataObject;
 import org.openide.util.NbBundle;
 
 /**
- *
+ * Action to Mark a set of lines as a task for the exam.
  * @author hom
  */
 @ActionID(

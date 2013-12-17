@@ -1,6 +1,6 @@
 package org.fontysvenlo.cwb.markeractions.helpers;
 
-import org.fontysvenlo.cwb.SolutionMarkerPanel;
+import org.fontysvenlo.cwb.ExamMarkerPanel;
 import org.fontysvenlo.cwb.annotations.TaskStartAnnotation;
 import org.fontysvenlo.cwb.annotations.TaskEndAnnotation;
 import org.openide.loaders.DataObject;
@@ -26,10 +26,10 @@ public abstract class TaskAction extends MarkerAction {
      */
     public TaskAction(DataObject context) {
         super(context, TaskStartAnnotation.class, TaskEndAnnotation.class);
-        startTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("startTag", defaultTaskStartTag);
-        endTag = NbPreferences.forModule(SolutionMarkerPanel.class).get("endTag", defaultTaskEndTag);
-        startAnnotationTooltip = NbPreferences.forModule(SolutionMarkerPanel.class).get("TaskStartTT", defaultStartAnnotationToolTip);
-        endAnnotationTooltip = NbPreferences.forModule(SolutionMarkerPanel.class).get("TaskEndTT", defaultEndAnnotationToolTip);
+        startTag = NbPreferences.forModule(ExamMarkerPanel.class).get("startTag", defaultTaskStartTag);
+        endTag = NbPreferences.forModule(ExamMarkerPanel.class).get("endTag", defaultTaskEndTag);
+        startAnnotationTooltip = NbPreferences.forModule(ExamMarkerPanel.class).get("TaskStartTT", defaultStartAnnotationToolTip);
+        endAnnotationTooltip = NbPreferences.forModule(ExamMarkerPanel.class).get("TaskEndTT", defaultEndAnnotationToolTip);
 
     }
 

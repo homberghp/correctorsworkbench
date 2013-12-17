@@ -28,7 +28,7 @@ import org.openide.util.NbBundle;
 @ActionReferences({
     @ActionReference(path = "Editors/Popup", position = 11)
 })
-@NbBundle.Messages("CTL_RemoveSolutionMarkAction=Removes all solution marks from a document")
+@NbBundle.Messages("CTL_RemoveSolutionMarkAction=Removes all solution annotations from a document")
 
 public class RemoveSolutionMarkAction extends SolutionAction {
 

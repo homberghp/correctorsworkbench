@@ -13,14 +13,16 @@ import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 
 @OptionsPanelController.SubRegistration(
-        displayName = "#AdvancedOption_DisplayName_SolutionMarker",
-        keywords = "#AdvancedOption_Keywords_SolutionMarker",
-        keywordsCategory = "Advanced/SolutionMarker"
+        displayName = "#AdvancedOption_DisplayName_ExamMarker",
+        keywords = "#AdvancedOption_Keywords_ExamMarker",
+        keywordsCategory = "Advanced/ExamMarker"
 )
-@org.openide.util.NbBundle.Messages({"AdvancedOption_DisplayName_SolutionMarker=Solution Marker", "AdvancedOption_Keywords_SolutionMarker=exam solution mark"})
-public final class SolutionMarkerOptionsPanelController extends OptionsPanelController {
+@org.openide.util.NbBundle.Messages({
+    "AdvancedOption_DisplayName_ExamMarker=Exam Marker",
+    "AdvancedOption_Keywords_ExamMarker=exam task and solution mark"})
+public final class ExamMarkerOptionsPanelController extends OptionsPanelController {
 
-    private SolutionMarkerPanel panel;
+    private ExamMarkerPanel panel;
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private boolean changed;
 
@@ -71,9 +73,9 @@ public final class SolutionMarkerOptionsPanelController extends OptionsPanelCont
         pcs.removePropertyChangeListener(l);
     }
 
-    private SolutionMarkerPanel getPanel() {
+    private ExamMarkerPanel getPanel() {
         if (panel == null) {
-            panel = new SolutionMarkerPanel(this);
+            panel = new ExamMarkerPanel(this);
         }
         return panel;
     }
@@ -81,7 +83,8 @@ public final class SolutionMarkerOptionsPanelController extends OptionsPanelCont
     void changed() {
         if (!changed) {
             changed = true;
-            pcs.firePropertyChange(OptionsPanelController.PROP_CHANGED, false, true);
+            pcs.firePropertyChange(OptionsPanelController.PROP_CHANGED, false,
+                    true);
         }
         pcs.firePropertyChange(OptionsPanelController.PROP_VALID, null, null);
     }
