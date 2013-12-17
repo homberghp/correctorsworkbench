@@ -26,14 +26,14 @@ import static org.fontysvenlo.cwb.markeractions.helpers.SolutionMarkerUtils.*;
 import org.openide.text.Annotation;
 
 /**
- *
+ * Provide common functions for cwb action.
+ * Super of editor actions if cwb.
+ * 
  * @author hom
  */
 public abstract class MarkerAction implements ActionListener {
 
     protected final DataObject context;
-//    protected ExamAnnotation endAnnotation;
-//    protected ExamAnnotation startAnnotation;
     protected String endTag;
     protected String startTag;
     protected String endAnnotationTooltip;
@@ -120,8 +120,7 @@ public abstract class MarkerAction implements ActionListener {
 
     protected void removeMarkers() throws IOException, DataObjectNotFoundException {
         DataObject d = getDataObjectForFile(getFile());
-        StyledDocument doc = getStyledDoc(d);
-        removeSolutionMarkers(d, doc);
+        removeSolutionMarkers(d);
     }
     /**
      * Worker as in Template method pattern. Thrifty at throwing exceptions.
@@ -131,7 +130,7 @@ public abstract class MarkerAction implements ActionListener {
      * @throws InstantiationException
      * @throws IllegalAccessException 
      */
-    protected abstract void doWork() throws Exception;//IOException, IndexOutOfBoundsException, InstantiationException, IllegalAccessException;
+    protected abstract void doWork() throws Exception;
 
     /**
      * Reaction to GUI event.
@@ -145,9 +144,14 @@ public abstract class MarkerAction implements ActionListener {
             getLogger().log(Level.INFO, "action failed with ", ex);
         }
     }
-
-    @SuppressWarnings("unchecked")
-    public int removeSolutionMarkers(DataObject d, final StyledDocument doc) {
+    /**
+     * Remove markers from document.
+     * Incomplete
+     * @param d dataobject from nb platform
+     * @param doc editor 
+     * @return the number of removed markers.
+     */
+    public int removeSolutionMarkers(DataObject d){
         String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
         AnnotationRegistry registry = AnnotationRegistry.getInstance();
         int result = 0;
@@ -165,5 +169,4 @@ public abstract class MarkerAction implements ActionListener {
         }
         return result;
     }
-
 }

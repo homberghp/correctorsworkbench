@@ -56,7 +56,7 @@ public class SolutionMarkerUtils {
                         regionEnd));
         startAnnotation.attach(firstLine);
         startAnnotation.moveToFront();
-        @SuppressWarnings("unchecked")
+        
         AnnotationRegistry registy = AnnotationRegistry.getInstance();
         registy.addAnnotation(startAnnotation, fileName, regionStart);
         endAnnotation.attach(lastLine);
@@ -89,7 +89,9 @@ public class SolutionMarkerUtils {
         }
         final int insertionPoint1 = roundToLineStart(doc, Math.min(caret.getDot(), caret.getMark()));
         final int insertionPoint2 = roundToNextLineStart(doc, Math.max(caret.getDot(), caret.getMark()));
-        final int oldRegionLength = (insertionPoint2 - insertionPoint1);
+        final int oldRegionLength = insertionPoint2 - insertionPoint1;
+        final String[] prefixLines = prefix.trim().split("\n");
+        final String[] postfixLines = postfix.trim().split("\n");
         NbDocument.runAtomic(doc, new Runnable() {
             @Override
             public void run() {
@@ -97,8 +99,8 @@ public class SolutionMarkerUtils {
                     // do postfix first, so the starting point of the selection will not change,
                     // so we can still validly insert the prefix in the 2nd step.
                     String indent = findIndent(doc, Math.min(caret.getDot(), caret.getMark()));
-                    String indentedPrefix = indent + stringsJoin("\n" + indent, prefix.split("\n"));
-                    String indentedPostfix = indent + stringsJoin("\n" + indent, postfix.split("\n"));
+                    String indentedPrefix = indent + stringsJoin("\n" + indent, prefixLines);
+                    String indentedPostfix = indent + stringsJoin("\n" + indent, postfixLines);
                     doc.insertString(insertionPoint2, indentedPostfix + "\n",
                             SimpleAttributeSet.EMPTY);
                     doc.insertString(insertionPoint1, indentedPrefix + "\n",
@@ -148,14 +150,9 @@ public class SolutionMarkerUtils {
      * @param position location, zero based from start of doc
      * @return the start of line position in doc on which position is located
      */
-    //<editor-fold defaultstate="expanded" desc="1F; MAX 10; __STUDENT_ID__ ;POINTS 0">
-    //Start Solution::replacewith::
     public static int roundToLineStart(final StyledDocument doc, final int position) {
         return (position - NbDocument.findLineColumn(doc, position));
     }
-    //End Solution::replacewith::
-    //</editor-fold>
-    private static final String whiteSpace = "                                             ";
 
     /**
      * Tries to match indent of original selection.
@@ -166,14 +163,10 @@ public class SolutionMarkerUtils {
      */
     public static String findIndent(final StyledDocument doc, final int position) throws BadLocationException {
         StringBuilder indent = new StringBuilder();
-        //<editor-fold defaultstate="expanded" desc="1F; MAX 10; __STUDENT_ID__ ;POINTS 0">
-        //Start Solution::replacewith::
         int currentLineNo = NbDocument.findLineNumber(doc, position);
         int l1Offset = NbDocument.findLineOffset(doc, currentLineNo);
         int l2Offset = NbDocument.findLineOffset(doc, currentLineNo + 1);
         int stopPos = Math.min(l2Offset, doc.getLength());
-        //End Solution::replacewith::
-        //</editor-fold>
         String ws = doc.getText(l1Offset, 1);
 
         while (ws.matches("^\\s$") && l1Offset < stopPos) {
@@ -212,7 +205,6 @@ public class SolutionMarkerUtils {
      * @param doc document to work on
      * @return the number of annotations removed.
      */
-    @SuppressWarnings("unchecked")
     public static int removeSolutionMarkers(DataObject d, final StyledDocument doc) {
         String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
         Class<?> anC1 = SolutionStartAnnotation.class;
