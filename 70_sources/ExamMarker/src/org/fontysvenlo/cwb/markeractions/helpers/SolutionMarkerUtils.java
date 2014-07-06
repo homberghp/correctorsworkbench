@@ -252,14 +252,13 @@ public class SolutionMarkerUtils {
         @Override
         public Iterator<String> iterator() {
             return new Iterator<String>() {
-                // init from 
+                // init from
                 int lineNumber = NbDocument.findLineNumber(doc, position);
 
                 @Override
                 public boolean hasNext() {
                     boolean result = false;
-                    if (lineNumber == Integer.MAX_VALUE || lineNumber
-                            == -Integer.MAX_VALUE) {
+                    if (lineNumber == Integer.MAX_VALUE || lineNumber == -Integer.MAX_VALUE) {
                         return result;
                     }
                     // try to advance, on exception, flag end
@@ -280,11 +279,9 @@ public class SolutionMarkerUtils {
                 public String next() {
                     String result = null;
                     lineNumber += direction;
-                    int offset = 0, offset2 = 0, length = 0;
+                    int offset, offset2, length;
                     offset = NbDocument.findLineOffset(doc, lineNumber);
-                    offset2 = Math.max(NbDocument.findLineOffset(doc, lineNumber
-                            + 1),
-                            doc.getLength());
+                    offset2 = Math.max(NbDocument.findLineOffset(doc, lineNumber + 1), doc.getLength());
                     length = offset2 - offset;
                     try {
                         result = doc.getText(offset, length);
@@ -299,7 +296,6 @@ public class SolutionMarkerUtils {
                     throw new UnsupportedOperationException("Not supported.");
                 }
             };
-
         }
 
         /**
@@ -311,10 +307,9 @@ public class SolutionMarkerUtils {
          * @throws NullPointerException doc is null
          * @throws IllegalArgumentException when direction not one of (-1,1).
          */
-        public IterableDocument(StyledDocument doc, final int position,
-                int direction) {
+        public IterableDocument(StyledDocument doc, final int position, int direction) {
             if (1 != Math.abs(direction)) {
-                throw new IllegalArgumentException("illegal dierction arg");
+                throw new IllegalArgumentException("illegal direction arg");
             }
             if (null == doc) {
                 throw new NullPointerException("refusing to iterate null ");
@@ -325,4 +320,5 @@ public class SolutionMarkerUtils {
         }
 
     }
+
 }
