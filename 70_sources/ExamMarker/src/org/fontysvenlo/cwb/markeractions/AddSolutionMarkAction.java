@@ -14,6 +14,7 @@ import org.openide.awt.ActionRegistration;
 import org.openide.loaders.DataObject;
 import org.openide.util.NbBundle;
 
+//<editor-fold defaultstate="expanded" desc="PRO2_2; MAX 10; __STUDENT_ID__ ;POINTS 0">
 /**
  *
  * @author hom
@@ -35,9 +36,12 @@ public class AddSolutionMarkAction extends SolutionAction {
         super(context);
     }
 
+    //Start Solution::replacewith:://TODO
     @Override
     protected void doWork() throws IOException, IndexOutOfBoundsException, 
             InstantiationException, IllegalAccessException {
         this.wrapAndAnnotate();
     }
+    //End Solution::replacewith::
 }
+//</editor-fold>
