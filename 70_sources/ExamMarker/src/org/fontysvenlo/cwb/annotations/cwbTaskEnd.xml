@@ -9,5 +9,7 @@
       glyph="nbresloc:/org/fontysvenlo/cwb/icons/oneway.png"
       type="line"
       severity="ok"
+      highlight="#88AAAA"
+      custom_sidebar_color="#88AAAA"
       browsable="true"
-      />
+/>

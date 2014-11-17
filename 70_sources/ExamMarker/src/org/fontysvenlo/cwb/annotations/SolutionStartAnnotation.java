@@ -15,6 +15,8 @@ public class SolutionStartAnnotation extends ExamAnnotation {
 
     @Override
     public String getAnnotationType() {
+        //Start Solution::replacewith:://TODO
         return "org-fontysvenlo-cwb-annotations-solution-start";
     }
+        //End Solution::replacewith::
 }
