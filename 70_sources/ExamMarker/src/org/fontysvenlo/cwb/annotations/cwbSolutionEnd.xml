@@ -9,6 +9,7 @@
       glyph="nbresloc:/org/fontysvenlo/cwb/icons/dontstop.png"
       type="line"
       highlight="#ccffff"
+      custom_sidebar_color="#88cccc"
       severity="ok"
       browsable="true"
 />

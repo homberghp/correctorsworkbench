@@ -14,7 +14,11 @@ package org.fontysvenlo.cwb.annotations;
 public class TaskEndAnnotation extends ExamAnnotation {
 
     @Override
+    //<editor-fold defaultstate="expanded" desc="PRO2_2; __STUDENT_ID__ ;WEIGHT 0">
+    //Start Solution::replacewith:://TODO
     public String getAnnotationType() {
         return "org-fontysvenlo-cwb-annotations-task-end";
     }
+    //End Solution::replacewith::
 }
+    //</editor-fold>

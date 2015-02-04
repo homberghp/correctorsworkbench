@@ -10,5 +10,7 @@
       type="line"
       highlight="#ccffcc"
       severity="ok"
+      highlight="#88AAAA"
+      custom_sidebar_color="#88AAAA"
       browsable="true"
 />
