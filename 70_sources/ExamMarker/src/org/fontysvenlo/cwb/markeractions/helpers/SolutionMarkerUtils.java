@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.fontysvenlo.cwb.markeractions.helpers;
 
-import org.fontysvenlo.cwb.annotations.ExamAnnotation;
-import org.fontysvenlo.cwb.annotations.SolutionEndAnnotation;
-import org.fontysvenlo.cwb.annotations.SolutionStartAnnotation;
-import org.fontysvenlo.cwb.registry.AnnotationRegistry;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,6 +8,10 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Caret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledDocument;
+import org.fontysvenlo.cwb.annotations.ExamAnnotation;
+import org.fontysvenlo.cwb.annotations.SolutionEndAnnotation;
+import org.fontysvenlo.cwb.annotations.SolutionStartAnnotation;
+import org.fontysvenlo.cwb.registry.AnnotationRegistry;
 import org.openide.cookies.LineCookie;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
@@ -40,29 +35,29 @@ public class SolutionMarkerUtils {
      * @param doc the style document being edited
      * @param firstLast the position of the cursor and /or selection
      */
-    public static void annotateRegion(DataObject d, final StyledDocument doc,
+    public static void annotateRegion( DataObject d, final StyledDocument doc,
             final int[] firstLast, final ExamAnnotation startAnnotation,
-            final ExamAnnotation endAnnotation) {
-        LineCookie cookie = d.getLookup().lookup(LineCookie.class);
+            final ExamAnnotation endAnnotation ) {
+        LineCookie cookie = d.getLookup().lookup( LineCookie.class );
         Line.Set lineSet = cookie.getLineSet();
-        int regionStart = Math.min(firstLast[0], firstLast[1]);
-        int regionEnd = Math.max(firstLast[0], firstLast[1]);
+        int regionStart = Math.min( firstLast[ 0 ], firstLast[ 1 ] );
+        int regionEnd = Math.max( firstLast[ 0 ], firstLast[ 1 ] );
 //        System.out.println(caretToString(caret));
-        String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
-        final Line firstLine = lineSet.getCurrent(NbDocument.findLineNumber(
+        String fileName = FileUtil.getFileDisplayName( d.getPrimaryFile() );
+        final Line firstLine = lineSet.getCurrent( NbDocument.findLineNumber(
                 doc,
-                regionStart));
-        final Line lastLine = lineSet.getCurrent(NbDocument.
-                findLineNumber(doc,
-                        regionEnd));
-        startAnnotation.attach(firstLine);
+                regionStart ) );
+        final Line lastLine = lineSet.getCurrent( NbDocument.
+                findLineNumber( doc,
+                                regionEnd ) );
+        startAnnotation.attach( firstLine );
         startAnnotation.moveToFront();
 
         AnnotationRegistry registy = AnnotationRegistry.getInstance();
-        registy.addAnnotation(startAnnotation, fileName, regionStart);
-        endAnnotation.attach(lastLine);
+        registy.addAnnotation( startAnnotation, fileName, regionStart );
+        endAnnotation.attach( lastLine );
         endAnnotation.moveToFront();
-        registy.addAnnotation(endAnnotation, fileName, regionEnd);
+        registy.addAnnotation( endAnnotation, fileName, regionEnd );
     }
 
     /**
@@ -80,49 +75,51 @@ public class SolutionMarkerUtils {
      * @param postfix text to put at back of selection.
      * @throws BadLocationException
      */
-    public static void wrapSelected(final StyledDocument doc, final Caret caret,
-            final String prefix, final String postfix) {
+    public static void wrapSelected( final StyledDocument doc, final Caret caret,
+            final String prefix, final String postfix ) {
         // This array is needed to be able to pass to the Runnable a final 
         // reference to something.
-        final BadLocationException[] exc = new BadLocationException[]{null};
-        if (caret.getDot() == caret.getMark()) {
+        final BadLocationException[] exc = new BadLocationException[]{ null };
+        if ( caret.getDot() == caret.getMark() ) {
             return;
         }
-        final int insertionPoint1 = roundToLineStart(doc, Math.min(caret.
-                getDot(), caret.getMark()));
-        final int insertionPoint2 = roundToNextLineStart(doc, Math.max(caret.
-                getDot(), caret.getMark()));
+        final int insertionPoint1 = roundToLineStart( doc, Math.min( caret.
+                                                      getDot(), caret.getMark() ) );
+        final int insertionPoint2 = roundToNextLineStart( doc, Math.max( caret.
+                                                          getDot(), caret
+                                                                         .getMark() ) );
         final int oldRegionLength = insertionPoint2 - insertionPoint1;
-        final String[] prefixLines = prefix.trim().split("\n");
-        final String[] postfixLines = postfix.trim().split("\n");
-        NbDocument.runAtomic(doc, new Runnable() {
+        final String[] prefixLines = prefix.trim().split( "\n" );
+        final String[] postfixLines = postfix.trim().split( "\n" );
+        NbDocument.runAtomic( doc, new Runnable() {
             @Override
             public void run() {
                 try {
                     // do postfix first, so the starting point of the selection will not change,
                     // so we can still validly insert the prefix in the 2nd step.
-                    String indent = findIndent(doc, Math.min(caret.getDot(),
-                            caret.getMark()));
-                    String indentedPrefix = indent + stringsJoin("\n" + indent,
-                            prefixLines);
-                    String indentedPostfix = indent + stringsJoin("\n" + indent,
-                            postfixLines);
-                    doc.insertString(insertionPoint2, indentedPostfix + "\n",
-                            SimpleAttributeSet.EMPTY);
-                    doc.insertString(insertionPoint1, indentedPrefix + "\n",
-                            SimpleAttributeSet.EMPTY);
+                    String indent = findIndent( doc, Math.min( caret.getDot(),
+                                                               caret.getMark() ) );
+                    String indentedPrefix = indent + stringsJoin( "\n" + indent,
+                                                                  prefixLines );
+                    String indentedPostfix = indent
+                            + stringsJoin( "\n" + indent,
+                                           postfixLines );
+                    doc.insertString( insertionPoint2, indentedPostfix + "\n",
+                                      SimpleAttributeSet.EMPTY );
+                    doc.insertString( insertionPoint1, indentedPrefix + "\n",
+                                      SimpleAttributeSet.EMPTY );
                     // the following lines put mark at begin of region and dot at end.
-                    caret.setDot(insertionPoint1);
-                    caret.moveDot(insertionPoint1 + prefix.length()
-                            + oldRegionLength);
-                    System.out.println(caretToString(caret));
-                } catch (BadLocationException e) {
-                    exc[0] = e;
+                    caret.setDot( insertionPoint1 );
+                    caret.moveDot( insertionPoint1 + prefix.length()
+                            + oldRegionLength );
+                    System.out.println( caretToString( caret ) );
+                } catch ( BadLocationException e ) {
+                    exc[ 0 ] = e;
                 }
             }
-        });
-        if (exc[0] != null) {
-            logger.log(Level.INFO, "insert failed with ", exc[0]);
+        } );
+        if ( exc[ 0 ] != null ) {
+            logger.log( Level.INFO, "insert failed with ", exc[ 0 ] );
         }
     }
 
@@ -137,15 +134,15 @@ public class SolutionMarkerUtils {
      * @param prefix the prefix the text is wrapped with
      * @param postfix the postfix the text is wrapped with
      */
-    public static void unwrapSelected(final StyledDocument doc,
+    public static void unwrapSelected( final StyledDocument doc,
             final Caret caret,
-            final String prefix, final String postfix) {
+            final String prefix, final String postfix ) {
 
     }
     private static final Logger logger = Logger.getLogger(
-            SolutionMarkerUtils.class.getName());
+            SolutionMarkerUtils.class.getName() );
 
-    public static String caretToString(Caret c) {
+    public static String caretToString( Caret c ) {
         return c.getClass().getCanonicalName() + " dot:" + c.getDot()
                 + ", mark:" + c.getMark();
     }
@@ -157,9 +154,9 @@ public class SolutionMarkerUtils {
      * @param position location, zero based from start of doc
      * @return the start of line position in doc on which position is located
      */
-    public static int roundToLineStart(final StyledDocument doc,
-            final int position) {
-        return (position - NbDocument.findLineColumn(doc, position));
+    public static int roundToLineStart( final StyledDocument doc,
+            final int position ) {
+        return ( position - NbDocument.findLineColumn( doc, position ) );
     }
 
     /**
@@ -169,19 +166,20 @@ public class SolutionMarkerUtils {
      * @param position location from mark
      * @return a whitespace string
      */
-    public static String findIndent(final StyledDocument doc, final int position)
+    public static String findIndent( final StyledDocument doc,
+            final int position )
             throws BadLocationException {
         StringBuilder indent = new StringBuilder();
-        int currentLineNo = NbDocument.findLineNumber(doc, position);
-        int l1Offset = NbDocument.findLineOffset(doc, currentLineNo);
-        int l2Offset = NbDocument.findLineOffset(doc, currentLineNo + 1);
-        int stopPos = Math.min(l2Offset, doc.getLength());
-        String ws = doc.getText(l1Offset, 1);
+        int currentLineNo = NbDocument.findLineNumber( doc, position );
+        int l1Offset = NbDocument.findLineOffset( doc, currentLineNo );
+        int l2Offset = NbDocument.findLineOffset( doc, currentLineNo + 1 );
+        int stopPos = Math.min( l2Offset, doc.getLength() );
+        String ws = doc.getText( l1Offset, 1 );
 
-        while (ws.matches("^\\s$") && l1Offset < stopPos) {
-            indent.append(ws);
+        while ( ws.matches( "^\\s$" ) && l1Offset < stopPos ) {
+            indent.append( ws );
             l1Offset++;
-            ws = doc.getText(l1Offset, 1);
+            ws = doc.getText( l1Offset, 1 );
         }
         return indent.toString();
     }
@@ -193,18 +191,17 @@ public class SolutionMarkerUtils {
      * @param position from where
      * @return position in the doc of next line start
      */
-    //StartSolution
-    public static int roundToNextLineStart(final StyledDocument doc,
-            final int position) {
-        return NbDocument.findLineOffset(doc, NbDocument.findLineNumber(doc,
-                position) + 1);
+    public static int roundToNextLineStart( final StyledDocument doc,
+            final int position ) {
+        return NbDocument.findLineOffset( doc, NbDocument.findLineNumber( doc,
+                                                                          position )
+                                          + 1 );
     }
-    //EndSolution
 
-    public static String stringsJoin(String glue, String[] parts) {
-        StringBuilder result = new StringBuilder(parts[0]);
-        for (int i = 1; i < parts.length; i++) {
-            result.append(glue).append(parts[i]);
+    public static String stringsJoin( String glue, String[] parts ) {
+        StringBuilder result = new StringBuilder( parts[ 0 ] );
+        for ( int i = 1; i < parts.length; i++ ) {
+            result.append( glue ).append( parts[ i ] );
         }
         return result.toString();
     }
@@ -216,21 +213,21 @@ public class SolutionMarkerUtils {
      * @param doc document to work on
      * @return the number of annotations removed.
      */
-    public static int removeSolutionMarkers(DataObject d,
-            final StyledDocument doc) {
-        String fileName = FileUtil.getFileDisplayName(d.getPrimaryFile());
+    public static int removeSolutionMarkers( DataObject d,
+            final StyledDocument doc ) {
+        String fileName = FileUtil.getFileDisplayName( d.getPrimaryFile() );
         Class<?> anC1 = SolutionStartAnnotation.class;
         Class<?> anC2 = SolutionEndAnnotation.class;
         AnnotationRegistry registry = AnnotationRegistry.getInstance();
         int result = 0;
-        List<Annotation> an1List = registry.getAnnotations(anC1, fileName);
+        List<Annotation> an1List = registry.getAnnotations( anC1, fileName );
         result += an1List.size();
-        for (Annotation a : an1List) {
+        for ( Annotation a : an1List ) {
             a.detach();
         }
-        List<Annotation> an2List = registry.getAnnotations(anC2, fileName);
+        List<Annotation> an2List = registry.getAnnotations( anC2, fileName );
         result += an2List.size();
-        for (Annotation a : an2List) {
+        for ( Annotation a : an2List ) {
             a.detach();
         }
         return result;
@@ -253,22 +250,23 @@ public class SolutionMarkerUtils {
         public Iterator<String> iterator() {
             return new Iterator<String>() {
                 // init from
-                int lineNumber = NbDocument.findLineNumber(doc, position);
+                int lineNumber = NbDocument.findLineNumber( doc, position );
 
                 @Override
                 public boolean hasNext() {
                     boolean result = false;
-                    if (lineNumber == Integer.MAX_VALUE || lineNumber == -Integer.MAX_VALUE) {
+                    if ( lineNumber == Integer.MAX_VALUE || lineNumber
+                            == -Integer.MAX_VALUE ) {
                         return result;
                     }
                     // try to advance, on exception, flag end
                     int tmpLineNumber = lineNumber + direction;
                     try {
                         // try location
-                        NbDocument.findLineOffset(doc, tmpLineNumber);
+                        NbDocument.findLineOffset( doc, tmpLineNumber );
                         // if getting here, loc is ok.
                         result = true;
-                    } catch (IndexOutOfBoundsException iob) {
+                    } catch ( IndexOutOfBoundsException iob ) {
                         // stop trying next time
                         lineNumber = direction * Integer.MAX_VALUE;
                     }
@@ -280,12 +278,15 @@ public class SolutionMarkerUtils {
                     String result = null;
                     lineNumber += direction;
                     int offset, offset2, length;
-                    offset = NbDocument.findLineOffset(doc, lineNumber);
-                    offset2 = Math.max(NbDocument.findLineOffset(doc, lineNumber + 1), doc.getLength());
+                    offset = NbDocument.findLineOffset( doc, lineNumber );
+                    offset2 = Math.max( NbDocument.findLineOffset( doc,
+                                                                   lineNumber
+                                                                   + 1 ), doc
+                                        .getLength() );
                     length = offset2 - offset;
                     try {
-                        result = doc.getText(offset, length);
-                    } catch (BadLocationException ex) {
+                        result = doc.getText( offset, length );
+                    } catch ( BadLocationException ex ) {
                         lineNumber = direction * Integer.MAX_VALUE;
                     }
                     return result;
@@ -293,7 +294,7 @@ public class SolutionMarkerUtils {
 
                 @Override
                 public void remove() {
-                    throw new UnsupportedOperationException("Not supported.");
+                    throw new UnsupportedOperationException( "Not supported." );
                 }
             };
         }
@@ -307,12 +308,13 @@ public class SolutionMarkerUtils {
          * @throws NullPointerException doc is null
          * @throws IllegalArgumentException when direction not one of (-1,1).
          */
-        public IterableDocument(StyledDocument doc, final int position, int direction) {
-            if (1 != Math.abs(direction)) {
-                throw new IllegalArgumentException("illegal direction arg");
+        public IterableDocument( StyledDocument doc, final int position,
+                int direction ) {
+            if ( 1 != Math.abs( direction ) ) {
+                throw new IllegalArgumentException( "illegal direction arg" );
             }
-            if (null == doc) {
-                throw new NullPointerException("refusing to iterate null ");
+            if ( null == doc ) {
+                throw new NullPointerException( "refusing to iterate null " );
             }
             this.doc = doc;
             this.position = position;
