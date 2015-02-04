@@ -13,17 +13,17 @@ import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 
 @OptionsPanelController.SubRegistration(
-        displayName = "#AdvancedOption_DisplayName_ExamMarker",
-        keywords = "#AdvancedOption_Keywords_ExamMarker",
-        keywordsCategory = "Advanced/ExamMarker"
+         displayName = "#AdvancedOption_DisplayName_ExamMarker",
+         keywords = "#AdvancedOption_Keywords_ExamMarker",
+         keywordsCategory = "Advanced/ExamMarker"
 )
-@org.openide.util.NbBundle.Messages({
+@org.openide.util.NbBundle.Messages( {
     "AdvancedOption_DisplayName_ExamMarker=Exam Marker",
-    "AdvancedOption_Keywords_ExamMarker=exam task and solution mark"})
+    "AdvancedOption_Keywords_ExamMarker=exam task and solution mark" } )
 public final class ExamMarkerOptionsPanelController extends OptionsPanelController {
 
     private ExamMarkerPanel panel;
-    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport( this );
     private boolean changed;
 
     @Override
@@ -59,34 +59,34 @@ public final class ExamMarkerOptionsPanelController extends OptionsPanelControll
     }
 
     @Override
-    public JComponent getComponent(Lookup masterLookup) {
+    public JComponent getComponent( Lookup masterLookup ) {
         return getPanel();
     }
 
     @Override
-    public void addPropertyChangeListener(PropertyChangeListener l) {
-        pcs.addPropertyChangeListener(l);
+    public void addPropertyChangeListener( PropertyChangeListener l ) {
+        pcs.addPropertyChangeListener( l );
     }
 
     @Override
-    public void removePropertyChangeListener(PropertyChangeListener l) {
-        pcs.removePropertyChangeListener(l);
+    public void removePropertyChangeListener( PropertyChangeListener l ) {
+        pcs.removePropertyChangeListener( l );
     }
 
     private ExamMarkerPanel getPanel() {
-        if (panel == null) {
-            panel = new ExamMarkerPanel(this);
+        if ( panel == null ) {
+            panel = new ExamMarkerPanel( this );
         }
         return panel;
     }
 
     void changed() {
-        if (!changed) {
-            changed = true;
-            pcs.firePropertyChange(OptionsPanelController.PROP_CHANGED, false,
-                    true);
-        }
-        pcs.firePropertyChange(OptionsPanelController.PROP_VALID, null, null);
+        //if (!changed) {
+        changed = true;
+        pcs.firePropertyChange( OptionsPanelController.PROP_CHANGED, false,
+                                true );
+        //}
+        pcs.firePropertyChange( OptionsPanelController.PROP_VALID, null, null );
     }
 
 }

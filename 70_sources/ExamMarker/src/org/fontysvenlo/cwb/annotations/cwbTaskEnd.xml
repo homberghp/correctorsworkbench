@@ -8,6 +8,7 @@
       visible="true" 
       glyph="nbresloc:/org/fontysvenlo/cwb/icons/oneway.png"
       type="line"
+      highlight="#ccffcc"
       severity="ok"
       browsable="true"
-      />
+/>

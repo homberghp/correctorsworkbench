@@ -1,13 +1,16 @@
 package org.fontysvenlo.cwb;
 
+import static org.fontysvenlo.cwb.CWBSettings.defaultSolutionEndTag;
+import static org.fontysvenlo.cwb.CWBSettings.defaultSolutionStartTag;
+import static org.fontysvenlo.cwb.CWBSettings.defaultTaskEndTag;
+import static org.fontysvenlo.cwb.CWBSettings.defaultTaskStartTag;
 import org.openide.util.NbPreferences;
-import static org.fontysvenlo.cwb.CWBSettings.*;
 
 public final class ExamMarkerPanel extends javax.swing.JPanel {
 
     private final ExamMarkerOptionsPanelController controller;
 
-    ExamMarkerPanel(ExamMarkerOptionsPanelController controller) {
+    ExamMarkerPanel( ExamMarkerOptionsPanelController controller ) {
         this.controller = controller;
         initComponents();
         // TODO listen to changes in form fields and call controller.changed()
@@ -90,25 +93,18 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(solendtaglabel)
-                    .addComponent(solstartlabel)
-                    .addComponent(taskendlabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1093, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskstartlabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(jLabel3))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(taskendlabel)
                     .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane5))
-                .addGap(555, 555, 555))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(solstartlabel)
+                    .addComponent(solendtaglabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,10 +141,16 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
         // someCheckBox.setSelected(NbPreferences.forModule(ExamMarkerPanel.class).getBoolean("someFlag", false));
         // or:
         // someTextField.setText(SomeSystemOption.getDefault().getSomeStringProperty());
-        startSolutionTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("solutionStartTag", defaultSolutionStartTag));
-        endSolutionTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("solutionEndTag", defaultSolutionEndTag));
-        startTaskTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("taskStartTag", defaultTaskStartTag));
-        endTaskTagTA.setText(NbPreferences.forModule(ExamMarkerPanel.class).get("taskEndTag", defaultTaskEndTag));
+        startSolutionTagTA.setText( NbPreferences.forModule( 
+                ExamMarkerPanel.class ).get( "solutionStartTag",
+                                             defaultSolutionStartTag ) );
+        endSolutionTagTA.setText( NbPreferences
+                .forModule( ExamMarkerPanel.class ).get( "solutionEndTag",
+                                                         defaultSolutionEndTag ) );
+        startTaskTagTA.setText( NbPreferences.forModule( ExamMarkerPanel.class )
+                .get( "taskStartTag", defaultTaskStartTag ) );
+        endTaskTagTA.setText( NbPreferences.forModule( ExamMarkerPanel.class )
+                .get( "taskEndTag", defaultTaskEndTag ) );
     }
 
     void store() {
@@ -159,10 +161,17 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
         // NbPreferences.forModule(ExamMarkerPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
         // or:
         // SomeSystemOption.getDefault().setSomeStringProperty(someTextField.getText());
-        NbPreferences.forModule(ExamMarkerPanel.class).put("solutionStartTag", startSolutionTagTA.getText());
-        NbPreferences.forModule(ExamMarkerPanel.class).put("solutionEndTag", endSolutionTagTA.getText());
-        NbPreferences.forModule(ExamMarkerPanel.class).put("taskStartTag", startTaskTagTA.getText());
-        NbPreferences.forModule(ExamMarkerPanel.class).put("taskEndTag", endTaskTagTA.getText());
+        NbPreferences.forModule( ExamMarkerPanel.class )
+                .put( "solutionStartTag", startSolutionTagTA.getText() );
+        NbPreferences.forModule( ExamMarkerPanel.class ).put( "solutionEndTag",
+                                                              endSolutionTagTA
+                                                              .getText() );
+        NbPreferences.forModule( ExamMarkerPanel.class ).put( "taskStartTag",
+                                                              startTaskTagTA
+                                                              .getText() );
+        NbPreferences.forModule( ExamMarkerPanel.class ).put( "taskEndTag",
+                                                              endTaskTagTA
+                                                              .getText() );
     }
 
     boolean valid() {

@@ -8,7 +8,7 @@
       visible="true" 
       glyph="nbresloc:/org/fontysvenlo/cwb/icons/solution.png"
       type="line"
-      highlight="#00cccc"
+      highlight="#ccffff"
       custom_sidebar_color="#008888"
       severity="ok"
       browsable="true"
