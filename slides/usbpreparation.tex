@@ -1,4 +1,5 @@
-\section{USB prep}
+\section[The cooking]{USB stick preparation}
+\subsection{Ingredients}
 \begin{frame}{USB recipe, ingredients}
   \begin{description}[short]
   \item[Distribution] Ubuntu based host OS.
@@ -19,6 +20,7 @@
   \end{description}
 \end{frame}
 
+\subsection{Tools}
 \begin{frame}{USB recipe, Tools}
   \begin{description}[short]
   \item[Host] computer running same OS version. This eases work.\\
@@ -71,11 +73,14 @@
   \begin{itemize}
   \item Add exam user account and settings (e.g. 'empty password').
   \item Add correctors account if required.
+  \item Add everything you need in the next steps to the
+    \Code{/home/FileSystem}. That will land in the ISO and stick too.\\
+    Example: JDK documentation for on stick browsing during exam.
   \item Bake one stick first. Simply use \textbf{Startup Disk Creator} from the
     Host menu. Allow for some work space. 1GB (the default) is
     typically just fine.
   \item Test it.
-  \item If satisfying continue to the next step, otherwise more
+  \item If satisfying, continue to the next step, otherwise do some more
     tweaking in customizer as required.
   \item You could provide the ISO to the students, so they can
     practice with the USB and IDE on their device. I offered to
@@ -83,6 +88,7 @@
   \end{itemize}
 \end{frame}
 
+\subsection[EXAM proof]{Making it exam proof}
 \begin{frame}{Make it exam proof}
   \begin{itemize}
   \item Remove add kernel modules and drivers not needed.
@@ -91,34 +97,31 @@
       a network based exam}, wifi, bluetooth, local hard drives.
     \end{itemize}
   \item Remember to do a \Code{depmod} -a inside the
-    \textbf{customizer-terminal}.
-  \item Add everything you need in the next steps to the
-    \Code{/home/FileSystem}. That will land in the ISO and stick too.\\
-    Example: JDK documentation for on stick browsing during exam.
+    \textbf{customizer-terminal}. Otherwise your stick will not boot.
   \item Make a new ISO. Rename it properly.
   \item Test again of course.
   \end{itemize}
 \end{frame}
 
 \lstset{basicstyle={\scriptsize}}
+\subsection[Production]{Prime for Production}
 \begin{frame}{Prepare exam workspace}
 
-  \begin{itemize}
-  \item Bake a new stick and boot from it on exam machine to \textit{prime} it. This
+  \begin{itemize}  \item Bake a new stick and boot from it on exam machine to \textit{prime} it. This
     will create the exam user space under \Code{/exam/exam}.
   \item Tweak settings and such (UI menu to make it less confusing,
     remove unneeded desktop icons, make browser bookmarks to local
     documentation, e.g. to JDK doc.
-  \item Shut down exam machine.
+  \item Shut down exam test machine.
   \item Mount the primed stick with 
     \lstinputlisting[language=sh]{code/scripts/casper-simple-example}
-  \item You can find it \Code{mount -o loop} under
-    e.g. \texttt{/media/yo/EXAM101/casper-rw}, mount with \\
   \item Save the primed data \Okis{exam work space} from \Code{exam/exam} to some place safe
-    for later use (stick cleanup). Use e.g. \Code{tar czf} or zip.
+    for later use (stick cleanup). Use e.g. \Code{tar czf} or
+    zip. Result: \Code{skell.tgz}
 \end{itemize}
 \end{frame}
 
+\subsection[Baking]{Baking sticks in batches}
 \begin{frame}[shrink]{Stir, bake at 5 Volts, 14 per batch}
   \begin{itemize}
   \item Make a \Code{dd}-copy of the primed stick and save it under a
@@ -136,6 +139,13 @@
     This writes and labels all 14 sticks (the c parameter) in \textit{parallel},
     which takes about 90 seconds on my machine.
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Core of bake script}
+The speed-up lies in the way you start \Code{dd} sub processes and the extra
+parameters to dd.
+\lstinputlisting[firstline=72,lastline=90,language=sh,basicstyle={\tiny},%
+caption={Tiny details count here},morekeywords={conv,fsync}]{code/scripts/mkExamSticks}
 \end{frame}
 
 \begin{frame}{The topping, the exam tasks}
@@ -172,14 +182,20 @@
     \item Insert the sticks into the hubs
     \item use the command \Code{harvestSticks} to rsync the exam stuff
       back into the local sandbox.
-    \item Commit the work into the repository.
+      \begin{itemize}
+      \item Takes about 20 seconds for 14 sticks.\\
+      \item Inserting and removing sticks takes about the same time.
+    \item With 2 pairs of hubs your could speed up even a bit more.
     \end{itemize}
+  \item Commit the work into the repository.
+  \end{itemize}
   \item Make the exam work available to the correctors.
     \begin{itemize}
-    \item Not netbeans plugin here yet.
+    \item Not netbeans plugin here yet\InlineMwha.
     \item Now using simple PHP based web app, to allow parallel
       corrections by multiple correctors
     \end{itemize}
 
   \end{itemize}
 \end{frame}
+

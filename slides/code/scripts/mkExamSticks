@@ -1,0 +1,92 @@
+#!/bin/bash
+# arguments -i <image> -d <first hd device letter> -l <label start number> -c count (default =1)
+# to check what commands are built set debug to echo.
+# to actually run set debug to empty string.
+#debug=echo 
+scriptdir=$(dirname $(readlink -f $0))
+debug=
+usage()
+{
+cat << EOF
+usage: $0 options
+
+This script creates (dds) usb sticks from an image in parallel.
+
+OPTIONS:
+   -h                    Show this message
+   -i      <filename> The image to write to the USB sticks
+   -d      <disk>       The first hd device letter like in c for /dev/sdc
+   -l      <labelnr>    The starting number for the disk labels as in 20 to get EXAM20
+   -c      <count>     The number to write (in parallel)
+   -n      <name>     of stick and (exam) host defaults to EXAM
+   -D      debug do not execute but only show what would be done
+EOF
+}
+IMAGE=
+DISKBASE=
+EXAMBASE=
+COUNT=1
+NAME=EXAM
+while getopts "Dhn:i:d:l:c:" OPTION; do
+    case $OPTION in
+	h)
+	    usage
+	    exit 1
+	    ;;
+	i)
+	    IMAGE=$OPTARG
+	    ;;
+	d)
+	    DISKBASE=$OPTARG
+	    ;;
+	D)
+	    debug=echo
+	    ;;
+	l)
+	    EXAMBASE=$OPTARG
+	    ;;
+	c)
+	    COUNT=$OPTARG
+	    ;;
+	n)
+	    NAME=$OPTARG
+	    ;;
+	D)
+	    debug=echo
+	    ;;
+    esac
+done
+
+# IMAGE=$1
+# DISKBASE=$2
+# EXAMBASE=$3
+# COUNT=$4
+if [[ -z $IMAGE ]] || [[ -z ${DISKBASE} ]] || [[ -z ${EXAMBASE} ]] ; then
+    echo missing value $IMAGE $DISKBASE $EXAMBASE
+    usage
+    exit 1
+fi
+
+echo using image=[${IMAGE}] disk starts at \"/dev/sd${DISKBASE}\" \
+                  labels start with \"${NAME}${EXAMBASE}\" number of sticks=${COUNT}
+# first ensure all sticks are umounted
+for i in $(seq 0 $((${COUNT}-1))) ; do
+    disk=/dev/sd$(add2ascii ${DISKBASE} ${i})
+    echo umounting ${disk}*
+    ${debug} umount ${disk}*
+done
+
+for i in $(seq 0 $((${COUNT}-1))) ; do
+    disk=/dev/sd$(add2ascii ${DISKBASE} ${i})
+    printf -v LABEL "${NAME}%3.3d" $((${EXAMBASE}+${i}))
+    ${debug} dd conv=fsync if=${IMAGE} bs=1M of=${disk} && \
+	${debug} mlabel -i ${disk}1 ::${LABEL} &
+
+done
+wait # join for java programmers
+for i in $(seq 0 $((${COUNT}-1))); do
+   disk=/dev/sd$(add2ascii ${DISKBASE} ${i})
+    ${debug} umount ${disk}*
+done
+
+paplay ${scriptdir}/programisready.ogg

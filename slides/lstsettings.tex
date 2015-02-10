@@ -1,0 +1,33 @@
+% settings for the listings
+\definecolor{lbcolor}{rgb}{.9,.9,1}
+\lstset{
+        backgroundcolor=\color{lbcolor},
+        tabsize=4,
+%       rulecolor=,
+        language=sh,
+        basicstyle=\ttfamily,
+        upquote=true,
+        aboveskip={.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle={\ttfamily\textbf},
+        keywordstyle=\color[rgb]{0,0,.9},
+        commentstyle={\color[rgb]{0.3,0.3,0.3}\ttfamily},
+        stringstyle={\color[rgb]{0.1,0.9,0.1}\ttfamily}
+}
+\DeclareCaptionFont{white}{ \color{white} }
+\DeclareCaptionFormat{listing}{
+  \colorbox[cmyk]{0.43, 0.35, 0.35,0.01 }{
+    \parbox{.6\textwidth}{\hspace{10pt}#1#2#3}
+  }
+}
+\captionsetup[lstlisting]{ format=listing, labelfont=white,
+textfont=white, singlelinecheck=false, margin=0pt,
+font={sf,bf,footnotesize} }
