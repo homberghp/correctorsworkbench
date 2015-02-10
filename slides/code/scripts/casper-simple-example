@@ -1,3 +1,5 @@
 cd /media/yo
-mkdir casper-EXAM101
-mount -o loop EXAM101/casper-rw casper-EXAM101
+STICK=EXAM101
+HFS=./casper-${STICK}
+mkdir ${HFS}
+mount -o loop ${STICK}/casper-rw ${HFS}

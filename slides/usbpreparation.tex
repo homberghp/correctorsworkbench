@@ -110,12 +110,14 @@
   \begin{itemize}  \item Bake a new stick and boot from it on exam machine to \textit{prime} it. This
     will create the exam user space under \Code{/exam/exam}.
   \item Tweak settings and such (UI menu to make it less confusing,
-    remove unneeded desktop icons, make browser bookmarks to local
+    remove unneeded desktop icons), make browser bookmarks to local
     documentation, e.g. to JDK doc.
   \item Shut down exam test machine.
   \item Mount the primed stick with 
     \lstinputlisting[language=sh]{code/scripts/casper-simple-example}
-  \item Save the primed data \Okis{exam work space} from \Code{exam/exam} to some place safe
+  \item Copy  the primed \Okis{exam work space} date from
+    \lstinline[language=sh,basicstyle={\normalsize},morekeywords={exam,$HFS}]{$HFS/exam/exam} %$
+    to some place safe 
     for later use (stick cleanup). Use e.g. \Code{tar czf} or
     zip. Result: \Code{skell.tgz}
 \end{itemize}
@@ -175,7 +177,7 @@ caption={Tiny details count here},morekeywords={conv,fsync}]{code/scripts/mkExam
 
 \begin{frame}{The proof is in the eating}
   \begin{itemize}
-  \item Take the exam.
+  \item Take the exam. Steam the students. 3 hours and they are well done.
   \item Collect the sticks.
   \item \textit{Harvest} the student projects.
     \begin{itemize}
