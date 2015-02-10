@@ -1,0 +1,20 @@
+#!/bin/bash
+me=hom
+debug=
+# chown sandbox stuff to exam uid:gid
+if [ "root"  != "$USER" ]; then
+    echo must be root or sudo
+    exit 1
+fi
+for i in /media/hom/EXAM*; do 
+    stick=$(basename $i)
+    mountpoint=/media/${me}/casper-rw-${stick}
+    ${debug} umount ${mountpoint}
+    echo unmounted  ${mountpoint}
+done
+sync
+for i in /media/hom/EXAM*; do 
+    ${debug} umount ${i}
+    echo unmounted  ${i}
+done
+

@@ -1,0 +1,42 @@
+#!/bin/bash
+# harvest work from usb stick.
+# this script does not and should not clean the exam home dir.
+#
+# The logged in user, for who he sticks are auto mounted by udev.
+me=${SUDO_USER}
+debug=
+if [ "root"  != "$USER" ]; then
+    echo must be root or sudo
+    exit 1
+fi
+
+# chown sandbox stuff to exam uid:gid
+chown -R 1001:1001 sandbox
+
+for i in /media/${me}/EXAM*; do 
+    stick=$(basename $i)
+    if [ -d sandbox/${stick} ] ; then 
+	mountpoint=/media/${me}/casper-rw-${stick}
+	${debug} mkdir -p ${mountpoint}
+	${debug} mount -o loop ${i}/casper-rw  ${mountpoint}
+	( 
+	    ${debug} rsync -aq   ${mountpoint}/exam/exam/ sandbox/${stick}/exam/exam/
+	    echo harvest $stick done 
+	) &
+    else
+	echo warning: no sandbox for stick ${stick}
+    fi
+done
+wait # for all children to return home
+sync # flush to disk
+# unmount all
+for i in /media/${me}/EXAM*; do 
+    mountpoint=/media/${me}/casper-rw-$(basename ${i}) 
+    ${debug} umount ${mountpoint}
+    ${debug} rmdir ${mountpoint}
+done
+sync
+for i in /media/${me}/EXAM*; do 
+  ${debug}    umount ${i}
+  echo unmounted  ${i}
+done
