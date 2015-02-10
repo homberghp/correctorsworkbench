@@ -1,0 +1,31 @@
+\section{USB prep}
+\begin{frame}{USB recipe, ingredients}
+  \begin{description}[short]
+  \item[Distribution] Ubuntu based host OS. Current version 14.04.1 LTS.
+    \begin{itemize}
+    \item Up to date kernels, more chance to use with new laptops.
+    \item Otherwise quite stable
+    \item Start with \Code{ubuntu-mini-remix-14.04.1-amd64.iso} from
+      \url{http://www.ubuntu-mini-remix.org/}
+    \item Use lightweight desktop: XFCE4.
+    \end{itemize}
+  \item[Apps]  Mix and match whatever you need. Most of the time with a
+    simple \Code{apt-get install} sometimes special PPAs (e.g. Java 8).
+  \item[Home grown packages] Maybe some deb [re]packaging required:
+    Netbeans, glassfish etc.\\
+    Packaging is simple: Pickup an installed version of the app, add some meta
+    info and checksum the lot.
+  \end{description}
+\end{frame}
+\begin{frame}{USB recipe, Tools}
+    \begin{itemize}
+    \item Host computer running same OS version. This eases work.
+    \item Customizer. Simple but adequate. Version 3.2.3. Needs some
+      tweaks to get it running. (Gambas 3 vs 2 on U 14.04).
+      \url{https://github.com/clearkimura/Customizer}. (New life?)
+    \item Startup Disk Creator (\Code{/usr/bin/usb-creator-gtk}),
+      standard in Ubuntu.
+    \item Good old \Code{dd}.
+    \item A good Linux Cook. Some knowledge is indispensable.
+  \end{itemize}
+\end{frame}

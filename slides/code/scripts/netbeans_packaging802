@@ -1,0 +1,34 @@
+#!/bin/bash
+#Install in the default paths
+version=8.0.2
+targetdir=/usr/local/netbeans-${version}
+builddir=fthv-netbeans-${version}-all
+rm -fr ${builddir}
+mkdir -p ${builddir}/{DEBIAN,usr/local/,usr/share/{applications,pixmaps},etc/skel/.netbeans}
+
+cp -R ${targetdir} ${builddir}/usr/local/
+cp /usr/share/applications/netbeans-${version}.desktop ${builddir}/usr/share/applications/
+cp ${targetdir}/nb/netbeans.png ${builddir}/usr/share/pixmaps/
+#Start netbeans install plugins and configure to your liking
+
+cp -R ~/.netbeans/${version} ${builddir}/etc/skel/.netbeans/
+rm -rf ${builddir}/etc/skel/.netbeans/${version}/var
+
+#Edit fthv-netbeans/DEBIAN/control
+cat <<EOF > ${builddir}/DEBIAN/control
+Package: netbeans
+Version: ${version}
+Section: Development
+Priority: optional
+Architecture: all
+Depends: java-common, oracle-java8-installer
+Maintainer: P. van den Hombergh <p.vandenhombergh@.fontys.nl
+Description: Provides netbeans ${version} IDE
+EOF
+
+find ${builddir}/ -type f -exec md5sum {} \; | sed 's#\./##g' | grep -v DEBIAN > ${builddir}/DEBIAN/md5sums
+fakeroot dpkg-deb --build ${builddir}
+
+echo done creating ${builddir}.deb
+
+#All done
