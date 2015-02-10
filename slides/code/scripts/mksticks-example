@@ -1,0 +1,2 @@
+# create sticks from exam image
+sudo ./mkExamSticks -d c -l 100 -c 14 -i exam20150210a.img

@@ -1,0 +1,4 @@
+# note that count will depend on actual use. 
+# use dd to find the used space on the exam stick 
+# and round up.
+dd if=/dev/sdc of=exam-20150210a.img bs=1M count=2600

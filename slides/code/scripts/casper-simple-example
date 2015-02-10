@@ -1,0 +1,3 @@
+cd /media/yo
+mkdir casper-EXAM101
+mount -o loop EXAM101/casper-rw casper-EXAM101
