@@ -33,3 +33,10 @@ nbproject/private/*
 /70_sources/ExamMarker/build/# On branch master
 /70_sources/ExamMarker/build/
 /70_sources/ExamMarker/nbproject/private/
+/slides/*.aux
+/slides/*.log
+/slides/*.nav
+/slides/*.out
+/slides/*.snm
+/slides/*.toc
+
