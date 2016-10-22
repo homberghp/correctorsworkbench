@@ -1,5 +1,6 @@
 package org.fontysvenlo.cwb;
 
+import static org.fontysvenlo.cwb.CWBSettings.defaultNoWorkTag;
 import static org.fontysvenlo.cwb.CWBSettings.defaultSolutionEndTag;
 import static org.fontysvenlo.cwb.CWBSettings.defaultSolutionStartTag;
 import static org.fontysvenlo.cwb.CWBSettings.defaultTaskEndTag;
@@ -39,6 +40,9 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         endTaskTagTA = new javax.swing.JTextArea();
         taskendlabel = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        noWorkTAG = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         documentationTA.setEditable(false);
         documentationTA.setColumns(20);
@@ -88,24 +92,36 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
         taskendlabel.setLabelFor(endTaskTagTA);
         org.openide.awt.Mnemonics.setLocalizedText(taskendlabel, org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.taskendlabel.text")); // NOI18N
 
+        noWorkTAG.setColumns(40);
+        noWorkTAG.setRows(2);
+        noWorkTAG.setText(org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.noWorkTAG.text")); // NOI18N
+        jScrollPane6.setViewportView(noWorkTAG);
+
+        org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(ExamMarkerPanel.class, "ExamMarkerPanel.jLabel1.text")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1093, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskstartlabel)
-                    .addComponent(jScrollPane5)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskendlabel)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
                     .addComponent(jScrollPane3)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(solstartlabel)
-                    .addComponent(solendtaglabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(solstartlabel)
+                            .addComponent(solendtaglabel)
+                            .addComponent(taskstartlabel)
+                            .addComponent(taskendlabel)
+                            .addComponent(jLabel1))
+                        .addGap(0, 376, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,9 +143,13 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
                 .addComponent(taskendlabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(111, 111, 111))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -141,7 +161,7 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
         // someCheckBox.setSelected(NbPreferences.forModule(ExamMarkerPanel.class).getBoolean("someFlag", false));
         // or:
         // someTextField.setText(SomeSystemOption.getDefault().getSomeStringProperty());
-        startSolutionTagTA.setText( NbPreferences.forModule( 
+        startSolutionTagTA.setText( NbPreferences.forModule(
                 ExamMarkerPanel.class ).get( "solutionStartTag",
                                              defaultSolutionStartTag ) );
         endSolutionTagTA.setText( NbPreferences
@@ -151,6 +171,9 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
                 .get( "taskStartTag", defaultTaskStartTag ) );
         endTaskTagTA.setText( NbPreferences.forModule( ExamMarkerPanel.class )
                 .get( "taskEndTag", defaultTaskEndTag ) );
+        noWorkTAG.setText( NbPreferences.forModule( ExamMarkerPanel.class )
+                .get( "noWorkTag", defaultNoWorkTag ) );
+
     }
 
     void store() {
@@ -172,6 +195,9 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
         NbPreferences.forModule( ExamMarkerPanel.class ).put( "taskEndTag",
                                                               endTaskTagTA
                                                               .getText() );
+        NbPreferences.forModule( ExamMarkerPanel.class ).put( "noWorkTag",
+                                                              noWorkTAG
+                                                              .getText() );
     }
 
     boolean valid() {
@@ -183,12 +209,15 @@ public final class ExamMarkerPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea documentationTA;
     private javax.swing.JTextArea endSolutionTagTA;
     private javax.swing.JTextArea endTaskTagTA;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextArea noWorkTAG;
     private javax.swing.JLabel solendtaglabel;
     private javax.swing.JLabel solstartlabel;
     private javax.swing.JTextArea startSolutionTagTA;

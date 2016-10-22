@@ -40,3 +40,4 @@ nbproject/private/*
 /slides/*.snm
 /slides/*.toc
 
+/**/.jacocoverage/**/*

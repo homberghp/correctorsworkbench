@@ -14,25 +14,25 @@ import org.openide.awt.ActionRegistration;
 import org.openide.loaders.DataObject;
 import org.openide.util.NbBundle;
 
-//<editor-fold defaultstate="expanded" desc="PRO2_2; MAX 10; __STUDENT_ID__ ;POINTS 0">
 /**
  *
  * @author hom
  */
 @ActionID(
          category = "Tools",
-         id = "org.fontysvenlo.cwb.markeractions.AddSolutionMarkAction" )
+         id = "org.fontysvenlo.cwb.markeractions.AddNoWorkMarkAction" )
 @ActionRegistration(
-         displayName = "#CTL_AddSolutionMarkAction",
-         iconBase = "org/fontysvenlo/cwb/icons/solution.png" )
+         displayName = "#CTL_AddNoWorkMarkAction",
+         iconBase = "org/fontysvenlo/cwb/icons/nowork.png"
+)
 @ActionReferences( {
-    @ActionReference( path = "Editors/Popup", position = 110 )
+    @ActionReference( path = "Editors/Popup", position = 100 )
 } )
-@NbBundle.Messages( "CTL_AddSolutionMarkAction=Mark Region as Solution" )
+@NbBundle.Messages( "CTL_AddNoWorkMarkAction=Mark Region with no work here" )
 
-public class AddSolutionMarkAction extends SolutionAction {
+public class AddNoWorkMarkAction extends SolutionAction {
 
-    public AddSolutionMarkAction( DataObject context ) {
+    public AddNoWorkMarkAction( DataObject context ) {
         super( context );
     }
 
