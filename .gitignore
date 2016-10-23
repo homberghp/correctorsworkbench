@@ -1,6 +1,7 @@
 nbproject/private/
 *.class
 **/*~
+**/*.pdfpc
 # Package Files #
 *.jar
 *.war
