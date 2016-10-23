@@ -9,12 +9,12 @@
     \item Start with \Code{ubuntu-mini-remix-14.04.1-amd64.iso} from
       \url{http://www.ubuntu-mini-remix.org/}
     \item Use lightweight desktop like XFCE4.
-    \item Current version 14.04.1 LTS.
+    \item Current version 14.04.5 LTS, kernel 4.4 (same as 16.04 LTS).
     \end{itemize}
   \item[Apps]  Mix and match whatever you need. Most of the time with a
     simple \Code{apt-get install} sometimes special PPAs (e.g. Java 8).
-  \item[Home grown packages] Maybe some deb [re]packaging required:
-    NetBeans, glassfish etc.\\
+  \item[Home grown packages] Maybe some \Okis{deb} [re]packaging required:
+    NetBeans, Glassfish etc.\\
     Packaging is simple: Pickup an installed version of the app, add some meta
     info and checksum the lot. See script sample.
   \end{description}
@@ -24,14 +24,16 @@
 \begin{frame}{USB recipe, Tools}
   \begin{description}[short]
   \item[Host] computer running same OS version. This eases work.\\
-    Tweak
-    the max number of boot devices (add a parameter to grub command line).
+    Tweak the max number of boot devices (add a parameter to grub command line).
   \item[Customizer] Simple but adequate. Version 3.2.3.
     \begin{itemize}
     \item Needs some tweaks to get it running. (Gambas 3 vs 2 on U 14.04).
     \item \url{https://github.com/clearkimura/Customizer}.
     \item Revived. They seem to be moving to python.
     \end{itemize}
+  \item[Configure] Tip: configure customizer to use something
+    different then the default working dir (/home), e.g
+    /home/U14.04. This allows you to have multiple versions more easily.
   \item[Startup Disk Creator] (\Code{/usr/bin/usb-creator-gtk}),
     standard in Ubuntu.
   \item[DD] Good old \Code{dd}.
@@ -42,18 +44,18 @@
 \subsection[Stir well]{Stir well}
 \begin{frame}{Preparing the dough}
   \begin{columns}
-    \begin{column}{.6\textwidth}
+    \begin{column}[c]{.6\textwidth}
       \begin{itemize}
       \item Prepare basic stick.
         \begin{itemize}
-        \item Load iso file with customizer. This will unpack iso into
-          \Code{/home/FileSystem} and live system helpers into \Code{/home/ISO}
+        \item Load iso file with Customizer. This will unpack iso into
+          \Code{/home/U14.04/FileSystem} and live system helpers into \Code{/home/ISO}
         \item Open \Okis{terminal} in customizer. This does 'apt-get
           update' automatically. 
         \end{itemize}
       \end{itemize}
     \end{column}
-    \begin{column}{.4\textwidth}
+    \begin{column}[c]{.4\textwidth}
       \includegraphics[width=\textwidth]{figures/customizer.png}
     \end{column}
   \end{columns}
@@ -69,7 +71,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Make a sticky}
+\begin{frame}{Prepare a stick.}
   \begin{itemize}
   \item Add exam user account and settings (e.g. 'empty password').
   \item Add correctors account if required.
@@ -91,7 +93,7 @@
 \subsection[EXAM proof]{Making it exam proof}
 \begin{frame}{Make it exam proof}
   \begin{itemize}
-  \item Remove add kernel modules and drivers not needed.
+  \item Remove kernel modules and drivers not needed.
     \begin{itemize}
     \item Network\footnote{You can leave wired network in, if you want
       a network based exam}, wifi, bluetooth, local hard drives.
@@ -106,12 +108,27 @@
 \lstset{basicstyle={\scriptsize}}
 \subsection[Production]{Prime for Production}
 \begin{frame}{Prepare exam workspace}
-
-  \begin{itemize}  \item Bake a new stick and boot from it on exam machine to \textit{prime} it. This
-    will create the exam user space under \Code{/exam/exam}.
+  \begin{itemize}
+  \item The live system auto-mounts two rw file systems, casper-rw and
+    home-rw. Casper-rw is a file system inside a file and is used for
+    any modifications to the base system. Think the /var file system.
+    home-rw contains the users home  directories. Both are created in
+    the prepareSticks script
+    \begin{itemize}
+    \item casper-rw is 1GB large.
+    \item home-rw in an ext2 formatted partition sized for the
+      remainder of the disk.
+    \end{itemize}
+  \item Bake a new stick and boot from it on exam machine to \textit{configure} it. This
+    will create the exam user space under \Code{/home/exam}.
   \item Tweak settings and such (UI menu to make it less confusing,
     remove unneeded desktop icons), make browser bookmarks to local
     documentation, e.g. to JDK doc.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Prepare exam workspace, continued}
+  \begin{itemize}
   \item Shut down exam test machine.
   \item Mount the primed stick with 
     \lstinputlisting[language=sh]{code/scripts/casper-simple-example}
@@ -123,34 +140,27 @@
 \end{itemize}
 \end{frame}
 
-\subsection[Baking]{Baking sticks in batches}
-\begin{frame}[shrink]{Stir, bake at 5 Volts, 14 per batch}
+\subsection[Baking]{Baking Sticks in Batches}
+\begin{frame}[shrink]{Stir, bake at 5 Volts, 21 per batch}
   \begin{itemize}
-  \item Make a \Code{dd}-copy of the primed stick and save it under a
-    {\ttfamily\textbf{proper-name}.img}
-    \lstinputlisting[language=sh]{code/scripts/dd-read-master}
-  \item (sticky) Label your sticks if you not already did so.
+  \item (sticky) Label your sticks with unique IDs, if you not already did so.
   \item Now connect your USB hubs and
   \item Insert your sticks, ensuring the host sees it. (as in: wait a
     bit between sticks).
-  \item Insert in label
-    order. In this phase it ensures proper matching of stick label and
-    stick disk-label (EXAM101).
-  \item start the \Code{mkExamSticks} script with appropriate parameters
-    \lstinputlisting[language=sh]{code/scripts/mksticks-example}
-    This writes and labels all 14 sticks (the c parameter) in \textit{parallel},
-    which takes about 90 seconds on my machine.
+  \item Insert in label order. In this phase it ensures proper matching of stick label and
+    stick disk-label (EXAM100, EXAM101,...).
+  \item start the \Code{prepareSticks} script with the number of the
+    first stick. The script will eneumerate the sticks by itself and
+    number the sticks in insertion order.
+    This writes and labels all 21 sticks (the c parameter) in \textit{parallel},
+    which takes about 120 seconds on my machine.
+  \item The scripts writes to the mounted sticks in parallel. The
+    aggregated write speed of all stics does not exceed the bus speed
+    on a 7 port hub.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Core of bake script}
-The speed-up lies in the way you start \Code{dd} sub processes and the extra
-parameters to dd.
-\lstinputlisting[firstline=72,lastline=90,language=sh,basicstyle={\tiny},%
-caption={Tiny details count here},morekeywords={conv,fsync}]{code/scripts/mkExamSticks}
-\end{frame}
-
-\begin{frame}{The topping, the exam tasks}
+\begin{frame}{The topping, Adding the tasks}
   \begin{itemize}
   \item In our setup, the students receive a stick, personalized, with
     the appropriate NetBeans project pre installed in
@@ -169,8 +179,9 @@ caption={Tiny details count here},morekeywords={conv,fsync}]{code/scripts/mkExam
   \item Use the \Code{primeSticks} command, no parameters; it can find
     how many sticks are mounted.
     \begin{itemize}
-    \item Installs fresh copy of the exam work space.
-    \item rsyncs local sandbox into exam work space.
+    \item Installs fresh copy of the exam work space. (Dropping and
+      earlier content)
+    \item rsyncs local sandboxes into exam work space.
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -182,22 +193,19 @@ caption={Tiny details count here},morekeywords={conv,fsync}]{code/scripts/mkExam
   \item \textit{Harvest} the student projects.
     \begin{itemize}
     \item Insert the sticks into the hubs
-    \item use the command \Code{harvestSticks} to rsync the exam stuff
-      back into the local sandbox.
+    \item use the command \Code{harvestSticks} to copy both sandbox
+      and stick local repo back to the preparation host.
       \begin{itemize}
-      \item Takes about 20 seconds for 14 sticks.\\
+      \item Takes about 20 seconds for 21 sticks.\\
       \item Inserting and removing sticks takes about the same time.
-    \item With 2 pairs of hubs your could speed up even a bit more.
     \end{itemize}
   \item Commit the work into the repository.
   \end{itemize}
   \item Make the exam work available to the correctors.
     \begin{itemize}
-    \item Not NetBeans plugin here yet\InlineMwha.
     \item Now using simple PHP based web app, to allow parallel
-      corrections by multiple correctors
+      corrections by multiple correctors. DEMO.
     \end{itemize}
-
   \end{itemize}
 \end{frame}
 
